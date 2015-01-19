@@ -13,3 +13,12 @@
 
 Route::get('/', 'HomeController@showWelcome');
 Route::get('signin', 'SigninController@showSignin');
+
+Route::group(array('prefix' => 'api'), function(){
+  
+  Route::post('oauth/access_token', function() {
+    return Response::json(Authorizer::issueAccessToken());
+  });
+
+
+});
