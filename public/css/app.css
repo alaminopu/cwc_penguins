@@ -1,0 +1,47 @@
+/*Header style*/
+.header{
+	height: 100px;
+}
+
+/*Sign up box*/
+.signup-box{
+	margin-top: 20px;
+}
+
+.btn.signin{
+	margin: 50px 0 0 150px;
+}
+
+.btn.signup{
+	margin: 50px 150px 0 0;
+}
+
+.social-login-box{
+	margin-top: 30px;
+}
+
+.form-control-wrapper .form-control{
+	margin: 20px 0;
+}
+
+.btn-twitter{
+	background-color: #55acee !important;
+}
+
+.btn-facebook{
+	background-color: #3b5998 !important;
+}
+
+.btn-google-plus{
+	background-color: #dd4b39 !important;
+}
+
+/*Modals*/
+.modal-backdrop{
+	background: none;
+}
+
+/*Footer*/
+.footer{
+	height: 50px;
+}
