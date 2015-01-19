@@ -10,7 +10,8 @@
 		"lucadegasperi/oauth2-server-laravel": "3.*"
 	},
 	"require-dev": {
-	    "way/generators": "~2.0"
+	    "way/generators": "~2.0",
+			"fzaninotto/faker": "v1.3.0",
 	},
 	"autoload": {
 		"classmap": [
