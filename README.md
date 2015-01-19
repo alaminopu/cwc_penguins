@@ -1,3 +1,3 @@
 # Penguins Shop
 
-A "Buy and Sell" platform built on Laravel and Mongodb
+A "Buy and Sell" platform built on Laravel and MongoDB
