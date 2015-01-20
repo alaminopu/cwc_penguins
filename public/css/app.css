@@ -1,0 +1,68 @@
+/*Header style*/
+.header{
+	height: 100px;
+}
+
+/*Sign up box*/
+.signup-box{
+	margin-top: 20px;
+}
+
+.btn.signin{
+	margin: 50px 0 0 150px;
+}
+
+.btn.signup{
+	margin: 50px 150px 0 0;
+}
+
+.social-login-box{
+	margin-top: 30px;
+}
+
+.form-control-wrapper .form-control{
+	margin: 20px 0;
+}
+
+.btn-twitter{
+	background-color: #55acee !important;
+}
+
+.btn-facebook{
+	background-color: #3b5998 !important;
+}
+
+.btn-google-plus{
+	background-color: #dd4b39 !important;
+}
+
+/*Modals*/
+.modal-backdrop{
+	background: none;
+}
+
+/**** Profile page *****/
+.user-location{
+	color: #808080;
+}
+
+.user-identity img{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	max-height: 150px;
+	max-width: 150px;
+}
+
+#user-profile-navigator li{
+	padding: 0;
+}
+
+#user-profile-navigator li.active a{
+	background-color: rgba(255, 255, 255, 0.2) !important;
+	border-radius: 0;
+}
+
+/*Footer*/
+.footer{
+	height: 50px;
+}
