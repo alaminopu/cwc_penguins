@@ -14,8 +14,7 @@
 // Oauth server
 App::singleton('oauth2', function() {
 
-  $mongo = new \MongoClient();
-  $storage = new OAuth2\Storage\Mongo($mongo);
+  $storage = new OAuth2\Storage\Mongo(DB::connection()->getMongodb());
 
   $server = new OAuth2\Server($storage);
 
@@ -31,18 +30,7 @@ App::singleton('oauth2', function() {
 Route::get('/', 'SigninController@showSignin');
 Route::get('userprofile', 'ProfileController@showProfile');
 
-Route::group(array('prefix' => 'api'), function(){
-
-  Route::post('oauth/token', function()
-  {
-    $bridgedRequest  = OAuth2\HttpFoundationBridge\Request::createFromRequest(Request::instance());
-    $bridgedResponse = new OAuth2\HttpFoundationBridge\Response();
-
-    $bridgedResponse = App::make('oauth2')->handleTokenRequest($bridgedRequest, $bridgedResponse);
-
-    return $bridgedResponse;
-  });
-
+Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
 
   Route::get('private', function()
   {
@@ -68,4 +56,15 @@ Route::group(array('prefix' => 'api'), function(){
   });
 
 
+});
+
+
+Route::post('oauth/token', function()
+{
+  $bridgedRequest  = OAuth2\HttpFoundationBridge\Request::createFromRequest(Request::instance());
+  $bridgedResponse = new OAuth2\HttpFoundationBridge\Response();
+
+  $bridgedResponse = App::make('oauth2')->handleTokenRequest($bridgedRequest, $bridgedResponse);
+
+  return $bridgedResponse;
 });
