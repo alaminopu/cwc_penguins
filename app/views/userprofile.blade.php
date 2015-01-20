@@ -1,9 +1,9 @@
-@extends('layouts.default')
+@extends('layouts.default', ['title' => 'User Profile'])
 
 @section('content')
 	<div class="panel col-md-12 profile-box">
 		<section class="user-identity center-block text-center">
-			<img class="center-block img-responsive img-thumbnail img-circle" src="http://placehold.it/150x150" alt="Profile Photo">
+			{{ HTML::image('imgs/kowalski.jpg', $alt="Profile Photo", array('class' => 'center-block img-responsive img-thumbnail img-circle')) }}
 			<strong class="center-block user-name">Kowalski</strong>
 			<span class="center-block user-location">
 				<i class="fa fa-location-arrow"></i> Madagascar
