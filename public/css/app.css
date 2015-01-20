@@ -41,6 +41,25 @@
 	background: none;
 }
 
+/**** Profile page *****/
+.user-location{
+	color: #808080;
+}
+
+.user-identity img{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#user-profile-navigator li{
+	padding: 0;
+}
+
+#user-profile-navigator li.active a{
+	background-color: rgba(255, 255, 255, 0.2) !important;
+	border-radius: 0;
+}
+
 /*Footer*/
 .footer{
 	height: 50px;
