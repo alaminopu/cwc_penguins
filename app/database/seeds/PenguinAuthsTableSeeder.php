@@ -9,12 +9,13 @@ class PenguinAuthsTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
-		{
+		
 			PenguinAuth::create([
-
+				'client_id' => 'testclient',
+				'client_secret' => 'testpass',
+				'redirect_uri' => $faker->url(),
 			]);
-		}
+		
 	}
 
 }
