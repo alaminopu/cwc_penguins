@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.default', ['title' => 'Sign In / Sign Up'])
 
 @section('content')
 	<div class="panel col-md-6 col-md-offset-3 signup-box">

@@ -49,6 +49,8 @@
 .user-identity img{
 	margin-top: 10px;
 	margin-bottom: 10px;
+	max-height: 150px;
+	max-width: 150px;
 }
 
 #user-profile-navigator li{
