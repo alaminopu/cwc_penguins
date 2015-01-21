@@ -9,17 +9,24 @@
 	{{ HTML::style('css/bootstrap-social.css') }}
 	{{ HTML::style('css/app.css') }}
 </head>
-<body>
+<body ng-app="penguins">
 	@include('layouts.header')
 
 	@yield('content')
 
 	@include('layouts.footer')
-	
-	{{ HTML::script('js/jquery.min.js') }}
-	{{ HTML::script('js/bootstrap.min.js') }}
-	{{ HTML::script('js/ripples.min.js') }}
-	{{ HTML::script('js/material.min.js') }}
+
+	{{ HTML::script('js/lib/jquery.min.js') }}
+
+	<!-- angular files -->
+	{{ HTML::script('js/lib/angular.min.js') }}
+	{{ HTML::script('js/service/authService.js') }}
+	{{ HTML::script('js/service/authController.js') }}
+
+	<!-- others -->
+	{{ HTML::script('js/lib/bootstrap.min.js') }}
+	{{ HTML::script('js/lib/ripples.min.js') }}
+	{{ HTML::script('js/lib/material.min.js') }}
 	{{ HTML::script('js/app.js') }}
 	<script>
 		$(document).ready(function() {
