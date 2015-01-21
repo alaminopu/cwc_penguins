@@ -24,7 +24,7 @@ App::singleton('oauth2', function() {
   return $server;
 });
 
-
+Route::post('signup','SigninController@signup');
 
 Route::get('/', 'HomeController@showWelcome');
 #Route::get('/', 'SigninController@showSignin');
