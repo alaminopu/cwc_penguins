@@ -5,10 +5,10 @@ $('#user-profile-navigator a').click( function (e) {
 });
 
 
-var app = angular.module('penguins',['authController','authService',],
-
-function($interpolateProvider){
-	$interpolateProvider.startSymbol('<@');
-	$interpolateProvider.endSymbol('@>');
-}
+var app = angular.module('penguins',
+		['authController','authService'],
+		function($interpolateProvider){
+			$interpolateProvider.startSymbol('<@');
+			$interpolateProvider.endSymbol('@>');
+		}
 );

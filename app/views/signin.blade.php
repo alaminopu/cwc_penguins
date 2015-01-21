@@ -1,7 +1,7 @@
 @extends('layouts.default', ['title' => 'Sign In / Sign Up'])
 
 @section('content')
-	<div class="panel col-md-6 col-md-offset-3 signup-box">
+	<div class="panel col-md-6 col-md-offset-3 signup-box" ng-controller="authentication">
 		<button data-toggle="modal" data-target="#sign-in-box" class="btn btn-lg btn-raised btn-primary signin withripple" data-ripple-color="#F0F0F0"><strong>Sign In</strong></button>
 		<button data-toggle="modal" data-target="#sign-up-box" class="btn btn-lg btn-raised btn-primary signup pull-right" data-ripple-color="#F0F0F0"><strong>Sign Up</strong></button>
 		<div class="col-md-6 col-md-offset-3 social-login-box text-center">
@@ -21,20 +21,20 @@
 				<div class="modal-content">
 					<div class="modal-body">
 						<div class="form-control-wrapper">
-							<input type="text" class="form-control empty" placeholder="Username/Email">
+							<input type="text" class="form-control empty" ng-model="loginusername" placeholder="Username">
 						</div>
 						<div class="form-control-wrapper">
-							<input type="password" class="form-control empty" placeholder="Password">
+							<input type="password" class="form-control empty" ng-model="loginpassword" placeholder="Password">
 						</div>
-						
+
 						<div class="checkbox primary">
 						    <label>
 						        <input type="checkbox">
 						        Remember me
 						    </label>
 						</div>
-						
-						<button class="btn btn-primary">Sign In</button>
+
+						<button class="btn btn-primary" ng-click="login()">Sign In</button>
 					</div>
 				</div>
 			</div>
@@ -53,7 +53,7 @@
 						<div class="form-control-wrapper">
 							<input type="password" class="form-control empty" placeholder="Password">
 						</div>
-						
+
 						<button class="btn btn-primary">Sign Up</button>
 					</div>
 				</div>
