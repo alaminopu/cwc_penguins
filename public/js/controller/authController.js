@@ -1,44 +1,48 @@
 var auth = angular.module('authController', []);
 
-auth.controller('authentication', ['$scope','$window','SignIn','SignUp', function ($scope,$window,SignIn,SignUp) {
-  $scope.loginData = [];
-  $scope.message= '';
+auth.controller('authentication', ['$scope','$window','$location','SignIn','SignUp',
 
-  $scope.login = function(){
-    $scope.loginData['username']=$scope.loginusername;
-    $scope.loginData['password']=$scope.loginpassword;
+  function ($scope,$window,$location,SignIn,SignUp) {
+      $scope.loginData = [];
+      $scope.message = '';
 
-    var auth = SignIn.auth($scope.loginData);
+      $scope.login = function(){
+        $scope.loginData['username']=$scope.loginusername;
+        $scope.loginData['password']=$scope.loginpassword;
 
-    auth.success(function(data, status, header, config){
-      $window.localStorage.access_token = data.access_token;
-      $window.localStorage.refresh_token = data.refresh_token;
-    });
+        var auth = SignIn.auth($scope.loginData);
 
-    auth.error(function(){
-      delete $window.localStorage.access_token;
+        auth.success(function(data, status, header, config){
+          $window.localStorage.access_token = data.access_token;
+          $window.localStorage.refresh_token = data.refresh_token;
 
-      $scope.message = 'Error: Invalid user or password';
-    })
+          $location.path( "/profile" );
+        });
 
-    $scope.loginData = [];
-  }
+        auth.error(function(){
+          delete $window.localStorage.access_token;
 
-  // Registration
-  $scope.registrationData = [];
+          $scope.message = 'Error: Invalid user or password';
+        });
 
-  $scope.register = function(){
-    $scope.registrationData['username']=$scope.regusername;
-    $scope.registrationData['email']=$scope.regemail;
-    $scope.registrationData['password']=$scope.regpassword;
+        $scope.loginData = [];
+      }
 
-    console.log($scope.registrationData);
+      // Registration
+      $scope.registrationData = [];
 
-    var signedUp = SignUp.registerUser($scope.registrationData);
-    signedUp.success(function(response){
-      console.log(response);
-    });
-    $scope.registrationData.length=0;
-  };
+      $scope.register = function(){
+        $scope.registrationData['username']=$scope.regusername;
+        $scope.registrationData['email']=$scope.regemail;
+        $scope.registrationData['password']=$scope.regpassword;
 
-}]);
+        console.log($scope.registrationData);
+
+        var signedUp = SignUp.registerUser($scope.registrationData);
+        signedUp.success(function(response){
+          console.log(response);
+        });
+        $scope.registrationData=[];
+      };
+    }
+]);

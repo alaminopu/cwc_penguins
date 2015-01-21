@@ -6,7 +6,7 @@ access.factory('SignIn', ['$http','$rootScope',function ($http,$rootScope) {
       var authUser = $http({
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        url: 'http://local.dev/cwc_penguins/public/oauth/token',
+        url: 'public/oauth/token',
         transformRequest: function(obj) {
           var str = [];
           for(var p in obj)
@@ -22,13 +22,35 @@ access.factory('SignIn', ['$http','$rootScope',function ($http,$rootScope) {
 }]);
 
 
+access.factory('Verifier', ['$http', '$rootScope', function($http, $rootScope){
+  return {
+      tokenVerify: function(access_token){
+        var userData = $http({
+          method:'GET',
+          url:'public/api/verify',
+          headers: {'Authorization': 'Bearer '+access_token}
+        });
+
+        return userData;
+      }
+  }
+
+}]);
+
 access.factory('SignUp', ['$http','$rootScope', function ($http, $rootScope) {
   return {
     registerUser: function(registerData){
       var confirmation = $http({
-        method:'post',
-        url:'api/register',
-        params: registerData
+        method:'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        url:'public/signup',
+        transformRequest: function(obj) {
+          var str = [];
+          for(var p in obj)
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+            return str.join("&");
+          },
+         data: {username: registerData['username'], email:registerData['email'],password: registerData['password']}
       });
       return confirmation;
     }

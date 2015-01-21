@@ -6,21 +6,21 @@ $('#user-profile-navigator a').click( function (e) {
 
 
 var app = angular.module('penguins',
-		['authController','authService','ngRoute'],
-		function($interpolateProvider){
-			$interpolateProvider.startSymbol('<@');
-			$interpolateProvider.endSymbol('@>');
-		}
+		['authController','profileController','authService','ngRoute']
 );
 
 app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
 		$routeProvider.
 		when('/', {
 			templateUrl: 'public/partials/signin.html',
+			controller: 'authentication'
 		}).
 		when('/profile', {
 			templateUrl: 'public/partials/profile.html',
-			controller: 'ProfileCtrl'
+			controller: 'profileCtrl'
+		}).
+		when('/thanks', {
+			templateUrl: 'public/partials/thanks.html',
 		}).
 		otherwise({
 			redirectTo: '/'
