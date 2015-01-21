@@ -2,9 +2,8 @@
 
 @section('content')
 	<div class="panel col-md-6 col-md-offset-3 signup-box">
-		<button data-toggle="modal" data-target="#sign-in-box" data-backdrop="true" class="btn btn-lg btn-raised btn-primary signin withripple" data-ripple-color="#F0F0F0"><strong>Sign In</strong></button>
-		<button data-toggle="modal" data-target="#sign-up-box" data-backdrop="true" class="btn btn-lg btn-raised btn-primary signup pull-right" data-ripple-color="#F0F0F0"><strong>Sign Up</strong></button>
-		<!-- 
+		<button data-toggle="modal" data-target="#sign-in-box" class="btn btn-lg btn-raised btn-primary signin withripple" data-ripple-color="#F0F0F0"><strong>Sign In</strong></button>
+		<button data-toggle="modal" data-target="#sign-up-box" class="btn btn-lg btn-raised btn-primary signup pull-right" data-ripple-color="#F0F0F0"><strong>Sign Up</strong></button>
 		<div class="col-md-6 col-md-offset-3 social-login-box text-center">
 			<h4>Login with social Networks</h4>
 			<a href="javascript:void(0)" class="btn btn-block btn-social btn-facebook">
@@ -16,12 +15,8 @@
 				Sign in with Google+
 			</a>
 		</div>
- 		-->
-		
-	</div>
 
-	<div id="sign-in-box" class="col-md-12 modal fade in" tabindex="-1">
-		<div class="col-md-6 col-md-offset-3">
+		<div id="sign-in-box" class="col-md-6 col-md-offset-3 modal fade in" tabindex="-1">
 			<div class="modal-dialogue">
 				<div class="modal-content">
 					<div class="modal-body">
@@ -44,10 +39,8 @@
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div id="sign-up-box" class="col-md-12 modal fade in" tabindex="-1">
-		<div class="col-md-6 col-md-offset-3">
+		<div id="sign-up-box" class="col-md-6 col-md-offset-3 modal fade in" tabindex="-1">
 			<div class="modal-dialogue">
 				<div class="modal-content">
 					<div class="modal-body">
