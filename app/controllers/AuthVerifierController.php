@@ -49,12 +49,13 @@ class AuthVerifierController extends \BaseController {
 
 			$token = App::make('oauth2')->getAccessTokenData($bridgedRequest);
 
+			$user = User::where('username','=',$token['user_id'])->get()->first();
 			return Response::json(array(
-				'private' => 'stuff',
-				'user_id' => $token['user_id'],
-				'client'  => $token['client_id'],
-				'expires' => $token['expires'],
-			));
+					'username' => $user->username,
+					'fist_name' => $user->first_name,
+					'last_name' => $user->last_name,
+					'email' => $user->email,
+				));
 		}
 		else {
 			return Response::json(array(

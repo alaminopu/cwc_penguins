@@ -14,7 +14,8 @@ class OauthUsersTableSeeder extends Seeder {
 				'username' => 'bshaffer',
  				'password' => 'brent123',
  				'first_name' => 'Brent',
-			 	'last_name' => 'Shaffer'
+			 	'last_name' => 'Shaffer',
+			 	'email' => 'brent@mail.com'
 			]);
 		
 	}
