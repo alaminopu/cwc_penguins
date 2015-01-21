@@ -6,11 +6,10 @@ profile.controller('profileCtrl', ['$scope','$window','$location','Verifier',
           var user = Verifier.tokenVerify($window.localStorage.access_token);
           user.success(function(data){
               $scope.data= data;
-              $location.path('/thanks');
           });
-          user.error(function(){
+          user.error(function(data){
               delete $window.localStorage.access_token;
-              console.log("Couldn't verify user");
+              console.log(data);
               $location.path('/');
           });
 
