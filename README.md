@@ -1,4 +1,4 @@
-# Penguins Shop
+# Penguins Shop (IST)
 
 A **Buy and Sell** platform built on Laravel and MongoDB
 
@@ -27,7 +27,7 @@ composer update
 
   Ignore configuration files from git using.
 ```bash
-git update-index --assume-unchanged bootstrap//start.php
+git update-index --assume-unchanged bootstrap/start.php
 ```
 
 
@@ -37,7 +37,7 @@ git update-index --assume-unchanged bootstrap//start.php
 ```bash
 http://<your-server-hostname>/cwc_penguins/
 ```
-Example: 
+Example:
 
 ```bash
 http://localhost/cwc_penguins/

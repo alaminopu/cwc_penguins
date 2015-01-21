@@ -19,7 +19,7 @@ class SigninController extends BaseController {
 			'email' => 'required|email|unique:oauth_users,email',
 			'password' => 'required|min:6'
 			);
-		
+
 		$validator = Validator::make(Input::all(),$rules);
 
 		if($validator->fails()){
@@ -30,13 +30,13 @@ class SigninController extends BaseController {
 			$user = User::create(array(
 				'username' => Input::get('username'),
 				'email' => Input::get('email'),
-				'password' => Hash::make(Input::get('password'))
+				'password' => Input::get('password')
 			));
 
 		return Response::json(array(
 			'success' => 'Congratulation! Signup successfull'
 			));
 		}
-		
+
 	}
 }
