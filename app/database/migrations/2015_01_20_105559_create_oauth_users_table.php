@@ -17,7 +17,8 @@ class CreateOauthUsersTable extends Migration {
 			$table->string('username',255);
 			$table->string('password',2000);
 			$table->string('first_name',255);
-			$table->string('last_name',255);	
+			$table->string('last_name',255);
+			$table->string('email');	
 		});
 	}
 
