@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Penguin Shop </title>
+  <link rel="stylesheet" href="public/css/bootstrap.min.css">
+  <link rel="stylesheet" href="public/css/ripples.min.css">
+  <link rel="stylesheet" href="public/css/material-wfont.min.css">
+  <link rel="stylesheet" href="public/css/font-awesome.min.css">
+  <link rel="stylesheet" href="public/css/bootstrap-social.css">
+  <link rel="stylesheet" href="public/css/app.css">
+
+</head>
+<body ng-app="penguins">
+  <header class="header panel col-md-12 text-center">
+    <h2>Welcome to Penguin's "Buy-N-Sell" shop</h2>
+  </header>
+
+  <div ng-view></div>
+
+  <footer class="footer panel col-md-12 text-center">
+    <h4>&copy; 2015 Penguin Shop | All RIghts Reserved</h4>
+  </footer>
+
+  <script src="public/js/lib/jquery.min.js"></script>
+
+  <!-- angular files -->
+  <script src="public/js/lib/angular.min.js"></script>
+  <script src="public/js/lib/angular-route.min.js"></script>
+  <script src="public/js/service/authService.js"></script>
+  <script src="public/js/controller/authController.js"></script>
+
+  <!-- others -->
+  <script src="public/js/lib/bootstrap.min.js"></script>
+  <script src="public/js/lib/ripples.min.js"></script>
+  <script src="public/js/lib/material.min.js"></script>
+  <script src="public/js/app.js"></script>
+  <script>
+  $(document).ready(function() {
+    $.material.init();
+  });
+  </script>
+</body>
+</html>

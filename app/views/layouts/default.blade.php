@@ -20,6 +20,7 @@
 
 	<!-- angular files -->
 	{{ HTML::script('js/lib/angular.min.js') }}
+	{{ HTML::script('js/lib/angular-route.min.js') }}
 	{{ HTML::script('js/service/authService.js') }}
 	{{ HTML::script('js/controller/authController.js') }}
 

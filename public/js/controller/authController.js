@@ -1,7 +1,8 @@
 var auth = angular.module('authController', []);
 
-auth.controller('authentication', ['$scope','SignIn','SignUp', function ($scope,SignIn,SignUp) {
+auth.controller('authentication', ['$scope','$window','SignIn','SignUp', function ($scope,$window,SignIn,SignUp) {
   $scope.loginData = [];
+  $scope.message= '';
 
   $scope.login = function(){
     $scope.loginData['username']=$scope.loginusername;
@@ -10,11 +11,20 @@ auth.controller('authentication', ['$scope','SignIn','SignUp', function ($scope,
     console.log($scope.loginData);
 
     var auth = SignIn.auth($scope.loginData);
-    auth.success(function(response){
-      console.log(response);
+
+    auth.success(function(data, status, header, config){
+      $window.sessionStorage.access_token = data.access_token;
+      $window.sessionStorage.refresh_token = data.refresh_token;
     });
 
-    $scope.loginData.length = 0;
+    auth.error(function(){
+      delete $window.sessionStorage.access_token;
+
+      $scope.message = 'Error: Invalid user or password';
+    })
+
+    $scope.loginData = [];
+    console.log($scope.loginData);
   }
 
   // Registration
