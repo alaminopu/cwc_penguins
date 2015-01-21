@@ -13,45 +13,49 @@
     </a>
   </div>
 
-  <div id="sign-in-box" class="col-md-6 col-md-offset-3 modal fade in" tabindex="-1">
-    <div class="modal-dialogue">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="form-control-wrapper">
-            <input type="text" class="form-control empty" ng-model="loginusername" placeholder="Username">
+  <div id="sign-in-box" class="col-md-12 modal fade in" tabindex="-1">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="modal-dialogue">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="form-control-wrapper">
+              <input type="text" class="form-control empty" ng-model="loginusername" placeholder="Username">
+            </div>
+            <div class="form-control-wrapper">
+              <input type="password" class="form-control empty" ng-model="loginpassword" placeholder="Password">
+            </div>
+      
+            <div class="checkbox primary">
+              <label>
+                <input type="checkbox">
+                Remember me
+              </label>
+            </div>
+      
+            <button class="btn btn-primary" ng-click="login()">Sign In</button>
           </div>
-          <div class="form-control-wrapper">
-            <input type="password" class="form-control empty" ng-model="loginpassword" placeholder="Password">
-          </div>
-
-          <div class="checkbox primary">
-            <label>
-              <input type="checkbox">
-              Remember me
-            </label>
-          </div>
-
-          <button class="btn btn-primary" ng-click="login()">Sign In</button>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="sign-up-box" class="col-md-6 col-md-offset-3 modal fade in" tabindex="-1">
-    <div class="modal-dialogue">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="form-control-wrapper">
-            <input type="text" class="form-control empty" placeholder="Username">
+  <div id="sign-up-box" class="col-md-12 modal fade in" tabindex="-1">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="modal-dialogue">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="form-control-wrapper">
+              <input type="text" class="form-control empty" placeholder="Username">
+            </div>
+            <div class="form-control-wrapper">
+              <input type="email" class="form-control empty" placeholder="Email">
+            </div>
+            <div class="form-control-wrapper">
+              <input type="password" class="form-control empty" placeholder="Password">
+            </div>
+      
+            <button class="btn btn-primary">Sign Up</button>
           </div>
-          <div class="form-control-wrapper">
-            <input type="email" class="form-control empty" placeholder="Email">
-          </div>
-          <div class="form-control-wrapper">
-            <input type="password" class="form-control empty" placeholder="Password">
-          </div>
-
-          <button class="btn btn-primary">Sign Up</button>
         </div>
       </div>
     </div>
