@@ -11,8 +11,8 @@ class OauthUsersTableSeeder extends Seeder {
 
 		
 			User::create([
-				'username' => 'bshaffer',
- 				'password' => 'brent123',
+				'username' => 'demouser',
+ 				'password' => 'demopass',
  				'first_name' => 'Brent',
 			 	'last_name' => 'Shaffer',
 			 	'email' => 'brent@mail.com'
