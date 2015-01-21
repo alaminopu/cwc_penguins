@@ -14,10 +14,6 @@
 				<i class="fa fa-google-plus"></i>
 				Sign in with Google+
 			</a>
-			<a href="javascript:void(0)" class="btn btn-block btn-social btn-twitter">
-				<i class="fa fa-twitter"></i>
-				Sign in with Twitter
-			</a>
 		</div>
 
 		<div id="sign-in-box" class="col-md-6 col-md-offset-3 modal fade in" tabindex="-1">
