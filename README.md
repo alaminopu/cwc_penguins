@@ -32,11 +32,13 @@ git update-index --assume-unchanged bootstrap//start.php
 
 
 # Run
-+ Go to project folder `cd cwc_penguins` and run
-```bash
-php artisan serve
-```
 + Open your browser and visit this address
+
 ```bash
-http://localhost:8000
+http://<your-server-hostname>/cwc_penguins/
+```
+Example: 
+
+```bash
+http://localhost/cwc_penguins/
 ```

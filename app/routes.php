@@ -26,15 +26,12 @@ App::singleton('oauth2', function() {
 
 
 
-# Route::get('/', 'HomeController@showWelcome');
-Route::get('/', 'SigninController@showSignin');
-Route::get('userprofile', 'ProfileController@showProfile');
+Route::get('/', 'HomeController@showWelcome');
+#Route::get('/', 'SigninController@showSignin');
+#Route::get('userprofile', 'ProfileController@showProfile');
 
 Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
-
   Route::get('verify', 'AuthVerifierController@verfiyAccesstoken');
-
-
 });
 
 
