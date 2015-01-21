@@ -6,6 +6,7 @@
 /*Sign up box*/
 .signup-box{
 	margin-top: 20px;
+	padding-bottom: 50px;
 }
 
 .btn.signin{
@@ -39,6 +40,10 @@
 /*Modals*/
 .modal-backdrop{
 	background: none;
+}
+
+.modal-dialogue{
+	margin-top: 110px;
 }
 
 /**** Profile page *****/
