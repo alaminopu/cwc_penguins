@@ -30,7 +30,7 @@ class SigninController extends BaseController {
 			$user = User::create(array(
 				'username' => Input::get('username'),
 				'email' => Input::get('email'),
-				'password' => Input::get('password')
+				'password' => Hash::make(Input::get('password'))
 			));
 
 		return Response::json(array(
