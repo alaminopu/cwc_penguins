@@ -9,14 +9,15 @@ class OauthUsersTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		
+
 			User::create([
-				'username' => 'bshaffer',
- 				'password' => 'brent123',
+				'username' => 'demouser',
+ 				'password' => 'demopass',
  				'first_name' => 'Brent',
-			 	'last_name' => 'Shaffer'
+			 	'last_name' => 'Shaffer',
+			 	'email' => 'brent@mail.com'
 			]);
-		
+
 	}
 
 }
