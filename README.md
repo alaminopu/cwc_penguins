@@ -31,6 +31,13 @@ git update-index --assume-unchanged bootstrap/start.php
 ```
 
 
++ open your terminal and type `mongo` then to  create a user in database use the following command
+```bash
+use cwc_penguins
+db.createUser({'user':"root",pwd:"root",roles:[{'role':"readWrite",db:"cwc_penguins"}]})
+```
+
+
 # Run
 + Open your browser and visit this address
 
