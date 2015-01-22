@@ -15,7 +15,7 @@ class SigninController extends BaseController {
 
 	public function signup(){
 		$rules = array(
-			'username' => 'required|min:6',
+			'username' => 'required|unique:oauth_users,username',
 			'email' => 'required|email|unique:oauth_users,email',
 			'password' => 'required|min:6'
 			);
