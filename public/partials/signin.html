@@ -46,14 +46,18 @@
       <div class="modal-dialogue">
         <div class="modal-content">
           <div class="modal-body">
+            <p class="error"> {{ message }} </p>
             <div class="form-control-wrapper">
               <input type="text" class="form-control empty" ng-model="regusername" placeholder="Username">
+              <p class="error"> {{ error['username'] }} </p>
             </div>
             <div class="form-control-wrapper">
               <input type="email" class="form-control empty" ng-model="regemail" placeholder="Email">
+              <p class="error"> {{ error['email'] }} </p>
             </div>
             <div class="form-control-wrapper">
               <input type="password" class="form-control empty" ng-model="regpassword" placeholder="Password">
+              <p class="error"> {{ error['password'] }} </p>
             </div>
 
             <button class="btn btn-primary" ng-click="register()">Sign Up</button>

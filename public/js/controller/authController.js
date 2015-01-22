@@ -40,9 +40,18 @@ auth.controller('authentication', ['$scope','$window','$location','SignIn','Sign
 
         var signedUp = SignUp.registerUser($scope.registrationData);
         signedUp.success(function(response){
-          console.log(response);
-          $location.path('/thanks');
+          console.log(response.error);
+          if(response.error){
+            $scope.error = response.error;
+          }else{
+            $location.path('/thanks');
+          }
         });
+
+        signedUp.error(function(data){
+           $scope.message = data;
+        });
+
         $scope.registrationData=[];
       };
     }
