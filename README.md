@@ -31,12 +31,17 @@ git update-index --assume-unchanged bootstrap/start.php
 ```
 
 
-+ open your terminal and type `mongo` then to  create a user in database use the following command
++ open a new terminal and type `mongo` then to  create a user in database use the following command
 ```bash
 use cwc_penguins
 db.createUser({'user':"root",pwd:"root",roles:[{'role':"readWrite",db:"cwc_penguins"}]})
 ```
 
++ Go to your project directory and type 
+```bash
+php artisan migrate
+php artisan db:seed
+```
 
 # Run
 + Open your browser and visit this address
