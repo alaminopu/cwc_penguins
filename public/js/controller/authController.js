@@ -7,6 +7,8 @@ auth.controller('authentication', ['$scope','$window','$location','SignIn','Sign
       $scope.message = '';
 
       $scope.login = function(){
+        $scope.message = '';
+        
         $scope.loginData['username']=$scope.loginusername;
         $scope.loginData['password']=$scope.loginpassword;
 
@@ -32,6 +34,8 @@ auth.controller('authentication', ['$scope','$window','$location','SignIn','Sign
       $scope.registrationData = [];
 
       $scope.register = function(){
+        $scope.message = '';
+
         $scope.registrationData['username']=$scope.regusername;
         $scope.registrationData['email']=$scope.regemail;
         $scope.registrationData['password']=$scope.regpassword;

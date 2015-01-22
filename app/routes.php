@@ -14,7 +14,8 @@
 // Oauth server
 App::singleton('oauth2', function() {
 
-  $storage = new OAuth2\Storage\Mongo(DB::connection()->getMongodb());
+  // MongoUpd is cutom class extends from Mongo
+  $storage = new MongoUpd(DB::connection()->getMongodb());
 
   $server = new OAuth2\Server($storage);
 
@@ -23,6 +24,7 @@ App::singleton('oauth2', function() {
 
   return $server;
 });
+
 
 Route::post('signup','SigninController@signup');
 
