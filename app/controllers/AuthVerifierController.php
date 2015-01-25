@@ -23,19 +23,6 @@ class AuthVerifierController extends \BaseController {
 
 		$bridgedResponse = App::make('oauth2')->handleTokenRequest($bridgedRequest, $bridgedResponse);
 
-		// if(!$response['error']){
-		//
-		// 	 $response_data = Response::json(array(
-		// 			'success'=> 'Successfull'
-		// 	 ));
-		//
-		// 	// All cookies created by the Laravel framework are encrypted
-		// 	// and signed with an authentication code
-		// 	return $response_data
-		// 			->withCookie(Cookie::make('access_token', $response['access_token'], $response['expires_in']))
-		// 			->withCookie(Cookie::make('refresh_token', $response['refresh_token'], $response['expires_in']));
-		// }
-
 		return $bridgedResponse;
 	}
 

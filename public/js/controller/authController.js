@@ -7,8 +7,7 @@ auth.controller('authentication', ['$scope','$window','$location','SignIn','Sign
       $scope.message = '';
 
       $scope.login = function(){
-        $scope.message = '';
-        
+
         $scope.loginData['username']=$scope.loginusername;
         $scope.loginData['password']=$scope.loginpassword;
 
@@ -32,15 +31,15 @@ auth.controller('authentication', ['$scope','$window','$location','SignIn','Sign
 
       // Registration
       $scope.registrationData = [];
+      $scope.rmessage = '';
 
       $scope.register = function(){
-        $scope.message = '';
 
         $scope.registrationData['username']=$scope.regusername;
         $scope.registrationData['email']=$scope.regemail;
         $scope.registrationData['password']=$scope.regpassword;
 
-        console.log($scope.registrationData);
+        //console.log($scope.registrationData);
 
         var signedUp = SignUp.registerUser($scope.registrationData);
         signedUp.success(function(response){
@@ -53,7 +52,7 @@ auth.controller('authentication', ['$scope','$window','$location','SignIn','Sign
         });
 
         signedUp.error(function(data){
-           $scope.message = data;
+           $scope.rmessage = data;
         });
 
         $scope.registrationData=[];
