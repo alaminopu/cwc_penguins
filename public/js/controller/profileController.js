@@ -1,9 +1,9 @@
 var profile = angular.module('profileController', []);
 
-profile.controller('profileCtrl', ['$scope','$window','$location','Verifier',
-  function($scope,$window,$location,Verifier){
+profile.controller('profileCtrl', ['$scope','$window','$location','UserProfile',
+  function($scope,$window,$location,UserProfile){
       if($window.localStorage.access_token != null){
-          var user = Verifier.tokenVerify($window.localStorage.access_token);
+          var user = UserProfile.getUserData($window.localStorage.access_token);
           user.success(function(data){
               $scope.data= data;
           });

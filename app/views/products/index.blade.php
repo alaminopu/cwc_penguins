@@ -1,1 +1,0 @@
-/home/opu/www/cwc_penguins/app/views/products/index.blade.php

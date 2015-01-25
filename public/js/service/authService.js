@@ -22,12 +22,12 @@ access.factory('SignIn', ['$http','$rootScope',function ($http,$rootScope) {
 }]);
 
 
-access.factory('Verifier', ['$http', '$rootScope', function($http, $rootScope){
+access.factory('UserProfile', ['$http', '$rootScope', function($http, $rootScope){
   return {
-      tokenVerify: function(access_token){
+      getUserData: function(access_token){
         var userData = $http({
           method:'GET',
-          url:'public/api/verify',
+          url:'public/api/profile',
           headers: {'Authorization': 'Bearer '+access_token}
         });
 

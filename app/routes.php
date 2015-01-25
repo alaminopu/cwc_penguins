@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
-
 // Oauth server
 App::singleton('oauth2', function() {
 
@@ -26,15 +15,16 @@ App::singleton('oauth2', function() {
 });
 
 
-Route::post('signup','SigninController@signup');
-
+/* dummy page */
 Route::get('/', 'HomeController@showWelcome');
-#Route::get('/', 'SigninController@showSignin');
-#Route::get('userprofile', 'ProfileController@showProfile');
+
+
+Route::post('signup','ProfileController@signup');
 
 Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
-  Route::get('verify', 'AuthVerifierController@verfiyAccesstoken');
-});
 
+  Route::get('profile', 'ProfileController@getUserProfile');
+
+});
 
 Route::post('oauth/token', 'AuthVerifierController@verifyCredential');
