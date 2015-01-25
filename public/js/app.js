@@ -1,9 +1,3 @@
-// Tab group functionality
-$('#user-profile-navigator a').click( function (e) {
-	e.preventDefault();
-	$(this).tab('show');
-});
-
 
 var app = angular.module('penguins',
 		['authController','profileController','authService','ngRoute']
@@ -27,3 +21,14 @@ app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpPro
 		});
 
 }]);
+
+app.directive('showtab',function(){
+	return {
+		link: function(scope,element,attrs){
+			element.click(function(e){
+				e.preventDefault();
+				$(element).tab('show');
+			});
+		}
+	}
+});
