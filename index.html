@@ -10,16 +10,48 @@
   <link rel="stylesheet" href="public/css/app.css">
 
 </head>
-<body ng-app="penguins">
-  <header class="header panel col-md-12 text-center">
-    <h2>Welcome to Penguin's "Buy-N-Sell" shop</h2>
-  </header>
+<body ng-app="penguins" class="col-centered">
+  <div class="wrapper row">
+    <header class="header panel col-md-12">
+      <div class="col-md-2 site-logo"></div>
 
-  <div ng-view></div>
+      <div class="col-md-7 site-search">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <div class="input-group-btn">
+            <button class="btn btn-flat" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+          </div>
+        </div>
+      </div>
 
-  <footer class="footer panel col-md-12 text-center">
-    <h4>&copy; 2015 Penguin Shop | All RIghts Reserved</h4>
-  </footer>
+      <div class="col-md-2 site-control-panel pull-right">
+        <a href=""><span class="glyphicon glyphicon-user"></span></a>
+        <a href=""><span class="glyphicon glyphicon-bell"></span></a>
+        <a href=""><span class="glyphicon glyphicon-envelope"></span></a>
+        <a href=""><span class="glyphicon glyphicon-shopping-cart"></span></a>
+      </div>
+    </header>
+    
+    <div ng-view></div>
+    
+    <footer class="footer col-md-12">
+      <div class="col-md-4 site-copyright">
+        <h5>&copy; 2015 Penguin's Shop</h5>
+        <p>All Rights Reserved</p>
+      </div>
+      <div class="col-md-3 site-contact">
+        <h4><i class="fa fa-location-arrow"></i> Contact Us</h4>
+        <p>Golachipa, Vuter Goli<br>Somewhere in Bangladesh</p>
+      </div>
+      <div class="col-md-2 social-links pull-right">
+        <h4><i class="fa fa-globe"></i> Connect with us</h4>
+        <a href=""><i class="fa fa-facebook"></i></a>
+        <a href=""><i class="fa fa-twitter"></i></a>
+        <a href=""><i class="fa fa-google-plus"></i></a>
+        <a href=""><i class="fa fa-youtube"></i></a>
+      </div>
+    </footer>
+  </div>
 
   <script src="public/js/lib/jquery.min.js"></script>
 
