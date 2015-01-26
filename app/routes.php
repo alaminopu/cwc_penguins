@@ -32,3 +32,5 @@ Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
 
 Route::post('oauth/token', 'AuthVerifierController@verifyCredential');
 Route::post('oauth/refresh_token', 'AuthVerifierController@getAccessTokenByRefreshToken');
+
+Route::get('user/{name}','ProfileController@getUserPublicProfile');
