@@ -1,6 +1,63 @@
+/*Generals*/
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+body{
+	width: 90%;
+}
+
 /*Header style*/
 .header{
-	height: 100px;
+	height: 80px;
+}
+
+.site-logo{
+	background: url(../imgs/logo.png) no-repeat;
+	height: 100%;
+	background-size: auto 95%;
+	background-position: 10% 50%;
+}
+
+.site-search, .site-control-panel{
+	margin-top: 25px;
+}
+
+.site-search > .input-group{
+	border: 1px solid #B0AFAF;
+	border-radius: 5px;
+}
+
+.site-search > .input-group > .form-control-wrapper{
+	margin: 10px 0 0;
+}
+
+.site-search > .input-group > .form-control-wrapper > input{
+	height: 100%;
+	margin: 0;
+	padding-left: 10px;
+	border-bottom: none;
+}
+
+.site-search > .input-group > .form-control-wrapper > input:focus{
+	height: 100%;
+}
+
+.site-search > .input-group > .input-group-btn{
+	background-color: rgba(0, 149, 135, 0.24);
+}
+
+.site-control-panel{
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	height: 38px;
+	font-size: 25px;
+	padding-top: 3px;
+}
+
+.site-control-panel a{
+	margin: 0 6px;
 }
 
 /*Sign up box*/

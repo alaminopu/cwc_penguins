@@ -6,6 +6,10 @@ var app = angular.module('penguins',
 app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
 		$routeProvider.
 		when('/', {
+			templateUrl: 'public/partials/home.html',
+			// controller: 'authentication'
+		}).
+		when('/signin', {
 			templateUrl: 'public/partials/signin.html',
 			controller: 'authentication'
 		}).
