@@ -17,7 +17,7 @@ class ProfileController extends BaseController {
 
 				return Response::json(array(
 					'error' => 'Unauthorized'
-				), $bridgedResponse->getStatusCode());
+				),401);
 		}
 
 	}
