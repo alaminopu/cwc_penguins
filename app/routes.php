@@ -10,6 +10,7 @@ App::singleton('oauth2', function() {
 
   $server->addGrantType(new OAuth2\GrantType\ClientCredentials($storage));
   $server->addGrantType(new OAuth2\GrantType\UserCredentials($storage));
+  $server->addGrantType(new OAuth2\GrantType\RefreshToken($storage));
 
   return $server;
 });
@@ -25,6 +26,8 @@ Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
 
   Route::get('profile', 'ProfileController@getUserProfile');
 
+
 });
 
 Route::post('oauth/token', 'AuthVerifierController@verifyCredential');
+Route::get('oauth/refresh_token', 'AuthVerifierController@getAccessTokenByRefreshToken');
