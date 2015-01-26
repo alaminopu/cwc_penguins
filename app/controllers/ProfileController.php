@@ -11,12 +11,7 @@ class ProfileController extends BaseController {
 
 				$user = User::where('username','=',$token['user_id'])->get()->first();
 
-				return Response::json(array(
-					'username' => $user->username,
-					'fist_name' => $user->first_name,
-					'last_name' => $user->last_name,
-					'email' => $user->email,
-				));
+				return Response::json($user);
 
 		}else{
 

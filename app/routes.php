@@ -25,9 +25,10 @@ Route::post('signup','ProfileController@signup');
 Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
 
   Route::get('profile', 'ProfileController@getUserProfile');
+  Route::get('products','ProductsController@index');
 
 
 });
 
 Route::post('oauth/token', 'AuthVerifierController@verifyCredential');
-Route::get('oauth/refresh_token', 'AuthVerifierController@getAccessTokenByRefreshToken');
+Route::post('oauth/refresh_token', 'AuthVerifierController@getAccessTokenByRefreshToken');

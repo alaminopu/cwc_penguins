@@ -10,7 +10,18 @@ class ProductsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		if( $token = AuthVerifierController::verfiyAccesstoken() ){
+
+			$products = Product::all();
+			return Response::json($products);
+
+		}else{
+
+			return Response::json(array(
+				'error' => 'Unauthorized'
+			), $bridgedResponse->getStatusCode());
+		}
+
 	}
 
 	/**
