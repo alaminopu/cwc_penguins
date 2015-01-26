@@ -1,7 +1,8 @@
 <?php
 use Jenssegers\Mongodb\Model as Eloquent;
 
-class Product extends Eloquent {
+
+class Buyer extends Eloquent {
 	protected $fillable = [];
-	protected $table = 'products';
+	protected $table = 'buyer';
 }

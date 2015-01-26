@@ -13,9 +13,19 @@ class OauthUsersTableSeeder extends Seeder {
 			User::create([
 				'username' => 'demouser',
  				'password' => 'demopass',
- 				'first_name' => 'Brent',
-			 	'last_name' => 'Shaffer',
-			 	'email' => 'brent@mail.com'
+ 				'first_name' => 'Demo',
+			 	'last_name' => 'User',
+			 	'email' => 'demo@mail.com',
+			 	'profile_photo_link' => '/public/imgs/users/demo.png',
+			 	'address' => array(
+			 		'house_no' => '3',
+			 		'street_name' => 'test road',
+			 		'road_no' => '4',
+			 		'post_code' => '1207',
+			 		'city' => 'Dhaka',
+			 		'country' => 'Bangladesh'
+			 		),
+			 	'payment' => array('bkash','visa','debit')
 			]);
 
 	}
