@@ -2,6 +2,26 @@
 
 class ProfileController extends BaseController {
 
+
+	private $user;
+	private $rules = array(
+			'first_name' => 'required',
+			'last_name' => 'required',
+			'profile_photo_link' => 'required',
+			'house_no' => 'required',
+			'street_name' => 'required',
+			'road_no' => 'required',
+			'post_code' => 'required',
+			'city' => 'required',
+			'country' => 'required',
+			'payment' => 'required'
+			);
+
+
+	public function __construct(User $user){
+		$this->user = $user;
+	}
+
 	/**
 	* Get user Profile Data
 	*/
@@ -9,7 +29,7 @@ class ProfileController extends BaseController {
 	{
 		if( $token = AuthVerifierController::verfiyAccesstoken() ){
 
-				$user = User::where('username','=',$token['user_id'])->get()->first();
+				$user = $this->user->where('username','=',$token['user_id'])->get()->first();
 
 				return Response::json($user);
 
@@ -39,12 +59,11 @@ class ProfileController extends BaseController {
 				'error' => $validator->messages()
 			));
 		}else{
-			$user = User::create(array(
+			$user = $this->user->create(array(
 				'username' => Input::get('username'),
 				'email' => Input::get('email'),
 				'password' => Input::get('password')
 			));
-
 			return Response::json(array(
 				'success' => 'Congratulation! Signup successfull'
 			));
@@ -52,8 +71,13 @@ class ProfileController extends BaseController {
 
 	}
 
+	/*
+	*	Get User's public profile
+	*/
+	
+
 	public function getUserPublicProfile($name){
-		$user = User::where('username','=',$name)->get()->first();
+		$user = $this->user->where('username','=',$name)->get()->first();
 		if($user != null){
 			return Response::json(array(
 				'username' => $user->username,
@@ -66,6 +90,85 @@ class ProfileController extends BaseController {
 			return Response::json(array(
 				'error' => 'Not found!'
 				),404);
+		}
+	}
+	
+
+	/*
+	* Update/Create User profile
+	*/
+
+
+	public function updateUserData(){
+
+		$user_data = array(
+			'first_name' => Input::get('first_name'),
+			'last_name' => Input::get('last_name'),
+			'email' => Input::get('email'),
+			'password' => Hash::make(Input::get('password')),
+			'profile_photo_link' => Input::get('profile_photo_link'),
+			'address' => array(
+				'house_no' => Input::get('house_no'),
+				'street_name' => Input::get('street_name'),
+				'road_no' => Input::get('road_no'),
+				'post_code' => Input::get('post_code'),
+				'city' => Input::get('city'),
+				'country' => Input::get('country')
+					),
+			'payment' => Input::get('payment'),
+			);
+
+		if( $token = AuthVerifierController::verfiyAccesstoken()){
+			$user = $this->user->where('username','=',$token['user_id'])->get()->first();
+			if($user->email != Input::get('email')){
+				$extended_rules = array(
+					'email' => 'required|email|unique:oauth_users',
+					'password' => 'required|min:6'
+					);
+			}else{
+				$extended_rules = array(
+					'password' => 'required|min:6'
+					);
+			}
+			$rules = array_merge($this->rules,$extended_rules);
+
+			$validator = Validator::make(Input::all(),$rules);
+
+			if($user === null || $validator->fails()){
+				return Response::json(array(
+					'error' => $validator->messages()
+					));
+			}else{
+				$this->user->update($user_data);
+				return Response::json(array(
+					'success' => 'Successfull!'
+					));
+			}
+		}else{
+			return Response::json(array(
+					'error' => 'Unauthorized'
+				),401);
+		}
+	}
+
+	/*
+	*	Removing user
+	*/
+
+
+	public function removeUser(){
+		if( $token = AuthVerifierController::verfiyAccesstoken()){
+			$user = $this->user->where('username','=',$token['user_id'])->get()->first();
+			if($user != null){
+				$user->delete();
+				return Response::json(array(
+					'success' => 'Successfully deleted!'
+					));
+			}
+		}else{
+			return Response::json(array(
+					'error' => 'Unauthorized'
+				),401);
 		}
 	}
 
