@@ -52,4 +52,21 @@ class ProfileController extends BaseController {
 
 	}
 
+	public function getUserPublicProfile($name){
+		$user = User::where('username','=',$name)->get()->first();
+		if($user != null){
+			return Response::json(array(
+				'username' => $user->username,
+				'first_name' => $user->first_name,
+				'last_name' => $user->last_name,
+				'profile_photo_link' => $user->profile_photo_link,
+				'address' => $user->address
+				));
+		}else{
+			return Response::json(array(
+				'error' => 'Not found!'
+				),404);
+		}
+	}
+
 }
