@@ -1,6 +1,6 @@
 
 var app = angular.module('penguinsApp',
-		['homeCtrl','authCtrl','profileCtrl','authService','ngRoute']
+		['mainCtrl','homeCtrl','authCtrl','profileCtrl','authService','contentService','ngRoute']
 );
 
 app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){

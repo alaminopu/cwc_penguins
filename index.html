@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="penguinsApp" ng-controller="MainController">
 <head>
-  <title>Penguin Shop </title>
+  <title> {{ Page.title() }} </title>
   <link rel="stylesheet" href="public/css/bootstrap.min.css">
   <link rel="stylesheet" href="public/css/ripples.min.css">
   <link rel="stylesheet" href="public/css/material-wfont.min.css">
@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="public/css/app.css">
 
 </head>
-<body ng-app="penguinsApp" class="col-centered">
+<body class="col-centered">
   <div class="wrapper row">
     <header class="header panel col-md-12">
       <div class="col-md-2 site-logo"></div>
@@ -25,10 +25,7 @@
       </div>
 
       <div class="col-md-2 site-control-panel pull-right">
-        <a href=""><span class="glyphicon glyphicon-user"></span></a>
-        <a href=""><span class="glyphicon glyphicon-bell"></span></a>
-        <a href=""><span class="glyphicon glyphicon-envelope"></span></a>
-        <a href=""><span class="glyphicon glyphicon-shopping-cart"></span></a>
+        <div ng-include src="getPartial()"></div>
       </div>
     </header>
 
@@ -59,6 +56,8 @@
   <script src="public/js/lib/angular.min.js"></script>
   <script src="public/js/lib/angular-route.min.js"></script>
   <script src="public/js/service/authService.js"></script>
+  <script src="public/js/service/contentService.js"></script>
+  <script src="public/js/controller/mainController.js"></script>
   <script src="public/js/controller/homeController.js"></script>
   <script src="public/js/controller/authController.js"></script>
   <script src="public/js/controller/profileController.js"></script>
