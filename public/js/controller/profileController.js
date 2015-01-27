@@ -1,9 +1,9 @@
 var profile = angular.module('profileController', []);
 
-profile.controller('profileCtrl', ['$scope','$window','$location','UserProfile',
-  function($scope,$window,$location,UserProfile){
+profile.controller('profileCtrl', ['$scope','$window','$location','Resource',
+  function($scope,$window,$location,Resource){
       if($window.localStorage.access_token != null){
-          var user = UserProfile.getUserData($window.localStorage.access_token);
+          var user = Resource.getData($window.localStorage.access_token,'profile');
           user.success(function(data){
               $scope.data= data;
           });

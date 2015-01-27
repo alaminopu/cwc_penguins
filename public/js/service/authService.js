@@ -21,22 +21,6 @@ access.factory('SignIn', ['$http','$rootScope',function ($http,$rootScope) {
   };
 }]);
 
-
-access.factory('UserProfile', ['$http', '$rootScope', function($http, $rootScope){
-  return {
-      getUserData: function(access_token){
-        var userData = $http({
-          method:'GET',
-          url:'public/api/profile',
-          headers: {'Authorization': 'Bearer '+access_token}
-        });
-
-        return userData;
-      }
-  }
-
-}]);
-
 access.factory('SignUp', ['$http','$rootScope', function ($http, $rootScope) {
   return {
     registerUser: function(registerData){
@@ -47,12 +31,29 @@ access.factory('SignUp', ['$http','$rootScope', function ($http, $rootScope) {
         transformRequest: function(obj) {
           var str = [];
           for(var p in obj)
-            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-            return str.join("&");
-          },
-         data: {username: registerData['username'], email:registerData['email'],password: registerData['password']}
+          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+          return str.join("&");
+        },
+        data: {username: registerData['username'], email:registerData['email'],password: registerData['password']}
       });
       return confirmation;
     }
   };
+}]);
+
+
+
+access.factory('Resource', ['$http', '$rootScope', function($http, $rootScope){
+  return {
+      getData: function(access_token, uri){
+        var data = $http({
+          method:'GET',
+          url:'public/api/'+uri,
+          headers: {'Authorization': 'Bearer '+access_token}
+        });
+
+        return data;
+      }
+  }
+
 }]);
