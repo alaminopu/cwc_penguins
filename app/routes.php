@@ -25,6 +25,9 @@ Route::post('signup','ProfileController@signup');
 Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
 
   Route::get('profile', 'ProfileController@getUserProfile');
+  Route::post('profile/update','ProfileController@updateUserData');
+  Route::post('profile/delete','ProfileController@removeUser');
+
   Route::get('products','ProductsController@index');
 
 
@@ -34,3 +37,7 @@ Route::post('oauth/token', 'AuthVerifierController@verifyCredential');
 Route::post('oauth/refresh_token', 'AuthVerifierController@getAccessTokenByRefreshToken');
 
 Route::get('user/{name}','ProfileController@getUserPublicProfile');
+
+
+
+
