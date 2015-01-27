@@ -1,6 +1,6 @@
-var auth = angular.module('authController', []);
+var auth = angular.module('authCtrl', []);
 
-auth.controller('authentication', ['$scope','$window','$location','SignIn','SignUp',
+auth.controller('AuthController', ['$scope','$window','$location','SignIn','SignUp',
 
   function ($scope,$window,$location,SignIn,SignUp) {
       $scope.loginData = [];

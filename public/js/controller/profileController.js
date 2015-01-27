@@ -1,6 +1,6 @@
-var profile = angular.module('profileController', []);
+var profile = angular.module('profileCtrl', []);
 
-profile.controller('profileCtrl', ['$scope','$window','$location','Resource',
+profile.controller('ProfileController', ['$scope','$window','$location','Resource',
   function($scope,$window,$location,Resource){
       if($window.localStorage.access_token != null){
           var user = Resource.getData($window.localStorage.access_token,'profile');

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="public/css/app.css">
 
 </head>
-<body ng-app="penguins" class="col-centered">
+<body ng-app="penguinsApp" class="col-centered">
   <div class="wrapper row">
     <header class="header panel col-md-12">
       <div class="col-md-2 site-logo"></div>
@@ -31,9 +31,9 @@
         <a href=""><span class="glyphicon glyphicon-shopping-cart"></span></a>
       </div>
     </header>
-    
+
     <div ng-view></div>
-    
+
     <footer class="footer col-md-12">
       <div class="col-md-4 site-copyright">
         <h5>&copy; 2015 Penguin's Shop</h5>
@@ -59,6 +59,7 @@
   <script src="public/js/lib/angular.min.js"></script>
   <script src="public/js/lib/angular-route.min.js"></script>
   <script src="public/js/service/authService.js"></script>
+  <script src="public/js/controller/homeController.js"></script>
   <script src="public/js/controller/authController.js"></script>
   <script src="public/js/controller/profileController.js"></script>
 
