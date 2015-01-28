@@ -157,6 +157,8 @@ body{
 
 .error{
 	color:red;
+  font-size:15px;
+  text-align:left;
 }
 
 /*Footer*/

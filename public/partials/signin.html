@@ -20,21 +20,23 @@
         <div class="modal-content">
           <div class="modal-body">
             <p class="error"> {{ message }} </p>
-            <div class="form-control-wrapper">
-              <input type="text" class="form-control empty" ng-model="loginusername" placeholder="Username">
-            </div>
-            <div class="form-control-wrapper">
-              <input type="password" class="form-control empty" ng-model="loginpassword" placeholder="Password">
-            </div>
+            <form ng-submit="login()">
+              <div class="form-control-wrapper">
+                <input type="text" class="form-control empty" ng-model="loginusername" placeholder="Username">
+              </div>
+              <div class="form-control-wrapper">
+                <input type="password" class="form-control empty" ng-model="loginpassword" placeholder="Password">
+              </div>
 
-            <!-- <div class="checkbox primary">
-              <label>
-                <input type="checkbox">
-                Remember me
-              </label>
-            </div> -->
+              <!-- <div class="checkbox primary">
+                <label>
+                  <input type="checkbox">
+                  Remember me
+                </label>
+              </div> -->
 
-            <button class="btn btn-primary" ng-click="login()">Sign In</button>
+              <input class="btn btn-primary" type="submit" value="Sign in">
+            </form>
           </div>
         </div>
       </div>
@@ -47,20 +49,22 @@
         <div class="modal-content">
           <div class="modal-body">
             <p class="error"> {{ rmessage }} </p>
-            <div class="form-control-wrapper">
-              <input type="text" class="form-control empty" ng-model="regusername" placeholder="Username">
-              <p class="error"> {{ error['username'] }} </p>
-            </div>
-            <div class="form-control-wrapper">
-              <input type="email" class="form-control empty" ng-model="regemail" placeholder="Email">
-              <p class="error"> {{ error['email'] }} </p>
-            </div>
-            <div class="form-control-wrapper">
-              <input type="password" class="form-control empty" ng-model="regpassword" placeholder="Password">
-              <p class="error"> {{ error['password'] }} </p>
-            </div>
+            <form  ng-submit="register()">
+              <div class="form-control-wrapper">
+                <input type="text" class="form-control empty" ng-model="regusername" placeholder="Username">
+                <p class="error"> {{ error['username'][0] }} </p>
+              </div>
+              <div class="form-control-wrapper">
+                <input type="email" class="form-control empty" ng-model="regemail" placeholder="Email">
+                <p class="error"> {{ error['email'][0] }} </p>
+              </div>
+              <div class="form-control-wrapper">
+                <input type="password" class="form-control empty" ng-model="regpassword" placeholder="Password">
+                <p class="error"> {{ error['password'][0] }} </p>
+              </div>
 
-            <button class="btn btn-primary" ng-click="register()">Sign Up</button>
+              <input class="btn btn-primary" type="submit" value="sign up">
+            </form>
           </div>
         </div>
       </div>
