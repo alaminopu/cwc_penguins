@@ -48,15 +48,17 @@
 
   <!-- others -->
   <script src="public/js/lib/bootstrap.min.js"></script>
+  <script src="public/js/lib/arrive-2.0.0.min.js"></script>
   <script src="public/js/lib/ripples.min.js"></script>
   <script src="public/js/lib/material.min.js"></script>
   <script src="public/js/app.js"></script>
   <script>
+  $(document).arrive("#wrapperH", function() {
+    // 'this' refers to the newly created element
+    var $newElem = $(this);
+  });
   $(document).ready(function() {
-    $("#wrapperH").bind("DOMSubtreeModified", function() {
-      $.material.init();
-    });
-    //$.material.init();
+    $.material.init();
   });
   </script>
 </body>
