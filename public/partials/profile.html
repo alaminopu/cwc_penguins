@@ -156,7 +156,7 @@
 
 				<div class="row profile-info">
 					<div class="col-md-2 col-md-offset-5">
-						<button class="btn btn-primary">
+						<button class="btn btn-primary" ng-disabled="userinfo.$invalid">
 							<input type="submit" value="Save">
 						</button>
 					</div>
@@ -188,7 +188,7 @@
 
 				<div class="row profile-info">
 					<div class="col-md-2 col-md-offset-5">
-						<button class="btn btn-primary">
+						<button class="btn btn-primary" ng-disabled="userpassword.$invalid">
 							<input type="submit" value="Update Password">
 						</button>
 					</div>
