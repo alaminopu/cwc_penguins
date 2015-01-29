@@ -16,10 +16,25 @@ class ProductsController extends \BaseController {
 
 	}
 
+
+	/**
+	* 
+	*	Get the latest 5 products for Home Page	
+	*
+	**/
+
 	public function latestProducts(){
-		$products = Product::all();
-		return Response::json($products);
+		$products = Product::orderBy('_id','desc')->take(5)->get();
+		if($products != null){
+			return Response::json($products);
+		}else{
+			return Response::json(array(
+				'error' => 'No latest Products!'
+				));
+		}
 	}
+
+
 
 	/**
 	 * Show the form for creating a new resource.
