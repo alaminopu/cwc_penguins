@@ -154,10 +154,78 @@ body{
 	border-radius: 0;
 }
 
+#user-profile-content{
+	padding-top: 25px;
+}
+
 .error{
 	color:red;
-  font-size:15px;
-  text-align:left;
+	font-size:15px;
+	text-align:left;
+}
+
+#general-user-info h4{
+    position: relative;
+    z-index: 1;;
+}
+
+#general-user-info h4:before, #general-user-info h4:after{
+	content: "";
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+	margin-top: 9px;
+	right: 18%;
+	z-index: -1;
+	position: absolute;
+	width: 24%;
+}
+
+#general-user-info h4:after{
+	left: 18%;
+}
+
+.profile-info{
+	margin: 10px 0;
+	font-size: 18px;
+	color: #A8A8A8;
+}
+
+.profile-info input, label, select{
+    line-height: 35px;
+    height: 35px;
+	border-radius: 3px;
+	transition: all 0.3s ease;
+}
+
+.profile-info input, .profile-info select{
+	border: 1px solid #F4F4F4
+}
+
+.profile-info select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+.profile-info input:not([type="submit"]):focus{
+	border: 1px solid #B1E0DC;
+	box-shadow: 0 0 10px #9AE2DC inset;
+}
+
+.profile-info button{
+	width: 100%;
+}
+
+.profile-info button input[type="submit"]{
+	background: none;
+	border: none;
+	color: #fff;
+	padding: 0;;
+}
+
+.delete-account{
+	padding-left: 0;
+	padding-right: 0;
 }
 
 /*Footer*/

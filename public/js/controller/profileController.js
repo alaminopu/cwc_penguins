@@ -11,12 +11,12 @@ profile.controller('ProfileController', ['$scope','$window','$location','Resourc
               $scope.profileFname = data.first_name;
               $scope.profileLname = data.last_name;
               $scope.profileEmail = data.email;
-              $scope.profileHouseNo = data.house_no;
-              $scope.profileStreetName = data.street_name;
-              $scope.profileRoadNo = data.road_no;
-              $scope.profilePostCode = data.post_code;
-              $scope.profileCity = data.city;
-              $scope.selectedCountry = data.country;
+              $scope.profileHouseNo = data.address.house_no;
+              $scope.profileStreetName = data.address.street_name;
+              $scope.profileRoadNo = data.address.road_no;
+              $scope.profilePostCode = data.address.post_code;
+              $scope.profileCity = data.address.city;
+              $scope.selectedCountry = data.address.country;
           });
           user.error(function(data){
               delete $window.localStorage.access_token;
