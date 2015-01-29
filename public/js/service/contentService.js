@@ -8,3 +8,20 @@ content.factory('Page', function(){
   };
 
 });
+
+
+content.factory('PublicContent', ['$http', '$rootScope', function($http, $rootScope){
+  return {
+    getAllLatestProducts: function(uri){
+      var data = $http({
+        method:'GET',
+        url:'public/'+uri,
+      });
+
+      return data;
+    }
+
+
+  }
+
+}]);
