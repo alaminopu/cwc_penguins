@@ -28,9 +28,6 @@ Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
   Route::post('profile/update','ProfileController@updateUserData');
   Route::post('profile/delete','ProfileController@removeUser');
 
-  Route::get('products','ProductsController@index');
-
-
 });
 
 Route::post('oauth/token', 'AuthVerifierController@verifyCredential');
@@ -38,6 +35,6 @@ Route::post('oauth/refresh_token', 'AuthVerifierController@getAccessTokenByRefre
 
 Route::get('user/{name}','ProfileController@getUserPublicProfile');
 
-
-
-
+/* products */
+Route::get('products','ProductsController@all');
+Route::get('products/latest','ProductsController@latestProducts');

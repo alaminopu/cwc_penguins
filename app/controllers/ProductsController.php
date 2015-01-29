@@ -8,20 +8,17 @@ class ProductsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function all()
 	{
-		if( $token = AuthVerifierController::verfiyAccesstoken() ){
 
 			$products = Product::all();
 			return Response::json($products);
 
-		}else{
+	}
 
-			return Response::json(array(
-				'error' => 'Unauthorized'
-			),401);
-		}
-
+	public function latestProducts(){
+		$products = Product::all();
+		return Response::json($products);
 	}
 
 	/**
