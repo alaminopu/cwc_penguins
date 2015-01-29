@@ -27,6 +27,8 @@ Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
   Route::get('profile', 'ProfileController@getUserProfile');
   Route::post('profile/update','ProfileController@updateUserData');
   Route::post('profile/delete','ProfileController@removeUser');
+  Route::post('profile/update/password','ProfileController@updateUserPassword');
+
 
 });
 
