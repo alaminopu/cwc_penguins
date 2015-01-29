@@ -97,6 +97,7 @@ body{
 #sign-in-box input[type="submit"], #sign-up-box input[type="submit"]{
 	border: none;
 	background: none;
+	color: #fff;
 }
 
 .social-login-box{
