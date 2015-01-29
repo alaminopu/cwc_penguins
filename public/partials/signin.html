@@ -20,12 +20,18 @@
         <div class="modal-content">
           <div class="modal-body">
             <p class="error"> {{ message }} </p>
-            <form ng-submit="login()">
+            <form ng-submit="login()" name="signin" novalidate>
               <div class="form-control-wrapper">
-                <input type="text" class="form-control empty" ng-model="loginusername" placeholder="Username">
+                <input name="loginUname" required="" type="text" class="form-control empty" ng-model="loginusername" placeholder="Username">
+                <div ng-show="signin.$submitted || signin.loginUname.$touched">
+                  <p ng-show="signin.loginUname.$error.required" class="error">Username can't be empty</p>
+                </div>
               </div>
               <div class="form-control-wrapper">
-                <input type="password" class="form-control empty" ng-model="loginpassword" placeholder="Password">
+                <input name="loginPassword" required="" type="password" class="form-control empty" ng-model="loginpassword" placeholder="Password">
+                <div ng-show="signin.$submitted || signin.loginPassword.$touched">
+                  <p ng-show="signin.loginPassword.$error.required" class="error">Password can't be empty</p>
+                </div>
               </div>
 
               <!-- <div class="checkbox primary">
@@ -35,7 +41,7 @@
                 </label>
               </div> -->
 
-              <input class="btn btn-primary" type="submit" value="Sign in">
+              <input ng-disabled="signin.$invalid" class="btn btn-primary" type="submit" value="Sign in">
             </form>
           </div>
         </div>
@@ -49,21 +55,32 @@
         <div class="modal-content">
           <div class="modal-body">
             <p class="error"> {{ rmessage }} </p>
-            <form  ng-submit="register()">
+            <form  ng-submit="register()" name="signup" novalidate>
               <div class="form-control-wrapper">
-                <input type="text" class="form-control empty" ng-model="regusername" placeholder="Username">
+                <input type="text" required="" name="regUname" class="form-control empty" ng-model="regusername" placeholder="Username">
                 <p class="error"> {{ error['username'][0] }} </p>
+                <div ng-show="signup.$submitted || signup.regUname.$touched">
+                  <p ng-show="signup.regUname.$error.required" class="error">Username can't be empty</p>
+                </div>
               </div>
               <div class="form-control-wrapper">
-                <input type="email" class="form-control empty" ng-model="regemail" placeholder="Email">
+                <input type="email" required="" name="regUemail" class="form-control empty" ng-model="regemail" placeholder="Email">
                 <p class="error"> {{ error['email'][0] }} </p>
+                <div ng-show="signup.$submitted || signup.regUemail.$touched">
+                  <p ng-show="signup.regUemail.$error.required" class="error">Email field can't be empty</p>
+                  <p ng-show="signup.regUemail.$error.email" class="error">Invalid email.</p>
+                </div>
               </div>
               <div class="form-control-wrapper">
-                <input type="password" class="form-control empty" ng-model="regpassword" placeholder="Password">
+                <input name="regUpass" required="" type="password" minlength="6" class="form-control empty" ng-model="regpassword" placeholder="Password">
                 <p class="error"> {{ error['password'][0] }} </p>
+                <div ng-show="signup.$submitted || signup.regUpass.$touched">
+                  <p ng-show="signup.regUpass.$error.minlength" class="error">Password must be at least 6 character</p>
+                  <p ng-show="signup.regUemail.$error.required" class="error">Password can't be blank.</p>
+                </div>
               </div>
 
-              <input class="btn btn-primary" type="submit" value="sign up">
+              <input class="btn btn-primary" ng-disabled="signup.$invalid" type="submit" value="sign up">
             </form>
           </div>
         </div>
