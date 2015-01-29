@@ -94,13 +94,11 @@ body{
 	border-right: 1px dotted #C5C5C5;
 }
 
-/*.btn.signin{
-	margin: 50px 0 0 150px;
+#sign-in-box input[type="submit"], #sign-up-box input[type="submit"]{
+	border: none;
+	background: none;
 }
 
-.btn.signup{
-}
-*/
 .social-login-box{
 	margin-top: 30px;
 }
