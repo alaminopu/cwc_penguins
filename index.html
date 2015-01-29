@@ -60,6 +60,11 @@
   });
   $(document).ready(function() {
     $.material.init();
+
+    $(".close").click(function(e){
+        e.preventDefault();
+        $(".alert").alert('close');
+    });
   });
   </script>
 </body>

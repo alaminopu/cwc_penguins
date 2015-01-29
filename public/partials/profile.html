@@ -47,6 +47,10 @@
 	<section id="user-profile-content" class="tab-content">
 		<!-- General info -->
 		<div role="tabpanel" class="tab-pane fade active in" id="general-user-info">
+			<div ng-show="success" class="alert alert-success text-center">
+				<a href="javascript:void(0)" class="close" data-dismiss="alert">&times;</a>
+				{{ success }}
+			</div>
 			<form ng-submit="saveuser()" name="userinfo" novalidate>
 				<h4 class="text-center">Name &amp; Email</h4>
 				<div class="profile-info row">
@@ -59,7 +63,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="lname">Last Name</label>
 					<input required ng-model="profileLname" class="col-md-4" type="text" name="lname">
@@ -70,7 +74,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="userEmail">Email</label>
 					<input required ng-model="profileEmail" class="col-md-4" type="email" name="userEmail">
@@ -82,7 +86,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<h4 class="text-center">Mailing address</h4>
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="houseno">House No</label>
@@ -94,7 +98,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="street">Street Name</label>
 					<input required ng-model="profileStreetName" class="col-md-4" type="text" name="street">
@@ -105,7 +109,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="roadno">Road No</label>
 					<input required ng-model="profileRoadNo" class="col-md-4" type="text" name="roadno">
@@ -116,7 +120,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="postcode">Postal Code</label>
 					<input required ng-model="profilePostCode" class="col-md-4" type="text" name="postcode">
@@ -127,7 +131,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="city">City</label>
 					<input required ng-model="profileCity" class="col-md-4" type="text" name="city">
@@ -138,7 +142,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="country">Country</label>
 					<country-select required class="col-md-4" name="country" data-ng-model="selectedCountry"></country-select>
@@ -159,13 +163,18 @@
 				</div>
 			</form>
 
+			<div ng-show="passSuccess" class="alert alert-success text-center">
+				<a href="javascript:void(0)" class="close" data-dismiss="alert">&times;</a>
+				{{ passSuccess }}
+			</div>
+
 			<form ng-submit="updatePassword()" name="userpassword" novalidate>
 				<h4 class="text-center">Account &amp; Password</h4>
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="profileOldPass">Old Password</label>
 					<input class="col-md-4" minlength="6" name="profileOldPass" type="password">
 					<div class="col-md-4">
-						<span class="error"> {{ error['password'][0] }} </span>
+						<span class="error"> {{ passErrorMsg }} </span>
 					</div>
 				</div>
 
@@ -173,7 +182,7 @@
 					<label class="col-md-2 col-md-offset-2" for="profileNewPass">New Password</label>
 					<input class="col-md-4" required minlength="6" name="profileNewPass" type="password">
 					<div class="col-md-4">
-						<span class="error"> {{ error['password'][0] }} </span>
+						<span class="error"> {{ error['new_password'][0] }} </span>
 					</div>
 				</div>
 

@@ -7,14 +7,12 @@ class ProfileController extends BaseController {
 	private $rules = array(
 			'first_name' => 'required',
 			'last_name' => 'required',
-			'profile_photo_link' => 'required',
 			'house_no' => 'required',
 			'street_name' => 'required',
 			'road_no' => 'required',
 			'post_code' => 'required',
 			'city' => 'required',
-			'country' => 'required',
-			'payment' => 'required'
+			'country' => 'required'
 			);
 
 
@@ -74,7 +72,7 @@ class ProfileController extends BaseController {
 	/*
 	*	Get User's public profile
 	*/
-	
+
 
 	public function getUserPublicProfile($name){
 		$user = $this->user->where('username','=',$name)->get()->first();
@@ -92,7 +90,7 @@ class ProfileController extends BaseController {
 				),404);
 		}
 	}
-	
+
 
 	/*
 	* Update/Create User profile
@@ -105,7 +103,6 @@ class ProfileController extends BaseController {
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
 			'email' => Input::get('email'),
-			'password' => Hash::make(Input::get('password')),
 			'profile_photo_link' => Input::get('profile_photo_link'),
 			'address' => array(
 				'house_no' => Input::get('house_no'),
@@ -120,17 +117,14 @@ class ProfileController extends BaseController {
 
 		if( $token = AuthVerifierController::verfiyAccesstoken()){
 			$user = $this->user->where('username','=',$token['user_id'])->get()->first();
+			$rules = $this->rules;
 			if($user->email != Input::get('email')){
 				$extended_rules = array(
-					'email' => 'required|email|unique:oauth_users',
-					'password' => 'required|min:6'
+					'email' => 'required|email|unique:oauth_users'
 					);
-			}else{
-				$extended_rules = array(
-					'password' => 'required|min:6'
-					);
+					$rules = array_merge($this->rules,$extended_rules);
 			}
-			$rules = array_merge($this->rules,$extended_rules);
+
 
 			$validator = Validator::make(Input::all(),$rules);
 
@@ -141,7 +135,7 @@ class ProfileController extends BaseController {
 			}else{
 				$this->user->update($user_data);
 				return Response::json(array(
-					'success' => 'Successfull!'
+					'success' => 'Successfully Updated!'
 					));
 			}
 		}else{
@@ -153,7 +147,7 @@ class ProfileController extends BaseController {
 
 
 	/*
-	*Update user password	
+	*Update user password
 	*
 	*/
 	public function updateUserPassword(){

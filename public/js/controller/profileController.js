@@ -30,9 +30,46 @@ profile.controller('ProfileController', ['$scope','$window','$location','Resourc
             $scope.userData['first_name'] = $scope.profileFname;
             $scope.userData['last_name'] = $scope.profileLname;
             $scope.userData['email'] = $scope.profileEmail;
-            $scope.userData['old_password'] = $scope.profileOldPassword;
-            $scope.userData['new_password'] = $scope.profileNewPassword;
+            $scope.userData['profile_photo_link']='/public/imgs/profile/';
+            $scope.userData['house_no'] = $scope.profileHouseNo;
+            $scope.userData['street_name']= $scope.profileStreetName;
+            $scope.userData['road_no']= $scope.profileRoadNo;
+            $scope.userData['post_code']= $scope.profilePostCode;
+            $scope.userData['city']= $scope.profileCity;
+            $scope.userData['country']= $scope.selectedCountry;
+            $scope.userData['payment']= "bkash";
 
+            console.log($scope.userData);
+
+            var updatedUser = Resource.UpdateUser($window.localStorage.access_token,$scope.userData, 'profile/update');
+            updatedUser.success(function(response){
+              console.log(response.error);
+              if(response.error){
+                $scope.error = response.error;
+              }else if(response.success){
+                $scope.success = response.success;
+              }
+            });
+          }
+
+          // Password update
+          $scope.passData = [];
+          $scope.updatePassword = function(){
+            $scope.passData['old_password'] = $scope.profileOldPass;
+            $scope.passData['new_password'] = $scope.profileNewPass;
+
+            var updatedPass= Resource.UpdateUser($window.localStorage.access_token,$scope.passData, 'profile/update/password');
+            updatedPass.success(function(response){
+              console.log(response.error);
+              if(response.error){
+                $scope.passErrorMsg = response.error;
+              }else if(response.success){
+                $scope.passSuccess = response.success;
+              }
+            });
+            updatedPass.error(function(errData){
+               $scope.passErrorMsg = errData;
+            })
           }
 
           $scope.signout = function(){
