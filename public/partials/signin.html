@@ -41,7 +41,9 @@
                 </label>
               </div> -->
 
-              <input ng-disabled="signin.$invalid" class="btn btn-primary" type="submit" value="Sign in">
+              <button  ng-disabled="signin.$invalid" class="btn btn-primary">
+              	<input type="submit" value="Sign In">
+              </button>
             </form>
           </div>
         </div>
@@ -79,8 +81,10 @@
                   <p ng-show="signup.regUemail.$error.required" class="error">Password can't be blank.</p>
                 </div>
               </div>
-
-              <input class="btn btn-primary" ng-disabled="signup.$invalid" type="submit" value="sign up">
+				
+              <button ng-disabled="signup.$invalid" class="btn btn-primary">
+              	<input type="submit" value="Sign Up">
+              </button>
             </form>
           </div>
         </div>
