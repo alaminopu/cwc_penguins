@@ -151,6 +151,50 @@ class ProfileController extends BaseController {
 		}
 	}
 
+
+	/*
+	*Update user password	
+	*
+	*/
+	public function updateUserPassword(){
+		$rules = array(
+			'new_password' => 'required|min:6',
+			);
+
+		if( $token = AuthVerifierController::verfiyAccesstoken()){
+			$user = $this->user->where('username','=',$token['user_id'])->get()->first();
+			if(Hash::check(Input::get('old_password'), $user->password)){
+
+				$validator = Validator::make(Input::all(),$rules);
+
+				if(!$validator->fails()){
+					$this->user->update(array(
+						'password' => Hash::make(Input::get('new_password'))
+						));
+					return Response::json(array(
+						'success' => 'Password updated!'
+					));
+				}else{
+					return Response::json(array(
+						'error' => $validator->messages()
+					));
+				}
+			}else{
+				return Response::json(array(
+					'error' => 'Password does not match'
+					));
+			}
+		}else{
+			return Response::json(array(
+				'error' => 'Unauthorized'
+			),401);
+		}
+
+	}
+
+
+
+
 	/*
 	*	Removing user
 	*/
