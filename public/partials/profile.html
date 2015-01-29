@@ -17,18 +17,20 @@
 
 
 <div class="panel col-md-12 profile-box" ng-controller="ProfileController">
+	<!-- User summary -->
 	<section class="user-identity center-block text-center">
 		<button ng-click="signout()" class="btn btn-danger pull-right">
 			<strong><span class="glyphicon glyphicon-off"></span> Logout</strong>
 		</button>
 		<div class="clearfix"></div>
 		<img src="public/imgs/kowalski.jpg" alt="Profile Photo" class="img-responsive img-thumbnail img-circle clearfix">
-		<strong class="center-block user-name">Kowalski</strong>
+		<strong class="center-block user-name">{{ data.username }}</strong>
 		<span class="center-block user-location">
-			<i class="fa fa-location-arrow"></i> Madagascar
+			<i class="fa fa-location-arrow"></i> {{ data.address.city }}, {{ data.address.country }}
 		</span>
-	</section>
+	</section><!-- End User summary -->
 
+	<!-- Profile Navigator -->
 	<ul id="user-profile-navigator" class="nav nav-tabs">
 		<li role="presentation" class="col-md-4 text-center active">
 			<a ng-href="#general-user-info" showtab="">General Info</a>
@@ -39,25 +41,166 @@
 		<li role="presentation" class="col-md-4 text-center">
 			<a ng-href="#buyer-user-info" showtab="">Buyer Profile</a>
 		</li>
-	</ul>
+	</ul><!-- End Profile Navigator -->
+
+	<!-- Profile contents -->
 	<section id="user-profile-content" class="tab-content">
+		<!-- General info -->
 		<div role="tabpanel" class="tab-pane fade active in" id="general-user-info">
-			<table class="table table-striped table-bordered">
-				<tr>
-					<td class="warning">Username: </td>
-					<td>{{ data.username }}</td>
-				</tr>
-				<tr>
-					<td class="warning">Email: </td>
-					<td>{{ data.email }}</td>
-				</tr>
-			</table>
-		</div>
+			<form ng-submit="saveuser()" name="userinfo" novalidate>
+				<h4 class="text-center">Name &amp; Email</h4>
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="fname">First Name</label>
+					<input required ng-model="profileFname" class="col-md-4" type="text" name="fname">
+					<div class="col-md-4">
+						<span class="error"> {{ error['first_name'][0] }} </span>
+						<div ng-show="userinfo.$submitted || userinfo.fname.$touched">
+							<span ng-show="userinfo.fname.$error.required" class="error">Please enter your first name</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="lname">Last Name</label>
+					<input required ng-model="profileLname" class="col-md-4" type="text" name="lname">
+					<div class="col-md-4">
+						<span class="error"> {{ error['last_name'][0] }} </span>
+						<div ng-show="userinfo.$submitted || userinfo.lname.$touched">
+							<span ng-show="userinfo.lname.$error.required" class="error">Please enter your last name</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="userEmail">Email</label>
+					<input required ng-model="profileEmail" class="col-md-4" type="email" name="userEmail">
+					<div class="col-md-4">
+						<span class="error"> {{ error['email'][0] }} </span>
+						<div ng-show="userinfo.$submitted || userinfo.userEmail.$touched">
+							<span ng-show="userinfo.userEmail.$error.required" class="error">Email field can't be empty</span>
+							<span ng-show="userinfo.userEmail.$error.email" class="error">Invalid email.</span>
+						</div>
+					</div>
+				</div>
+				
+				<h4 class="text-center">Mailing address</h4>
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="houseno">House No</label>
+					<input required ng-model="profileHouseNo" class="col-md-4" type="text" name="houseno">
+					<div class="col-md-4">
+						<span class="error"> {{ error['house_no'][0] }} </span>
+						<div ng-show="userinfo.$submitted || userinfo.houseno.$touched">
+							<span ng-show="userinfo.houseno.$error.required" class="error">Every house should have a number</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="street">Street Name</label>
+					<input required ng-model="profileStreetName" class="col-md-4" type="text" name="street">
+					<div class="col-md-4">
+						<span class="error"> {{ error['street_name'][0] }} </span>
+						<div ng-show="userinfo.$submitted || userinfo.street.$touched">
+							<span ng-show="userinfo.street.$error.required" class="error">Street name is mandatory</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="roadno">Road No</label>
+					<input required ng-model="profileRoadNo" class="col-md-4" type="text" name="roadno">
+					<div class="col-md-4">
+						<span class="error"> {{ error['road_no'][0] }} </span>
+						<div ng-show="userinfo.$submitted || userinfo.roadno.$touched">
+							<span ng-show="userinfo.roadno.$error.required" class="error">Please enter road no.</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="postcode">Postal Code</label>
+					<input required ng-model="profilePostCode" class="col-md-4" type="text" name="postcode">
+					<div class="col-md-4">
+						<span class="error"> {{ error['post_code'][0] }} </span>
+						<div ng-show="userinfo.$submitted || userinfo.postcode.$touched">
+							<span ng-show="userinfo.postcode.$error.required" class="error">Please enter your postcode</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="city">City</label>
+					<input required ng-model="profileCity" class="col-md-4" type="text" name="city">
+					<div class="col-md-4">
+						<span class="error"> {{ error['city'][0] }} </span>
+						<div ng-show="userinfo.$submitted || userinfo.city.$touched">
+							<span ng-show="userinfo.city.$error.required" class="error">What is your city?</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="country">Country</label>
+					<country-select required class="col-md-4" name="country" data-ng-model="selectedCountry"></country-select>
+					<div class="col-md-4">
+						<span class="error"> {{ error['country'][0] }} </span>
+						<div ng-show="userinfo.$submitted || userinfo.country.$touched">
+							<span ng-show="userinfo.country.$error.required" class="error">Are you still not independent?</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row profile-info">
+					<div class="col-md-2 col-md-offset-5">
+						<button class="btn btn-primary">
+							<input type="submit" value="Save">
+						</button>
+					</div>
+				</div>
+			</form>
+
+			<form ng-submit="updatePassword()" name="userpassword" novalidate>
+				<h4 class="text-center">Account &amp; Password</h4>
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="profileOldPass">Old Password</label>
+					<input class="col-md-4" minlength="6" name="profileOldPass" type="password">
+					<div class="col-md-4">
+						<span class="error"> {{ error['password'][0] }} </span>
+					</div>
+				</div>
+
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="profileNewPass">New Password</label>
+					<input class="col-md-4" required minlength="6" name="profileNewPass" type="password">
+					<div class="col-md-4">
+						<span class="error"> {{ error['password'][0] }} </span>
+					</div>
+				</div>
+
+				<div class="row profile-info">
+					<div class="col-md-2 col-md-offset-5">
+						<button class="btn btn-primary">
+							<input type="submit" value="Update Password">
+						</button>
+					</div>
+				</div>
+			</form>
+
+			<div class="row profile-info">
+				<div class="col-md-2 col-md-offset-5">
+					<button class="btn btn-primary btn-danger delete-account">Delete My Account!</button>
+				</div>
+			</div>
+		</div><!-- End General info -->
+
+		<!-- Seller profile -->
 		<div role="tabpanel" class="tab-pane fade" id="seller-user-info">
 			<h2 class="text-center">Seller Profile</h2>
-		</div>
+		</div><!-- End Seller profile -->
+
+		<!-- Buyer profile -->
 		<div role="tabpanel" class="tab-pane fade" id="buyer-user-info" >
 			<h2 class="text-center">Buyer Profile</h2>
-		</div>
-	</section>
+		</div><!-- End Buyer profile -->
+	</section><!-- End Profile contents -->
 </div>
