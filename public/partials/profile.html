@@ -106,7 +106,7 @@
 					</div>
 				</div>
 			</form>
-			
+
 			<!-- Contact Information -->
 			<div ng-show="contactSuccess" class="alert alert-success text-center">
 				<a href="javascript:void(0)" class="close" data-dismiss="alert">&times;</a>
@@ -206,9 +206,13 @@
 
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="profileNewPass">New Password</label>
-					<input class="col-md-4" required minlength="6" ng-model="profileNewPass" type="password">
+					<input class="col-md-4" required minlength="6" ng-model="profileNewPass" type="password" name="profilenewpass">
 					<div class="col-md-4">
 						<span class="error"> {{ error['new_password'][0] }} </span>
+						<div ng-show="userpassword.$submitted || userpassword.profilenewpass.$touched">
+							<span ng-show="userpassword.profilenewpass.$error.required" class="error">Password Can't be empty</span>
+							<span ng-show="userpassword.profilenewpass.$error.minlength" class="error">Password must be at least 6 character</span>
+						</div>
 					</div>
 				</div>
 

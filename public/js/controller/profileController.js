@@ -74,6 +74,7 @@ profile.controller('ProfileController', ['$scope','$window','$location','Resourc
           // Password update
           $scope.passData = [];
           $scope.updatePassword = function(){
+            $scope.passErrorMsg = '';
             $scope.passData['old_password'] = $scope.profileOldPass;
             $scope.passData['new_password'] = $scope.profileNewPass;
 
