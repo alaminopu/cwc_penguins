@@ -1,5 +1,5 @@
 <header class="header panel col-md-12">
-	<div class="col-md-2 site-logo"></div>
+	<a ng-href="#/"><div class="col-md-2 site-logo"></div></a>
 
 	<div class="col-md-7 site-search">
 		<div class="input-group">
@@ -23,7 +23,7 @@
 			<strong><span class="glyphicon glyphicon-off"></span> Logout</strong>
 		</button>
 		<div class="clearfix"></div>
-		<img src="public/imgs/kowalski.jpg" alt="Profile Photo" class="img-responsive img-thumbnail img-circle clearfix">
+		<img src="{{ data.profile_photo_link }}" alt="Profile Photo" class="img-responsive img-thumbnail img-circle clearfix">
 		<strong class="center-block user-name">{{ data.username }}</strong>
 		<span class="center-block user-location">
 			<i class="fa fa-location-arrow"></i> {{ data.address.city }}, {{ data.address.country }}
@@ -47,12 +47,12 @@
 	<section id="user-profile-content" class="tab-content">
 		<!-- General info -->
 		<div role="tabpanel" class="tab-pane fade active in" id="general-user-info">
-			<div ng-show="success" class="alert alert-success text-center">
+			<div ng-show="userSuccess" class="alert alert-success text-center">
 				<a href="javascript:void(0)" class="close" data-dismiss="alert">&times;</a>
-				{{ success }}
+				{{ userSuccess }}
 			</div>
 			<form ng-submit="saveuser()" name="userinfo" novalidate>
-				<h4 class="text-center">Name &amp; Email</h4>
+				<h4 class="text-center">Personal Information</h4>
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="fname">First Name</label>
 					<input required ng-model="profileFname" class="col-md-4" type="text" name="fname">
@@ -87,69 +87,13 @@
 					</div>
 				</div>
 
-				<h4 class="text-center">Mailing address</h4>
 				<div class="profile-info row">
-					<label class="col-md-2 col-md-offset-2" for="houseno">House No</label>
-					<input required ng-model="profileHouseNo" class="col-md-4" type="text" name="houseno">
+					<label class="col-md-2 col-md-offset-2" for="mobileno">Mobile Number</label>
+					<input required ng-model="profileMobileNo" class="col-md-4" type="text" name="mobileno">
 					<div class="col-md-4">
-						<span class="error"> {{ error['house_no'][0] }} </span>
-						<div ng-show="userinfo.$submitted || userinfo.houseno.$touched">
-							<span ng-show="userinfo.houseno.$error.required" class="error">Every house should have a number</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="profile-info row">
-					<label class="col-md-2 col-md-offset-2" for="street">Street Name</label>
-					<input required ng-model="profileStreetName" class="col-md-4" type="text" name="street">
-					<div class="col-md-4">
-						<span class="error"> {{ error['street_name'][0] }} </span>
-						<div ng-show="userinfo.$submitted || userinfo.street.$touched">
-							<span ng-show="userinfo.street.$error.required" class="error">Street name is mandatory</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="profile-info row">
-					<label class="col-md-2 col-md-offset-2" for="roadno">Road No</label>
-					<input required ng-model="profileRoadNo" class="col-md-4" type="text" name="roadno">
-					<div class="col-md-4">
-						<span class="error"> {{ error['road_no'][0] }} </span>
-						<div ng-show="userinfo.$submitted || userinfo.roadno.$touched">
-							<span ng-show="userinfo.roadno.$error.required" class="error">Please enter road no.</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="profile-info row">
-					<label class="col-md-2 col-md-offset-2" for="postcode">Postal Code</label>
-					<input required ng-model="profilePostCode" class="col-md-4" type="text" name="postcode">
-					<div class="col-md-4">
-						<span class="error"> {{ error['post_code'][0] }} </span>
-						<div ng-show="userinfo.$submitted || userinfo.postcode.$touched">
-							<span ng-show="userinfo.postcode.$error.required" class="error">Please enter your postcode</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="profile-info row">
-					<label class="col-md-2 col-md-offset-2" for="city">City</label>
-					<input required ng-model="profileCity" class="col-md-4" type="text" name="city">
-					<div class="col-md-4">
-						<span class="error"> {{ error['city'][0] }} </span>
-						<div ng-show="userinfo.$submitted || userinfo.city.$touched">
-							<span ng-show="userinfo.city.$error.required" class="error">What is your city?</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="profile-info row">
-					<label class="col-md-2 col-md-offset-2" for="country">Country</label>
-					<country-select required class="col-md-4" name="country" data-ng-model="selectedCountry"></country-select>
-					<div class="col-md-4">
-						<span class="error"> {{ error['country'][0] }} </span>
-						<div ng-show="userinfo.$submitted || userinfo.country.$touched">
-							<span ng-show="userinfo.country.$error.required" class="error">Are you still not independent?</span>
+						<span class="error"> {{ error['mobile_no'][0] }} </span>
+						<div ng-show="userinfo.$submitted || userinfo.mobileno.$touched">
+							<span ng-show="userinfo.mobileno.$error.required" class="error">Mobile number is a mandatory info</span>
 						</div>
 					</div>
 				</div>
@@ -162,6 +106,88 @@
 					</div>
 				</div>
 			</form>
+			
+			<!-- Contact Information -->
+			<div ng-show="contactSuccess" class="alert alert-success text-center">
+				<a href="javascript:void(0)" class="close" data-dismiss="alert">&times;</a>
+				{{ contactSuccess }}
+			</div>
+			<form ng-submit="savecontact()" name="contactinfo" novalidate>
+				<h4 class="text-center">Contact Information</h4>
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="houseno">House No</label>
+					<input required ng-model="profileHouseNo" class="col-md-4" type="text" name="houseno">
+					<div class="col-md-4">
+						<span class="error"> {{ error['house_no'][0] }} </span>
+						<div ng-show="contactinfo.$submitted || contactinfo.houseno.$touched">
+							<span ng-show="contactinfo.houseno.$error.required" class="error">Every house should have a number</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="street">Street Name</label>
+					<input required ng-model="profileStreetName" class="col-md-4" type="text" name="street">
+					<div class="col-md-4">
+						<span class="error"> {{ error['street_name'][0] }} </span>
+						<div ng-show="contactinfo.$submitted || contactinfo.street.$touched">
+							<span ng-show="contactinfo.street.$error.required" class="error">Street name is mandatory</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="roadno">Road No</label>
+					<input required ng-model="profileRoadNo" class="col-md-4" type="text" name="roadno">
+					<div class="col-md-4">
+						<span class="error"> {{ error['road_no'][0] }} </span>
+						<div ng-show="contactinfo.$submitted || contactinfo.roadno.$touched">
+							<span ng-show="contactinfo.roadno.$error.required" class="error">Please enter road no.</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="postcode">Postal Code</label>
+					<input required ng-model="profilePostCode" class="col-md-4" type="text" name="postcode">
+					<div class="col-md-4">
+						<span class="error"> {{ error['post_code'][0] }} </span>
+						<div ng-show="contactinfo.$submitted || contactinfo.postcode.$touched">
+							<span ng-show="contactinfo.postcode.$error.required" class="error">Please enter your postcode</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="city">City</label>
+					<input required ng-model="profileCity" class="col-md-4" type="text" name="city">
+					<div class="col-md-4">
+						<span class="error"> {{ error['city'][0] }} </span>
+						<div ng-show="contactinfo.$submitted || contactinfo.city.$touched">
+							<span ng-show="contactinfo.city.$error.required" class="error">What is your city?</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="profile-info row">
+					<label class="col-md-2 col-md-offset-2" for="country">Country</label>
+					<country-select required class="col-md-4" name="country" data-ng-model="selectedCountry"></country-select>
+					<div class="col-md-4">
+						<span class="error"> {{ error['country'][0] }} </span>
+						<div ng-show="contactinfo.$submitted || contactinfo.country.$touched">
+							<span ng-show="contactinfo.country.$error.required" class="error">Are you still not independent?</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row profile-info">
+					<div class="col-md-2 col-md-offset-5">
+						<button class="btn btn-primary" ng-disabled="contactinfo.$invalid">
+							<input type="submit" value="Save">
+						</button>
+					</div>
+				</div>
+			</form><!-- Contact Information -->
 
 			<div ng-show="passSuccess" class="alert alert-success text-center">
 				<a href="javascript:void(0)" class="close" data-dismiss="alert">&times;</a>
@@ -194,12 +220,6 @@
 					</div>
 				</div>
 			</form>
-
-			<!-- <div class="row profile-info">
-				<div class="col-md-2 col-md-offset-5">
-					<button class="btn btn-primary btn-danger delete-account">Delete My Account!</button>
-				</div>
-			</div> -->
 		</div><!-- End General info -->
 
 		<!-- Seller profile -->
