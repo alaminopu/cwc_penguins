@@ -18,7 +18,9 @@
 	<div class="row">
 		<div class="col-md-3">
 			<div class="sample shadow-z-1">
-				<h3 class="text-center">Special Offer</h3>
+				<h3 class="text-center">
+					<a ng-href="#/cart"><ngcart-summary> </ngcart-summary></a>
+				</h3>
 			</div>
 
 		</div>
@@ -50,27 +52,18 @@
 		<div class="col-md-3">
 			<div class="sample shadow-z-1">
 				<h3 class="text-center">{{ latestProduct.product_title }}</h3>
+				<ngcart-addtocart id="{{ latestProduct._id }}"
+				name="{{ latestProduct.product_title }}" price="{{ latestProduct.price }}"
+				quantity="1" quantity-max="{{ latestProduct.quantity }}" data="latestProduct">
+				</ngcart-addtocart>
 				<img height="200" width="250" class="single-product" src="{{ latestProduct.product_image_link }}">
 			</div>
 		</div>
 	</div>
 
 
-		<!-- <div>
-			{{ latestProducts }}
-		</div> -->
 
-
-		<!-- <ul ng-repeat="latestProduct in latestProducts">
-			<li>
-				{{ latestProduct.product_title}}
-			</li>
-		</ul> -->
-
-
-
-
-	<div class="row">
+	<!-- <div class="row">
 		<h1 class="text-center">Trending Items</h1>
 		<h4 class="text-center">Most sold/bought items</h4>
 	</div>
@@ -106,5 +99,5 @@
 			</div>
 			<div class="col-md-5"></div>
 		</div>
-	</div>
+	</div> -->
 </div>

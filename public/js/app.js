@@ -1,6 +1,7 @@
 
 var app = angular.module('penguinsApp',
 		['mainCtrl','homeCtrl','authCtrl','profileCtrl','productCtrl',
+		'cartCtrl','ngCart',
 		'authService','contentService','ngRoute', 'countrySelect']
 );
 
@@ -20,6 +21,10 @@ app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpPro
 		when('/products', {
 			templateUrl: 'public/partials/products.html',
 			controller: 'ProductController'
+		}).
+		when('/cart', {
+			templateUrl: 'public/partials/cart.html',
+			controller: 'CartController'
 		}).
 		otherwise({
 			redirectTo: '/'
