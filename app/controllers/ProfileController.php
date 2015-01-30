@@ -126,7 +126,7 @@ class ProfileController extends BaseController {
 					'error' => $validator->messages()
 					));
 			}else{
-				$this->user->update($user_data);
+				$user->update($user_data);
 				return Response::json(array(
 					'success' => 'Successfully Updated!'
 					));
@@ -153,6 +153,7 @@ class ProfileController extends BaseController {
 				'country' => Input::get('country')
 			));
 		if( $token = AuthVerifierController::verfiyAccesstoken()){
+			$user = $this->user->where('username','=',$token['user_id'])->get()->first();
 			$address_rules = array(
 				'house_no' => 'required',
 				'street_name' => 'required',
@@ -162,12 +163,12 @@ class ProfileController extends BaseController {
 				'country' => 'required'
 				);
 			$validator = Validator::make(Input::all(),$address_rules);
-			if($validator->fails()){
+			if($validator->fails() || $user === null){
 				return Response::json(array(
 					'error' => $validator->messages()
 					));
 			}else{
-				$this->user->update($user_data);
+				$user->update($user_data);
 				return Response::json(array(
 					'success' => 'Successfully updated'
 					));
@@ -195,9 +196,10 @@ class ProfileController extends BaseController {
 
 				$validator = Validator::make(Input::all(),$pass_rules);
 
-				if(!$validator->fails()){
-					$this->user->update(array(
-						'password' => Hash::make(Input::get('new_password'))
+				if(!$validator->fails() || $user != null){
+					$user->update(array(
+						'password' => Input::get('new_password')
+						
 						));
 					return Response::json(array(
 						'success' => 'Password updated!'
