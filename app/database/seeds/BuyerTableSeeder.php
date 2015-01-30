@@ -12,7 +12,7 @@ class BuyerTableSeeder extends Seeder {
 		$product = Product::where('product_title','=','Asus Laptop')->get()->first();
 
 			Buyer::create([
-				'user_id' => $users->_id,
+				'username' => $users->username,
 				'buying_items' => array(
 					'product_id' => $product->_id,
 					),

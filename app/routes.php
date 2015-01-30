@@ -49,3 +49,11 @@ Route::get('user/{name}','ProfileController@getUserPublicProfile');
 Route::get('products','ProductsController@all');
 Route::get('products/latest','ProductsController@latestProducts');
 Route::get('products/single/{id}','ProductsController@getSingleProduct');
+Route::get('products/range/{lower}/{higher}','ProductsController@getProductsByPriceRange');
+Route::get('products/brand/{brand}','ProductsController@getProductsByBrand');
+Route::get('products/price/max/{max}','ProductsController@getProductsByMaxPrice');
+Route::get('products/price/min/{min}','ProductsController@getProductsByMinPrice');
+Route::get('products/category/{category}','ProductsController@getProductsByCategory');
+Route::get('products/subcategory/{subcategory}','ProductsController@getProductsBySubCategory');
+
+

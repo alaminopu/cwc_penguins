@@ -44,7 +44,7 @@ class ProfileController extends BaseController {
 	public function signup(){
 
 		$extended_rules =array(
-				'username' => 'required|unique:oauth_users,username',
+				'username' => 'required|min:3|unique:oauth_users,username',
 				'password' => 'required|min:6',
 				'email' => 'required|email|unique:oauth_users,email'
 			);
@@ -65,6 +65,12 @@ class ProfileController extends BaseController {
 				'mobile_no' => Input::get('mobile_no'),
 				'profile_photo_link' => 'public/imgs/profile/kowalski.jpg'
 			));
+			$seller = Seller::create(array(
+				'username' => $user->username
+				));
+			$buyer = Buyer::create(array(
+				'username' => $user->username
+				));
 			return Response::json(array(
 				'success' => 'Congratulation! Signup successfull'
 			));
