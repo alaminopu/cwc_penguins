@@ -10,6 +10,13 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
     latestProducts.error(function(data){
       $scope.noLatestProducts = "Nothing match in this criteria";
     });
+
+    $scope.getPartials = function(){
+      if($window.localStorage.access_token != null){
+        return 'public/partials/user.html';
+      }
+      return 'public/partials/signin.html';
+    }
   }
 
 ]);
