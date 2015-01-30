@@ -54,7 +54,7 @@ auth.controller('AuthController', ['$scope','$window','$location','Authenticatio
         });
 
         signedUp.error(function(data){
-           $scope.rmessage = data;
+           $scope.rmessage = 'System error';
         });
 
         $scope.registrationData=[];
