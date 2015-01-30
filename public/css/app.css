@@ -230,10 +230,29 @@ body{
 	padding-right: 0;
 }
 
+/*Thank you page*/
+header.thanks-page{
+	margin-bottom: 0;
+}
+
+.thank-you-wrapper{
+	background-image: url('../imgs/thank_you.jpg');
+	height: 100vh;
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-position: 51%;
+	clear: both;
+}
+
+.thanks-sign-in{
+	margin-top: -60px;
+}
+
 /*Footer*/
 .footer{
 	color: #666;
-	border-top: 1px solid #ddd;;
+	border-top: 1px solid #ddd;
+	background: #fff;;
 }
 
 .site-copyright{
