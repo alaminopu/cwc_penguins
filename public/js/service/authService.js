@@ -29,7 +29,7 @@ access.factory('Authentication', ['$http','$rootScope',function ($http,$rootScop
           str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
           return str.join("&");
         },
-        data: registerData;
+        data: registerData
       });
       return confirmation;
     }
