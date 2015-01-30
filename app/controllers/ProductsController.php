@@ -11,7 +11,8 @@ class ProductsController extends \BaseController {
 		'price' => 'required|numeric',
 		'product_image_link' => 'required',
 		'product_description' => 'required',
-		'category' => 'required'
+		'category' => 'required',
+		'subcategory' => 'required'
 		);
 
 
@@ -43,7 +44,7 @@ class ProductsController extends \BaseController {
 	**/
 
 	public function latestProducts(){
-		$products = Product::orderBy('_id','desc')->take(5)->get();
+		$products = $this->product->orderBy('_id','desc')->take(5)->get();
 		if($products != null){
 			return Response::json($products);
 		}else{
@@ -64,6 +65,7 @@ class ProductsController extends \BaseController {
 		$product_data = array(
 			'product_title' => Input::get('product_title'),
 			'product_brand' => Input::get('product_brand'),
+			'product_model' => Input::get('product_model'),
 			'product_category' => array(
 				'category' => Input::get('category'),
 				'subcategory'=> array(
@@ -83,7 +85,8 @@ class ProductsController extends \BaseController {
 
 		if( $token = AuthVerifierController::verfiyAccesstoken()){
 			$validator = Validator::make(Input::all(),$this->rules);
-			if(!$validator->fails() && $this->product->create($product_data)){
+			if(!$validator->fails()){
+				$this->product->create($product_data);
 				return Response::json(array(
 					'success' => 'Added successfully!'
 					));
@@ -110,6 +113,7 @@ class ProductsController extends \BaseController {
 		$product_data = array(
 			'product_title' => Input::get('product_title'),
 			'product_brand' => Input::get('product_brand'),
+			'product_model' => Input::get('product_model'),
 			'product_category' => array(
 				'category' => Input::get('category'),
 				'subcategory'=> array(
@@ -128,14 +132,16 @@ class ProductsController extends \BaseController {
 			);
 
 		if( $token = AuthVerifierController::verfiyAccesstoken()){
+
 			$product = $this->product->where('_id','=',$id)->get()->first();
 			$validator= Validator::make(Input::all(),$this->rules);
+
 			if($validator->fails() || $product === null){
 				return Response::json(array(
 					'error' => $validator->messages()
 					));
 			}else{
-				$this->product->update($product_data);
+				$product->update($product_data);
 				return Response::json(array(
 					'success' => 'Updated successfully'
 					));
@@ -164,19 +170,25 @@ class ProductsController extends \BaseController {
 	*
 	*
 	*/
-	public function destroy($id)
-	{
-		$product = $this->product->where('_id','=',$id)->get()->first();
-		if($product != null){
-			$this->product->delete();
-			return Response::json(array(
-				'success' => 'Deleted successfully'
-				));
+	public function deleteProduct($id)
+	{	
+		if( $token = AuthVerifierController::verfiyAccesstoken()){
+			$product = $this->product->where('_id','=',$id)->get()->first();
+			if($product != null){
+				$product->delete();
+				return Response::json(array(
+					'success' => 'Deleted successfully'
+					));
+			}else{
+				return Response::json(array(
+					'error' => 'Product not found'
+					));
+			}
 		}else{
 			return Response::json(array(
-				'error' => 'Product not found'
-				));
-		}
+				'error' => 'Unauthorized'
+			),401);
+		}	
 	}
 
 }
