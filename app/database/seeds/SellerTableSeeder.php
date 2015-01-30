@@ -12,13 +12,11 @@ class SellerTableSeeder extends Seeder {
 		$product = Product::where('product_title','=','HP Laptop')->get()->first();
 
 			Seller::create([
-				'user_id' => $users->_id,
+				'username' => $users->username,
  				'product_id' => $product->_id,
  				'achievement' => 'Elite',
-			 	'seller_review' => array(
-			 		'review_text' => $faker->text(),
-			 		'rating' => '4.5'
-			 		),
+			 	'review_text' => array($faker->text()),
+			 	'rating' => 4.5,
 			 	'followers' => ''
 			]);
 
