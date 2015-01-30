@@ -34,6 +34,8 @@ Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
 
   Route::post('products/add','ProductsController@addProducts');
   Route::post('products/update/{id}','ProductsController@updateProducts');
+  Route::post('products/delete/{id}','ProductsController@deleteProduct');
+
 
 
 });
@@ -46,3 +48,4 @@ Route::get('user/{name}','ProfileController@getUserPublicProfile');
 /* products */
 Route::get('products','ProductsController@all');
 Route::get('products/latest','ProductsController@latestProducts');
+Route::get('products/single/{id}','ProductsController@getSingleProduct');

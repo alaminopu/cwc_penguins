@@ -12,8 +12,10 @@ class ProductTableSeeder extends Seeder {
 			Product::create([
 				'product_title' => 'htc one m8-2',
  				'product_brand' => 'htc',
+ 				'product_model' => 'one m8-2',
  				'product_category' => array(
- 					'electronics' => array('smartphone')
+ 					'category' => 'electronics',
+ 					'subcategory' => array('smartphone')
  					),
 			 	'quantity' => '100',
 			 	'price' => '25',
@@ -30,8 +32,10 @@ class ProductTableSeeder extends Seeder {
 			Product::create([
 				'product_title' => 'lumia-535',
  				'product_brand' => 'nokia',
+ 				'product_model' => '535',
  				'product_category' => array(
- 					'electronics' => array('smartphone')
+ 					'category' => 'electronics',
+ 					'subcategory' => array('smartphone')
  					),
 			 	'quantity' => '100',
 			 	'price' => '35000',
@@ -47,10 +51,10 @@ class ProductTableSeeder extends Seeder {
 				  Product::create([
 					'product_title' => 'Anarkoli black',
 	 				'product_brand' =>'Aarong',
+	 				'product_model' => '',
 	 				'product_category' => array(
-	 					'dress' => array(
-	 						'women_dress' => array('anarkoli')
-	 						)
+	 					'category' => 'dress',
+	 					'subcategory' => array('women_dress')
 	 					),
 				 	'quantity' => '100',
 				 	'price' => '1500',
@@ -67,8 +71,10 @@ class ProductTableSeeder extends Seeder {
 				Product::create([
 					'product_title' => 'macbookair q410-13 keyboard lg',
 	 				'product_brand' => 'apple',
+	 				'product_model' => 'q410-13',
 	 				'product_category' => array(
-	 					'Electronics' => array('Computer')
+	 					'category' => 'electronics',
+	 					'subcategory' => array('computer')
 	 					),
 				 	'quantity' => '100',
 				 	'price' => '120000',
@@ -84,8 +90,10 @@ class ProductTableSeeder extends Seeder {
 				Product::create([
 					'product_title' => 'asus laptop',
 	 				'product_brand' => 'asus',
+	 				'product_model' => 'm8-2',
 	 				'product_category' => array(
-	 					'Electronics' => array('Computer')
+	 					'category' => 'electronics',
+	 					'subcategory' => array('computer')
 	 					),
 				 	'quantity' => '90',
 				 	'price' => '45000',
@@ -101,8 +109,10 @@ class ProductTableSeeder extends Seeder {
 				Product::create([
 					'product_title' => 'dell laptop',
 	 				'product_brand' => 'dell',
+	 				'product_model' => 'm8',
 	 				'product_category' => array(
-	 					'Electronics' => array('Computer')
+	 					'category' => 'electronics',
+	 					'subcategory' => array('computer')
 	 					),
 				 	'quantity' => '45',
 				 	'price' => '50000',
@@ -118,8 +128,10 @@ class ProductTableSeeder extends Seeder {
 				Product::create([
 					'product_title' => 'creative headphone',
 	 				'product_brand' => 'creative',
+	 				'product_model' => '2g8',
 	 				'product_category' => array(
-	 					'electronics' => array('headphone')
+	 					'category' => 'electronics',
+	 					'subcategory' => array('headphone')
 	 					),
 				 	'quantity' => '200',
 				 	'price' => '800',
@@ -135,8 +147,10 @@ class ProductTableSeeder extends Seeder {
 				Product::create([
 					'product_title' => 'asus google nexus',
 	 				'product_brand' => 'asus',
+	 				'product_model' => 'nexus',
 	 				'product_category' => array(
-	 					'electronics' => array('smartphone')
+	 					'category' => 'electronics',
+	 					'subcategory' => array('smartphone')
 	 					),
 				 	'quantity' => '1000',
 				 	'price' => '40000',
@@ -153,8 +167,10 @@ class ProductTableSeeder extends Seeder {
 			Product::create([
 					'product_title' => 'walton bike prizm',
 	 				'product_brand' => 'walton',
+	 				'product_model' => '34fgs',
 	 				'product_category' => array(
-	 					'vehicles' => array('bike')
+	 					'category' => 'vehicles',
+	 					'subcategory' => array('bike')
 	 					),
 				 	'quantity' => '8',
 				 	'price' => '40000',
