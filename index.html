@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="public/css/material-wfont.min.css">
   <link rel="stylesheet" href="public/css/font-awesome.min.css">
   <link rel="stylesheet" href="public/css/bootstrap-social.css">
+  <link rel="stylesheet" href="public/css/jquery.range.css">
   <link rel="stylesheet" href="public/css/app.css">
 
 </head>
@@ -55,20 +56,8 @@
   <script src="public/js/lib/arrive-2.0.0.min.js"></script>
   <script src="public/js/lib/ripples.min.js"></script>
   <script src="public/js/lib/material.min.js"></script>
+  <script src="public/js/lib/jquery.range-min.js"></script>
   <script src="public/js/app.js"></script>
-  <script>
-  $(document).arrive("#wrapperH", function() {
-    // 'this' refers to the newly created element
-    var $newElem = $(this);
-  });
-  $(document).ready(function() {
-    $.material.init();
-
-    $(".close").click(function(e){
-        e.preventDefault();
-        $(".alert").alert('close');
-    });
-  });
-  </script>
+  <script src="public/js/custom.js"></script>
 </body>
 </html>
