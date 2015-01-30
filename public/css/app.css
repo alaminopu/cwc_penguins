@@ -197,7 +197,7 @@ body{
 }
 
 .profile-info input, .profile-info select{
-	border: 1px solid #F4F4F4
+	border: 1px solid #C8C8C8;
 }
 
 .profile-info select{
@@ -205,11 +205,13 @@ body{
     -moz-appearance: none;
     -ms-appearance: none;
     appearance: none;
+    background: #fff;
 }
 
 .profile-info input:not([type="submit"]):focus{
 	border: 1px solid #B1E0DC;
 	box-shadow: 0 0 10px #9AE2DC inset;
+	color: #474747;
 }
 
 .profile-info button{
