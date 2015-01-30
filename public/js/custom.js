@@ -4,6 +4,20 @@ $(document).arrive("#wrapperH", function() {
   var $newElem = $(this);
 });
 
+$(document).arrive(".price-range", function() {
+	var $newRange = $(this);
+
+	$('.slider-input').jRange({
+	    from: 0,
+	    to: 100,
+	    step: 1,
+	    scale: [0,25,50,75,100],
+	    format: '',
+	    width: '90%',
+	    isRange : true
+	});
+});
+
 $(document).ready(function() {
   // Bootstrap material initialization
   $.material.init();
@@ -14,23 +28,4 @@ $(document).ready(function() {
       $(".alert").alert('close');
   });
 
-});
-
-$(document).arrive(".price-range", function() {
-	var $newElem = $(this);
-
-	$('.slider-input').jRange({
-	    from: 0,
-	    to: 100,
-	    step: 1,
-	    scale: [0,25,50,75,100],
-	    format: '',
-	    width: '90%',
-	    isRange : true,
-	    margin: '0 auto'
-	});
-
-	$('.slider-input').bind('change', function() {
-	  console.log( $(this).val() ); // or $(this).val()
-	});
 });
