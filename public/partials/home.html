@@ -1,4 +1,4 @@
-<header class="header panel col-md-12">
+<header class="header panel col-md-12" ng-controller="HomeController">
 	<a href="#/"><div class="col-md-2 site-logo"></div></a>
 
 	<div class="col-md-7 site-search">
@@ -14,90 +14,20 @@
 	</div>
 </header>
 
-<div class="col-md-12 wrapper panel" ng-controller="HomeController">
-	<div class="row">
-		<div class="col-md-3">
-			<div class="sample shadow-z-1">
-				<h3 class="text-center">
-					<a ng-href="#/cart"><ngcart-summary> </ngcart-summary></a>
-				</h3>
-			</div>
-
-		</div>
-		<div class="col-md-6">
-			<div class="sample shadow-z-1">
-				<h3 class="text-center">Slider</h3>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="sample shadow-z-1">
-				<h3 class="text-center">Winter Sale</h3>
-			</div>
-		</div>
+<div class="col-md-12 wrapper">
+	<div class="col-md-2 filters">
+		Filter
 	</div>
-	<div class="row">
-		<div class="btn-group btn-group-justified">
-			<a href="" class="btn btn-default"><i class="previous fa fa-chevron-circle-left"></i></a>
-		    <a href="javascript:void(0)" class="btn btn-default">Left</a>
-		    <a href="javascript:void(0)" class="btn btn-default">Middle</a>
-		    <a href="javascript:void(0)" class="btn btn-default">Right</a>
-		    <a href="" class="next btn btn-default"><i class="fa fa-chevron-circle-right"></i></a>
-		</div>
-	</div>
-	<div class="row">
-		<h1 class="text-center">Latest Items</h1>
-		<h4 class="text-center">Recently Added Items</h4>
-	</div>
-	<div class="row"  ng-repeat="latestProduct in latestProducts">
-		<div class="col-md-3">
-			<div class="sample shadow-z-1">
-				<h3 class="text-center">{{ latestProduct.product_title }}</h3>
+	<div class="row col-md-10 product-view">
+		<div class="col-md-3" ng-repeat="latestProduct in latestProducts">
+			<div class="sample">
+				<h4 class="text-center">{{ latestProduct.product_title }}</h4>
+				<img height="200" width="250" class="single-product" src="{{ latestProduct.product_image_link }}" />
 				<ngcart-addtocart id="{{ latestProduct._id }}"
 				name="{{ latestProduct.product_title }}" price="{{ latestProduct.price }}"
 				quantity="1" quantity-max="{{ latestProduct.quantity }}" data="latestProduct">
-				</ngcart-addtocart>
-				<img height="200" width="250" class="single-product" src="{{ latestProduct.product_image_link }}">
+				Add to cart</ngcart-addtocart>
 			</div>
 		</div>
 	</div>
-
-
-
-	<!-- <div class="row">
-		<h1 class="text-center">Trending Items</h1>
-		<h4 class="text-center">Most sold/bought items</h4>
-	</div>
-	<div class="row">
-		<div class="col-md-3">
-			<div class="sample shadow-z-1">
-				<h3 class="text-center">product 1</h3>
-				<img class="single-product" src="public/imgs/products/demo.jpg">
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="sample shadow-z-1">
-				<h3 class="text-center">product 2</h3>
-				<img class="single-product" src="public/imgs/products/demo.jpg">
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="sample shadow-z-1">
-				<h3 class="text-center">product 3</h3>
-				<img class="single-product" src="public/imgs/products/demo.jpg">
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="sample shadow-z-1">
-				<h3 class="text-center">product 4</h3>
-				<img class="single-product" src="public/imgs/products/demo.jpg">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-5"></div>
-			<div class="col-md-2">
-				<a href="javascript:void(0)" class="items-btn btn btn-info">More Items</a>
-			</div>
-			<div class="col-md-5"></div>
-		</div>
-	</div> -->
 </div>
