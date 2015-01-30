@@ -15,11 +15,21 @@ content.factory('PublicContent', ['$http', '$rootScope', function($http, $rootSc
     getAllLatestProducts: function(uri){
       var data = $http({
         method:'GET',
-        url:'public/'+uri,
+        url:'public/products/latest',
       });
 
       return data;
-    }
+    },
+    getCategories: function(){
+      var data = $http({
+        method:'GET',
+        url:'public/categories',
+      });
+
+      return data;
+    },
+
+    
 
 
   }
