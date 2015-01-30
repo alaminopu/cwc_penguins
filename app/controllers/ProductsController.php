@@ -36,6 +36,15 @@ class ProductsController extends \BaseController {
 	}
 
 
+	/**
+	*	Get all categories
+	*/	
+	public function getCategories(){
+		$categories = Category::all();
+		return Response::json($categories);
+	}
+
+
 	/*
 	*	Get a single product
 	*
@@ -43,7 +52,15 @@ class ProductsController extends \BaseController {
 
 	public function getSingleProduct($id){
 		$product = $this->product->where('_id','=',$id)->get()->first();
-		return Response::json($product);
+		$seller = User::where('username','=',$product->seller_username)->get()->first();
+		$single_product = array_merge($product->toArray(), $seller->toArray());
+		if(count($single_product)<1){
+			return Response::json(array(
+				'error' => 'No products found'
+				));
+		}else{
+			return Response::json($single_product);
+		}
 	}
 
 	/**

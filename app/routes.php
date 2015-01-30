@@ -55,5 +55,9 @@ Route::get('products/price/max/{max}','ProductsController@getProductsByMaxPrice'
 Route::get('products/price/min/{min}','ProductsController@getProductsByMinPrice');
 Route::get('products/category/{category}','ProductsController@getProductsByCategory');
 Route::get('products/subcategory/{subcategory}','ProductsController@getProductsBySubCategory');
+Route::get('products/location/{location}','ProductsController@getProductsByLocation');
+Route::get('products/categories','ProductsController@getCategories');
+
+
 
 
