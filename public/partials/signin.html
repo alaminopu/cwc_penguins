@@ -14,6 +14,7 @@
     </a>
   </div>
  -->
+  <!-- Sign in field modal -->
   <div id="sign-in-box" class="col-md-12 modal fade in" tabindex="-1">
     <div class="col-md-6 col-md-offset-3">
       <div class="modal-dialogue">
@@ -49,8 +50,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </div><!-- END of SIGN IN field modal -->
 
+  <!-- SIGN UP field modal -->
   <div id="sign-up-box" class="col-md-12 modal fade in" tabindex="-1">
     <div class="col-md-6 col-md-offset-3">
       <div class="modal-dialogue">
@@ -59,12 +61,37 @@
             <p class="error"> {{ rmessage }} </p>
             <form  ng-submit="register()" name="signup" novalidate>
               <div class="form-control-wrapper">
+                <input type="text" required="" name="regFname" class="form-control empty" ng-model="regfirstname" placeholder="First Name">
+                <p class="error"> {{ error['first_name'][0] }} </p>
+                <div ng-show="signup.$submitted || signup.regFname.$touched">
+                  <p ng-show="signup.regFname.$error.required" class="error">Please enter your first name</p>
+                </div>
+              </div>
+
+              <div class="form-control-wrapper">
+                <input type="text" required="" name="regLname" class="form-control empty" ng-model="reglastname" placeholder="Last Name">
+                <p class="error"> {{ error['last_name'][0] }} </p>
+                <div ng-show="signup.$submitted || signup.regLname.$touched">
+                  <p ng-show="signup.regLname.$error.required" class="error">Please enter your last name</p>
+                </div>
+              </div>
+
+              <div class="form-control-wrapper">
+                <input type="number" required="" name="regmobile" class="form-control empty" ng-model="regmobileno" placeholder="Mobile Number">
+                <p class="error"> {{ error['mobile_number'][0] }} </p>
+                <div ng-show="signup.$submitted || signup.regmobile.$touched">
+                  <p ng-show="signup.regmobile.$error.required" class="error">Mobile number is mandatory</p>
+                </div>
+              </div>
+
+              <div class="form-control-wrapper">
                 <input type="text" required="" name="regUname" class="form-control empty" ng-model="regusername" placeholder="Username">
                 <p class="error"> {{ error['username'][0] }} </p>
                 <div ng-show="signup.$submitted || signup.regUname.$touched">
                   <p ng-show="signup.regUname.$error.required" class="error">Username can't be empty</p>
                 </div>
               </div>
+
               <div class="form-control-wrapper">
                 <input type="email" required="" name="regUemail" class="form-control empty" ng-model="regemail" placeholder="Email">
                 <p class="error"> {{ error['email'][0] }} </p>
@@ -73,6 +100,7 @@
                   <p ng-show="signup.regUemail.$error.email" class="error">Invalid email.</p>
                 </div>
               </div>
+
               <div class="form-control-wrapper">
                 <input name="regUpass" required="" type="password" minlength="6" class="form-control empty" ng-model="regpassword" placeholder="Password">
                 <p class="error"> {{ error['password'][0] }} </p>
@@ -90,5 +118,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div><!-- END of SIGN UP field modal -->
 </div>
