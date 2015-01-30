@@ -84,8 +84,8 @@
 
 	</div>
 	<div class="row col-md-10 product-view">
-		<div class="col-md-3" ng-repeat="latestProduct in latestProducts">
-			<div class="sample">
+		<div class="col-md-3 single-product" ng-repeat="latestProduct in latestProducts">
+			<div class="col-md-12 sample">
 				<h4 class="text-center">{{ latestProduct.product_title }}</h4>
 				<img height="200" width="250" class="single-product" ng-src="{{ latestProduct.product_image_link }}" />
 				<ngcart-addtocart id="{{ latestProduct._id }}"

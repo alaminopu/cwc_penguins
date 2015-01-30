@@ -143,6 +143,19 @@ body{
 	margin-top: 110px;
 }
 
+/*Home page*/
+.product-view{
+
+}
+
+.single-product:nth-child(5){
+	clear: left;
+}
+
+#quantity{
+	max-width: 20%;
+}
+
 /**** Profile page *****/
 .user-location{
 	color: #808080;
