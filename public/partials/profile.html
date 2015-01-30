@@ -172,7 +172,7 @@
 				<h4 class="text-center">Account &amp; Password</h4>
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="profileOldPass">Old Password</label>
-					<input class="col-md-4" minlength="6" name="profileOldPass" type="password">
+					<input class="col-md-4" minlength="6" ng-model="profileOldPass" type="password">
 					<div class="col-md-4">
 						<span class="error"> {{ passErrorMsg }} </span>
 					</div>
@@ -180,7 +180,7 @@
 
 				<div class="profile-info row">
 					<label class="col-md-2 col-md-offset-2" for="profileNewPass">New Password</label>
-					<input class="col-md-4" required minlength="6" name="profileNewPass" type="password">
+					<input class="col-md-4" required minlength="6" ng-model="profileNewPass" type="password">
 					<div class="col-md-4">
 						<span class="error"> {{ error['new_password'][0] }} </span>
 					</div>
@@ -195,11 +195,11 @@
 				</div>
 			</form>
 
-			<div class="row profile-info">
+			<!-- <div class="row profile-info">
 				<div class="col-md-2 col-md-offset-5">
 					<button class="btn btn-primary btn-danger delete-account">Delete My Account!</button>
 				</div>
-			</div>
+			</div> -->
 		</div><!-- End General info -->
 
 		<!-- Seller profile -->
