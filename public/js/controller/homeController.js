@@ -5,7 +5,7 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
     var latestProducts = PublicContent.getAllLatestProducts('products/latest');
     latestProducts.success(function(data){
       $scope.latestProducts= data;
-      //console.log($scope.latestProducts);
+      console.log($scope.latestProducts);
     });
     latestProducts.error(function(data){
       $scope.noLatestProducts = "Nothing match in this criteria";
