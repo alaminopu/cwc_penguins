@@ -23,7 +23,7 @@
 			<strong><span class="glyphicon glyphicon-off"></span> Logout</strong>
 		</button>
 		<div class="clearfix"></div>
-		<img src="public/imgs/kowalski.jpg" alt="Profile Photo" class="img-responsive img-thumbnail img-circle clearfix">
+		<img src="{{ data.profile_photo_link }}" alt="Profile Photo" class="img-responsive img-thumbnail img-circle clearfix">
 		<strong class="center-block user-name">{{ data.username }}</strong>
 		<span class="center-block user-location">
 			<i class="fa fa-location-arrow"></i> {{ data.address.city }}, {{ data.address.country }}
