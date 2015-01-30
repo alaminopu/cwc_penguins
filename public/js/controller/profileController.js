@@ -11,6 +11,7 @@ profile.controller('ProfileController', ['$scope','$window','$location','Resourc
               $scope.profileFname = data.first_name;
               $scope.profileLname = data.last_name;
               $scope.profileEmail = data.email;
+              $scope.profileMobileNo = data.mobile_no;
               if(data.address){
                 $scope.profileHouseNo = data.address.house_no;
                 $scope.profileStreetName = data.address.street_name;

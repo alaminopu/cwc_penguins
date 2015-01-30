@@ -42,7 +42,7 @@ class ProfileController extends BaseController {
 	* User Signup
 	*/
 	public function signup(){
-		
+
 		$extended_rules =array(
 				'username' => 'required|unique:oauth_users,username',
 				'password' => 'required|min:6',
@@ -62,7 +62,8 @@ class ProfileController extends BaseController {
 				'last_name' => Input::get('last_name'),
 				'email' => Input::get('email'),
 				'password' => Input::get('password'),
-				'mobile_no' => Input::get('mobile_no')
+				'mobile_no' => Input::get('mobile_no'),
+				'profile_photo_link' => 'public/imgs/profile/kowalski.jpg'
 			));
 			return Response::json(array(
 				'success' => 'Congratulation! Signup successfull'
@@ -199,7 +200,7 @@ class ProfileController extends BaseController {
 				if(!$validator->fails() || $user != null){
 					$user->update(array(
 						'password' => Input::get('new_password')
-						
+
 						));
 					return Response::json(array(
 						'success' => 'Password updated!'

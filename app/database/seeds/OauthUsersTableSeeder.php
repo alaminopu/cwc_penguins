@@ -16,8 +16,8 @@ class OauthUsersTableSeeder extends Seeder {
  				'first_name' => 'Demo',
 			 	'last_name' => 'User',
 			 	'email' => 'demo@mail.com',
-			 	'mobile_number' => '01722454647'
-			 	'profile_photo_link' => '/public/imgs/users/demo.png',
+			 	'mobile_no' => '01722454647',
+			 	'profile_photo_link' => 'public/imgs/profile/kowalski.jpg',
 			 	'address' => array(
 			 		'house_no' => '3',
 			 		'street_name' => 'test road',
