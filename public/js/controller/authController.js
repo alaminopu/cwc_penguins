@@ -1,8 +1,8 @@
 var auth = angular.module('authCtrl', []);
 
-auth.controller('AuthController', ['$scope','$window','$location','SignIn','SignUp',
+auth.controller('AuthController', ['$scope','$window','$location','Authentication',
 
-  function ($scope,$window,$location,SignIn,SignUp) {
+  function ($scope,$window,$location,Authentication) {
       $scope.loginData = [];
       $scope.message = '';
 
@@ -11,7 +11,7 @@ auth.controller('AuthController', ['$scope','$window','$location','SignIn','Sign
         $scope.loginData['username']=$scope.loginusername;
         $scope.loginData['password']=$scope.loginpassword;
 
-        var auth = SignIn.auth($scope.loginData);
+        var auth = Authentication.signin($scope.loginData);
 
         auth.success(function(data, status, header, config){
           $window.localStorage.access_token = data.access_token;
@@ -34,14 +34,16 @@ auth.controller('AuthController', ['$scope','$window','$location','SignIn','Sign
       $scope.rmessage = '';
 
       $scope.register = function(){
-
+        $scope.registrationData['first_name'] = $scope.regfirstname;
+        $scope.registrationData['last_name'] = $scope.reglastname;
         $scope.registrationData['username']=$scope.regusername;
         $scope.registrationData['email']=$scope.regemail;
         $scope.registrationData['password']=$scope.regpassword;
+        $scope.registrationData['mobile_no'] = $scope.regmobileno;
 
         //console.log($scope.registrationData);
 
-        var signedUp = SignUp.registerUser($scope.registrationData);
+        var signedUp = Authentication.signup($scope.registrationData);
         signedUp.success(function(response){
           console.log(response.error);
           if(response.error){

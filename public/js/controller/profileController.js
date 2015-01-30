@@ -11,12 +11,14 @@ profile.controller('ProfileController', ['$scope','$window','$location','Resourc
               $scope.profileFname = data.first_name;
               $scope.profileLname = data.last_name;
               $scope.profileEmail = data.email;
-              $scope.profileHouseNo = data.address.house_no;
-              $scope.profileStreetName = data.address.street_name;
-              $scope.profileRoadNo = data.address.road_no;
-              $scope.profilePostCode = data.address.post_code;
-              $scope.profileCity = data.address.city;
-              $scope.selectedCountry = data.address.country;
+              if(data.address){
+                $scope.profileHouseNo = data.address.house_no;
+                $scope.profileStreetName = data.address.street_name;
+                $scope.profileRoadNo = data.address.road_no;
+                $scope.profilePostCode = data.address.post_code;
+                $scope.profileCity = data.address.city;
+                $scope.selectedCountry = data.address.country;
+              }
           });
           user.error(function(data){
               delete $window.localStorage.access_token;
@@ -30,24 +32,40 @@ profile.controller('ProfileController', ['$scope','$window','$location','Resourc
             $scope.userData['first_name'] = $scope.profileFname;
             $scope.userData['last_name'] = $scope.profileLname;
             $scope.userData['email'] = $scope.profileEmail;
-            $scope.userData['profile_photo_link']='/public/imgs/profile/';
-            $scope.userData['house_no'] = $scope.profileHouseNo;
-            $scope.userData['street_name']= $scope.profileStreetName;
-            $scope.userData['road_no']= $scope.profileRoadNo;
-            $scope.userData['post_code']= $scope.profilePostCode;
-            $scope.userData['city']= $scope.profileCity;
-            $scope.userData['country']= $scope.selectedCountry;
+            $scope.userData['mobile_no'] = $scope.profileMobileNo;
+            $scope.userData['profile_photo_link']='public/imgs/profile/kowalski.jpg';
             $scope.userData['payment']= "bkash";
 
             console.log($scope.userData);
 
-            var updatedUser = Resource.UpdateUser($window.localStorage.access_token,$scope.userData, 'profile/update');
+            var updatedUser = Resource.UpdateUser($window.localStorage.access_token,$scope.userData, 'profile/update/personal-info');
             updatedUser.success(function(response){
               console.log(response.error);
               if(response.error){
                 $scope.error = response.error;
               }else if(response.success){
-                $scope.success = response.success;
+                $scope.userSuccess = response.success;
+              }
+            });
+          }
+
+          // contact update
+          $scope.contactData = [];
+          $scope.savecontact = function(){
+            $scope.contactData['house_no'] = $scope.profileHouseNo;
+            $scope.contactData['street_name']= $scope.profileStreetName;
+            $scope.contactData['road_no']= $scope.profileRoadNo;
+            $scope.contactData['post_code']= $scope.profilePostCode;
+            $scope.contactData['city']= $scope.profileCity;
+            $scope.contactData['country']= $scope.selectedCountry;
+
+            var updatedContact= Resource.UpdateUser($window.localStorage.access_token,$scope.contactData, 'profile/update/address');
+            updatedContact.success(function(response){
+              console.log(response.error);
+              if(response.error){
+                $scope.error = response.error;
+              }else if(response.success){
+                $scope.contactSuccess = response.success;
               }
             });
           }
@@ -78,7 +96,6 @@ profile.controller('ProfileController', ['$scope','$window','$location','Resourc
           }
 
       }else{
-        console.log('no access token');
         $location.path('/');
       }
 }]);

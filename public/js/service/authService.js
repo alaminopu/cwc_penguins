@@ -1,8 +1,8 @@
 var access = angular.module('authService', []);
 
-access.factory('SignIn', ['$http','$rootScope',function ($http,$rootScope) {
+access.factory('Authentication', ['$http','$rootScope',function ($http,$rootScope) {
   return {
-    auth: function(credentials){
+    signin: function(credentials){
       var authUser = $http({
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -17,13 +17,8 @@ access.factory('SignIn', ['$http','$rootScope',function ($http,$rootScope) {
       });
 
       return authUser;
-    }
-  };
-}]);
-
-access.factory('SignUp', ['$http','$rootScope', function ($http, $rootScope) {
-  return {
-    registerUser: function(registerData){
+    },
+    signup: function(registerData){
       var confirmation = $http({
         method:'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -34,14 +29,12 @@ access.factory('SignUp', ['$http','$rootScope', function ($http, $rootScope) {
           str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
           return str.join("&");
         },
-        data: {username: registerData['username'], email:registerData['email'],password: registerData['password']}
+        data: registerData;
       });
       return confirmation;
     }
   };
 }]);
-
-
 
 access.factory('Resource', ['$http', '$rootScope', function($http, $rootScope){
   return {
