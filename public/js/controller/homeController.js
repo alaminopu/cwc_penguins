@@ -2,14 +2,16 @@ var home = angular.module('homeCtrl',[]);
 
 home.controller('HomeController',['$scope','$window','$location','PublicContent',
   function($scope,$window, $location,PublicContent){
-    var latestProducts = PublicContent.getAllLatestProducts();
-    latestProducts.success(function(data){
-      $scope.latestProducts= data;
-      console.log($scope.latestProducts);
+    var items = PublicContent.getProductData('products/latest');
+    items.success(function(data){
+      $scope.items= data;
+      console.log($scope.items);
     });
-    latestProducts.error(function(data){
-      $scope.noLatestProducts = "Nothing match in this criteria";
+    items.error(function(data){
+      $scope.noitems = "Nothing match in this criteria";
     });
+
+
 
 
     // for logged in user view checking
