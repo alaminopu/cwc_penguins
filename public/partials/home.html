@@ -38,69 +38,47 @@
 
 		<div class="filter">
 			<h4><i class="mdi-action-assessment"></i> By Brands</h4>
-			<div class="checkbox">
+			<div class="checkbox" ng-repeat="(brand,enabled) in brands">
 			    <label>
-			        <input type="checkbox">Sony
-			    </label>
-			</div>
-			<div class="checkbox">
-			    <label>
-			        <input type="checkbox">Apple
-			    </label>
-			</div>
-			<div class="checkbox">
-			    <label>
-			        <input type="checkbox">Microsoft
-			    </label>
-			</div>
-			<div class="checkbox">
-			    <label>
-			        <input type="checkbox">ASUS
-			    </label>
-			</div>
-			<div class="checkbox">
-			    <label>
-			        <input type="checkbox">BMW
-			    </label>
-			</div>
-			<div class="checkbox">
-			    <label>
-			        <input type="checkbox">Aarong
+			        <input type="checkbox" ng-model="brands[brand]" ng-change='getProductByBrand(brand)'>{{brand}}
 			    </label>
 			</div>
 		</div>
 
 		<div class="filter price-range">
 			<h4><i class="mdi-action-assessment"></i> By Price Range</h4>
-			<input type="hidden" class="slider-input" value="100" />
+			<input type="hidden" class="slider-input"
+			ng-model="productByPrice"
+			ng-change="getProductByPrice(productByPrice)"
+			value="1000" style="display: none;"/>
 		</div>
 
 		<div class="filter">
 			<h4><i class="mdi-action-assessment"></i> By Location</h4>
-			<select class="form-control" name="locationFilter" id="location-filter">
-				<option value="Dhaka">Dhaka</option>
-				<option value="Chittagong">Chittagong</option>
-				<option value="Comilla">Comilla</option>
-				<option value="Sylhet">Sylhet</option>
-				<option value="Barishal">Barishal</option>
+			<select class="form-control" ng-model="locationFilter" id="location-filter"
+			ng-change="getDataBylocation(locationFilter)"
+			ng-options="loc for loc in locationData"
+			>
+				<option value="">Select City</option>
 			</select>
 		</div>
 
 		<div class="filter sort-filter">
 			<h4><i class="mdi-action-assessment"></i> Sort By</h4>
 			<ul>
-				<a href=""><li>Most Sold</li></a>
+				<a href="" ng-click="getMostSoldProduct()"><li>Most Sold</li></a>
 				<a href=""><li>By Price</li></a>
 				<a href=""><li>By Date</li></a>
 			</ul>
 		</div>
 
 	</div>
+
 	<div class="col-md-10 product-view">
-		<div class="col-md-4 single-product" ng-repeat="item in items">
+		<div class="col-md-4 single-product" ng-repeat="item in items" ng-hide="items.error">
 			<div class="col-md-12 sample">
 				<h4 class="text-center">{{ item.product_title }}</h4>
-				<img class="img-responsive product-img" ng-src="{{ item.product_image_link }}" />
+				<img class="img-responsive product-img" ng-src="{{ item.product_image_link[0] }}" />
 
 				<div class="col-md-12">
 					<div class="col-md-5 product-price">
@@ -140,5 +118,8 @@
 				<a class="add-to-wishlist-button" href=""><i class="mdi-action-favorite-outline"></i></a>
 			</div>
 		</div>
+
+		<div class="col-md-4 single-product" ng-show="items.error">
+			No product found.
 	</div>
 </div>

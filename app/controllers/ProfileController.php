@@ -39,6 +39,69 @@ class ProfileController extends BaseController {
 	}
 
 	/**
+	*	Get Seller private Profile info
+	**/
+	public function getSellerProfile(){
+
+		if( $token = AuthVerifierController::verfiyAccesstoken()){
+
+			$seller = Seller::where('seller_username','=',$token['user_id'])->get()->first();
+			if(count($seller)>=0){
+				$products = Product::where('seller_username','=',$token['user_id'])->get();
+				if(count($products)<1){
+					return Response::json(array(
+						'error' => 'Product not found'
+						));
+				}
+				$orders = Orders::where('seller_username','=',$token['user_id'])->get();
+				if(count($orders)<1){
+					return Response::json(array(
+						'error' => 'No order history for this user'
+						));
+				}
+				$data = array_merge($seller->toArray(),$products->toArray());
+				$seller_profile = array_merge($data,$orders->toArray());
+				if(count($seller_profile)>0){
+					return Response::json($seller_profile);
+			}
+			}
+		}else{
+			return Response::json(array(
+					'error' => 'Unauthorized'
+				),401);
+		}
+	}
+
+	/**
+	*	get buyer private page
+	**/
+
+	public function getBuyerProfile(){
+		if( $token = AuthVerifierController::verfiyAccesstoken()){
+			$buyer = Buyer::where('buyer_username','=',$token['user_id'])->get()->first();
+			$orders = Orders::where('buyer_username','=',$token['user_id'])->get();
+			$products = array();
+			foreach($orders as $order){
+				$products = Product::where('_id','=',$order->product_id)->get();
+			}
+			$purchased_items = $buyer->purchased_items;
+			$purchased_products = array();
+			foreach($purchased_items as $item){
+				$purchased_products[] = Product::where('_id','=',$item)->get();
+			}
+			$data = array_merge($buyer->toArray(),$products);
+			$buyer_info = array_merge($data,$purchased_products);
+			return Response::json($buyer_info);
+		}else{
+			return Response::json(array(
+					'error' => 'Unauthorized'
+				),401);
+		}		
+	}
+
+
+
+	/**
 	* User Signup
 	*/
 	public function signup(){

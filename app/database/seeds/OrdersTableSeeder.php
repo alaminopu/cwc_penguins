@@ -8,14 +8,13 @@ class OrdersTableSeeder extends Seeder {
 	public function run()
 	{
 		$faker = Faker::create();
-		$users = User::where('username','=','opu')->get()->first();
 			Orders::truncate();
 			Orders::create([
-				'seller_id' => $users->_id,
-				'buyer_id' =>'',
-				'product_id' => '',
-				'order_date' => '',
- 				'delivery_date' => '',
+				'seller_username' => 'opu',
+				'buyer_username' =>'anis',
+				'product_id' => '54cc249c438767d41000002e',
+				'order_date' => '23/11/14',
+ 				'delivery_date' => '31/01/15',
 				'delivery_status' => false
 
 			]);

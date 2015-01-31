@@ -25,6 +25,8 @@ Route::post('signup','ProfileController@signup');
 Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
 
   Route::get('profile', 'ProfileController@getUserProfile');
+  Route::get('profile/seller','ProfileController@getSellerProfile');
+   Route::get('profile/buyer','ProfileController@getBuyerProfile');
   Route::post('profile/update/personal-info','ProfileController@updateUserData');
   Route::post('profile/update/address','ProfileController@updateAddress');
   Route::post('profile/delete','ProfileController@removeUser');
@@ -51,13 +53,11 @@ Route::get('products/latest','ProductsController@latestProducts');
 Route::get('products/single/{id}','ProductsController@getSingleProduct');
 Route::get('products/range/{lower}/{higher}','ProductsController@getProductsByPriceRange');
 Route::get('products/brand/{brand}','ProductsController@getProductsByBrand');
-Route::get('products/price/max/{max}','ProductsController@getProductsByMaxPrice');
-Route::get('products/price/min/{min}','ProductsController@getProductsByMinPrice');
+Route::get('products/price/{sort}','ProductsController@getProductsByPrice');
 Route::get('products/category/{category}','ProductsController@getProductsByCategory');
 Route::get('products/subcategory/{subcategory}','ProductsController@getProductsBySubCategory');
 Route::get('products/location/{location}','ProductsController@getProductsByLocation');
 Route::get('products/categories','ProductsController@getCategories');
-
 
 
 

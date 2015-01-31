@@ -7,15 +7,15 @@ $(document).arrive("#wrapperH", function() {
 $(document).arrive(".price-range", function() {
 	var $newRange = $(this);
 
-	$('.slider-input').jRange({
-	    from: 0,
-	    to: 100,
-	    step: 1,
-	    scale: [0,25,50,75,100],
-	    format: '',
-	    width: '90%',
-	    isRange : true
-	});
+  $('.slider-input').jRange({
+      from: 100,
+      to: 50000,
+      step: 100,
+      scale: [100,1000,10000,50000],
+      format: '',
+      width: '90%',
+      isRange : true
+  });
 });
 
 
@@ -33,4 +33,3 @@ $(document).ready(function() {
       e.preventDefault();
       $(".alert").alert('close');
   });
-});

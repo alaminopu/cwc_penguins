@@ -38,7 +38,7 @@ class ProductsController extends \BaseController {
 
 	/**
 	*	Get all categories
-	*/	
+	*/
 	public function getCategories(){
 		$categories = Category::all();
 		return Response::json($categories);
@@ -52,7 +52,7 @@ class ProductsController extends \BaseController {
 
 	public function getSingleProduct($id){
 		$product = $this->product->where('_id','=',$id)->get()->first();
-		$seller = User::where('username','=',$product->seller_username)->get()->first();
+		$seller = Seller::where('username','=',$product->seller_username)->get()->first();
 		$single_product = array_merge($product->toArray(), $seller->toArray());
 		if(count($single_product)<1){
 			return Response::json(array(
@@ -64,8 +64,8 @@ class ProductsController extends \BaseController {
 	}
 
 	/**
-	* 
-	*	Get the latest 5 products for Home Page	
+	*
+	*	Get the latest 5 products for Home Page
 	*
 	**/
 
@@ -111,15 +111,6 @@ class ProductsController extends \BaseController {
 	}
 
 
-
-	/**
-	*	get products by Most Sold Products
-	**/
-	public function getProductsByMostSold(){
-		
-	}
-
-
 	/**
 	*	get products by price range
 	**/
@@ -141,6 +132,7 @@ class ProductsController extends \BaseController {
 	**/
 
 	public function getProductsByBrand($brand){
+		$brand = strtolower($brand);
 		$products = $this->product->where('product_brand','=',$brand)->get();
 		if(count($products)<1){
 			return Response::json(array(
@@ -153,28 +145,27 @@ class ProductsController extends \BaseController {
 
 
 	/**
-	*	get products by price: High to Low 
+	*	get products by price: High to Low
 	**/
 
-	public function getProductsByMaxPrice($max){
-		$max = intval($max);
-		$products = $this->product->where('price','<=',$max)->get();
-		if(count($products)<1){
-			return Response::json(array(
-				'error' => 'No products found'
-				));
-		}else{
-			return Response::json($products);
-		}
-	}
+	// public function getProductsByMaxPrice($max){
+	// 	$max = intval($max);
+	// 	$products = $this->product->where('price','<=',$max)->get();
+	// 	if(count($products)<1){
+	// 		return Response::json(array(
+	// 			'error' => 'No products found'
+	// 			));
+	// 	}else{
+	// 		return Response::json($products);
+	// 	}
+	// }
 
 	/**
-	*	get products by price: Low to High 
+	*	get products by price: Low to High
 	**/
 
-	public function getProductsByMinPrice($min){
-		$min = intval($min);
-		$products = $this->product->where('price','>=',$min)->get();
+	public function getProductsByPrice($sort){
+		$products = $this->product->orderBy('price',$sort)->get();
 		if(count($products)<1){
 			return Response::json(array(
 				'error' => 'No products found'
@@ -183,15 +174,62 @@ class ProductsController extends \BaseController {
 			return Response::json($products);
 		}
 	}
+
+
+	/**
+	*	Get Products by Most sold items
+	**/
+	// public function getProductsByMostSold(){
+	// 	$products => $this->product->orderBy('sold_count','desc')->get();
+	// 	if(count($products)<1){
+	// 		return Response::json(array(
+	// 			'error' => 'No products found',
+	// 			));
+	// 	}else{
+	// 		return Response::json($products);
+	// 	}
+	// }
 
 
 	/**
 	*	get products by location
 	**/
 	public function getProductsByLocation($location){
-		
-		
+		$users = User::select('username')->where('address.city','=',$location)->get();
+		if(count($users)>0){
+			$products = array();
+			foreach ($users as $user) {
+				$products = $this->product->where('seller_username','=',$user->username)->get();
+			}
+			if($products === null){
+				return Response::json(array(
+					'error' => 'No products found'
+					));
+			}else{
+				return Response::json($products);
+			}
+		}else{
+			return Response::json(array(
+				'error' => 'No products found!'
+				));
+		}
+
 	}
+
+	/**
+	* Get products by seller_username
+	**/
+	public function getProductsByUsername($name){
+		$products = $this->product->where('seller_username','=',$name)->get();
+		if(count($products)>0){
+			return $products;
+		}else{
+			return Response::json(array(
+				'error' => 'Products not found'
+				));
+		}
+	}
+
 
 	/*
 	* Add products
@@ -205,7 +243,7 @@ class ProductsController extends \BaseController {
 
 			$product_data = array(
 			'product_title' => Input::get('product_title'),
-			'product_brand' => Input::get('product_brand'),
+			'product_brand' => strtolower(Input::get('product_brand')),
 			'product_model' => Input::get('product_model'),
 			'seller_username' => $token['user_id'],
 			'sold_count' => 0,
@@ -230,12 +268,12 @@ class ProductsController extends \BaseController {
 					'error' => $validator->messages()
 					));
 			}
-			
+
 		}else{
 			return Response::json(array(
 					'error' => 'Unauthorized'
 				),401);
-		}		
+		}
 	}
 
 
@@ -247,7 +285,7 @@ class ProductsController extends \BaseController {
 
 		$product_data = array(
 			'product_title' => Input::get('product_title'),
-			'product_brand' => Input::get('product_brand'),
+			'product_brand' => strtolower(Input::get('product_brand')),
 			'product_model' => Input::get('product_model'),
 			'category' => Input::get('category'),
 			'subcategory'=> Input::get('subcategory'),
@@ -277,7 +315,7 @@ class ProductsController extends \BaseController {
 			return Response::json(array(
 				'error' => 'Unauthorized'
 			),401);
-		}	
+		}
 	}
 
 
@@ -292,7 +330,7 @@ class ProductsController extends \BaseController {
 	* Delete a specific product
 	*/
 	public function deleteProduct($id)
-	{	
+	{
 		if( $token = AuthVerifierController::verfiyAccesstoken()){
 			$product = $this->product->where('_id','=',$id)->get()->first();
 			if($product != null){
@@ -309,7 +347,7 @@ class ProductsController extends \BaseController {
 			return Response::json(array(
 				'error' => 'Unauthorized'
 			),401);
-		}	
+		}
 	}
 
 }
