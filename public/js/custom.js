@@ -33,3 +33,4 @@ $(document).ready(function() {
       e.preventDefault();
       $(".alert").alert('close');
   });
+});
