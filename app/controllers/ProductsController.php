@@ -11,7 +11,8 @@ class ProductsController extends \BaseController {
 		'price' => 'required|numeric',
 		'product_image_link' => 'required',
 		'product_description' => 'required',
-		'category' => 'required'
+		'category' => 'required',
+		'subcategory' => 'required'
 		);
 
 
@@ -29,12 +30,38 @@ class ProductsController extends \BaseController {
 	 */
 	public function all()
 	{
-
-			$products = Product::all();
-			return Response::json($products);
+		$products = Product::all();
+		return Response::json($products);
 
 	}
 
+
+	/**
+	*	Get all categories
+	*/	
+	public function getCategories(){
+		$categories = Category::all();
+		return Response::json($categories);
+	}
+
+
+	/*
+	*	Get a single product
+	*
+	*/
+
+	public function getSingleProduct($id){
+		$product = $this->product->where('_id','=',$id)->get()->first();
+		$seller = User::where('username','=',$product->seller_username)->get()->first();
+		$single_product = array_merge($product->toArray(), $seller->toArray());
+		if(count($single_product)<1){
+			return Response::json(array(
+				'error' => 'No products found'
+				));
+		}else{
+			return Response::json($single_product);
+		}
+	}
 
 	/**
 	* 
@@ -43,7 +70,7 @@ class ProductsController extends \BaseController {
 	**/
 
 	public function latestProducts(){
-		$products = Product::orderBy('_id','desc')->take(5)->get();
+		$products = $this->product->orderBy('_id','desc')->take(5)->get();
 		if($products != null){
 			return Response::json($products);
 		}else{
@@ -54,36 +81,147 @@ class ProductsController extends \BaseController {
 	}
 
 
+	/**
+	*	get products by category
+	**/
+	public function getProductsByCategory($category){
+		$products = $this->product->where('category','=',$category)->get();
+		if(count($products)<1){
+			return Response::json(array(
+				'error' => 'No products found'
+				));
+		}else{
+			return Response::json($products);
+		}
+	}
+
+	/**
+	*	get products by subcategory
+	**/
+
+	public function getProductsBySubCategory($subcategory){
+		$products = $this->product->where('subcategory','=',$subcategory)->get();
+		if(count($products)<1){
+			return Response::json(array(
+				'error' => 'No products found'
+				));
+		}else{
+			return Response::json($products);
+		}
+	}
+
+
+
+	/**
+	*	get products by Most Sold Products
+	**/
+	public function getProductsByMostSold(){
+		
+	}
+
+
+	/**
+	*	get products by price range
+	**/
+
+	public function getProductsByPriceRange($lower,$higher){
+		$lower = intval($lower);
+		$higher = intval($higher);
+		$products = $this->product->whereBetween('price',array($lower,$higher))->get();
+		if(count($products)<1){
+			return Response::json(array(
+				'error' => 'No products found'
+				));
+		}else{
+			return Response::json($products);
+		}
+	}
+	/**
+	*	get products by brand
+	**/
+
+	public function getProductsByBrand($brand){
+		$products = $this->product->where('product_brand','=',$brand)->get();
+		if(count($products)<1){
+			return Response::json(array(
+				'error' => 'No products found'
+				));
+		}else{
+			return Response::json($products);
+		}
+	}
+
+
+	/**
+	*	get products by price: High to Low 
+	**/
+
+	public function getProductsByMaxPrice($max){
+		$max = intval($max);
+		$products = $this->product->where('price','<=',$max)->get();
+		if(count($products)<1){
+			return Response::json(array(
+				'error' => 'No products found'
+				));
+		}else{
+			return Response::json($products);
+		}
+	}
+
+	/**
+	*	get products by price: Low to High 
+	**/
+
+	public function getProductsByMinPrice($min){
+		$min = intval($min);
+		$products = $this->product->where('price','>=',$min)->get();
+		if(count($products)<1){
+			return Response::json(array(
+				'error' => 'No products found'
+				));
+		}else{
+			return Response::json($products);
+		}
+	}
+
+
+	/**
+	*	get products by location
+	**/
+	public function getProductsByLocation($location){
+		
+		
+	}
+
 	/*
-	* Updating/creating products
+	* Add products
 	*/
 
 
 	public function addProducts()
 	{
-		$product_data = array(
+
+		if( $token = AuthVerifierController::verfiyAccesstoken()){
+
+			$product_data = array(
 			'product_title' => Input::get('product_title'),
 			'product_brand' => Input::get('product_brand'),
-			'product_category' => array(
-				'category' => Input::get('category'),
-				'subcategory'=> array(
-					Input::get('subcategory')
-					)
-				),
-			'price' => Input::get('price'),
-			'quantity' => Input::get('quantity'),
+			'product_model' => Input::get('product_model'),
+			'seller_username' => $token['user_id'],
+			'sold_count' => 0,
+			'category' => Input::get('category'),
+			'subcategory'=> Input::get('subcategory'),
+			'price' => intval(Input::get('price')),
+			'quantity' => intval(Input::get('quantity')),
 			'product_image_link' => Input::get('product_image_link'),
 			'discount' => Input::get('discount'),
 			'product_description' => Input::get('product_description'),
-			'product_review' => array(
-				'review_text' => Input::get('review_text'),
-				'rating' => Input::get('rating')
-				)
 			);
 
-		if( $token = AuthVerifierController::verfiyAccesstoken()){
 			$validator = Validator::make(Input::all(),$this->rules);
-			if(!$validator->fails() && $this->product->create($product_data)){
+			if(!$validator->fails()){
+				$this->product->create($product_data);
+
 				return Response::json(array(
 					'success' => 'Added successfully!'
 					));
@@ -110,32 +248,27 @@ class ProductsController extends \BaseController {
 		$product_data = array(
 			'product_title' => Input::get('product_title'),
 			'product_brand' => Input::get('product_brand'),
-			'product_category' => array(
-				'category' => Input::get('category'),
-				'subcategory'=> array(
-					Input::get('subcategory')
-					)
-				),
-			'price' => Input::get('price'),
-			'quantity' => Input::get('quantity'),
+			'product_model' => Input::get('product_model'),
+			'category' => Input::get('category'),
+			'subcategory'=> Input::get('subcategory'),
+			'price' => intval(Input::get('price')),
+			'quantity' => intval(Input::get('quantity')),
 			'product_image_link' => Input::get('product_image_link'),
 			'product_description' => Input::get('product_description'),
-			'discount' => Input::get('discount'),
-			'product_review' => array(
-				'review_text' => Input::get('review_text'),
-				'rating' => Input::get('rating')
-				)
+			'discount' => Input::get('discount')
 			);
 
 		if( $token = AuthVerifierController::verfiyAccesstoken()){
+
 			$product = $this->product->where('_id','=',$id)->get()->first();
 			$validator= Validator::make(Input::all(),$this->rules);
+
 			if($validator->fails() || $product === null){
 				return Response::json(array(
 					'error' => $validator->messages()
 					));
 			}else{
-				$this->product->update($product_data);
+				$product->update($product_data);
 				return Response::json(array(
 					'success' => 'Updated successfully'
 					));
@@ -149,34 +282,34 @@ class ProductsController extends \BaseController {
 
 
 
-	/*
-	*	Get a single product
-	*
-	*/
-
-	public function getSingleProduct($id){
-		$product = $this->product->where('_id','=',$id)->get()->first();
-		return Response::json($product);
-	}
+	/**
+	* Update number_of_times_sold field in database
+	**/
 
 
 	/*
 	*
-	*
+	* Delete a specific product
 	*/
-	public function destroy($id)
-	{
-		$product = $this->product->where('_id','=',$id)->get()->first();
-		if($product != null){
-			$this->product->delete();
-			return Response::json(array(
-				'success' => 'Deleted successfully'
-				));
+	public function deleteProduct($id)
+	{	
+		if( $token = AuthVerifierController::verfiyAccesstoken()){
+			$product = $this->product->where('_id','=',$id)->get()->first();
+			if($product != null){
+				$product->delete();
+				return Response::json(array(
+					'success' => 'Deleted successfully'
+					));
+			}else{
+				return Response::json(array(
+					'error' => 'Product not found'
+					));
+			}
 		}else{
 			return Response::json(array(
-				'error' => 'Product not found'
-				));
-		}
+				'error' => 'Unauthorized'
+			),401);
+		}	
 	}
 
 }

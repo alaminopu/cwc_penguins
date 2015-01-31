@@ -8,17 +8,13 @@ class SellerTableSeeder extends Seeder {
 	public function run()
 	{
 		$faker = Faker::create();
-		$users = User::where('username','=','demouser')->get()->first();
-		$product = Product::where('product_title','=','HP Laptop')->get()->first();
-
+		$users = User::where('username','=','opu')->get()->first();
+			Seller::truncate();
 			Seller::create([
-				'user_id' => $users->_id,
- 				'product_id' => $product->_id,
+				'username' => $users->username,
  				'achievement' => 'Elite',
-			 	'seller_review' => array(
-			 		'review_text' => $faker->text(),
-			 		'rating' => '4.5'
-			 		),
+			 	'review_text' => array($faker->text()),
+			 	'rating' => 4.5,
 			 	'followers' => ''
 			]);
 

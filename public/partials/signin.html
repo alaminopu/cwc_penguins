@@ -85,9 +85,10 @@
               </div>
 
               <div class="form-control-wrapper">
-                <input type="text" required="" name="regUname" class="form-control empty" ng-model="regusername" placeholder="Username">
+                <input type="text" minlength="3" required="" name="regUname" class="form-control empty" ng-model="regusername" placeholder="Username">
                 <p class="error"> {{ error['username'][0] }} </p>
                 <div ng-show="signup.$submitted || signup.regUname.$touched">
+                  <p ng-show="signup.regUname.$error.minlength" class="error">Username must be at least 3 character</p>
                   <p ng-show="signup.regUname.$error.required" class="error">Username can't be empty</p>
                 </div>
               </div>
@@ -109,7 +110,7 @@
                   <p ng-show="signup.regUemail.$error.required" class="error">Password can't be blank.</p>
                 </div>
               </div>
-				
+
               <button ng-disabled="signup.$invalid" class="btn btn-primary">
               	<input type="submit" value="Sign Up">
               </button>

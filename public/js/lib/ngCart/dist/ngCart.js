@@ -44,7 +44,7 @@ angular.module('ngCart', ['ngCart.directives'])
 
             if (typeof inCart === 'object'){
                 //Update quantity of an item if it's already in the cart
-                inCart.setQuantity(quantity, false);
+                inCart.setQuantity(quantity, true);
             } else {
                 var newItem = new ngCartItem(id, name, price, quantity, data);
                 this.$cart.items.push(newItem);
@@ -107,6 +107,17 @@ angular.module('ngCart', ['ngCart.directives'])
             var items = this.getItems();
             angular.forEach(items, function (item) {
                 count += item.getQuantity();
+            });
+            return count;
+        };
+
+        this.getTotalItemsById = function (itemId) {
+            var count = 0;
+            var items = this.getItems();
+            angular.forEach(items, function (item) {
+                if(item.getId() == itemId){
+                  count = item.getQuantity();
+                }
             });
             return count;
         };

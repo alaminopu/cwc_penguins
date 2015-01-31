@@ -74,6 +74,7 @@ profile.controller('ProfileController', ['$scope','$window','$location','Resourc
           // Password update
           $scope.passData = [];
           $scope.updatePassword = function(){
+            $scope.passErrorMsg = '';
             $scope.passData['old_password'] = $scope.profileOldPass;
             $scope.passData['new_password'] = $scope.profileNewPass;
 
@@ -91,12 +92,33 @@ profile.controller('ProfileController', ['$scope','$window','$location','Resourc
             })
           }
 
+          // Seller profile data
+          var sellerData = Resource.getData($window.localStorage.access_token, 'profile/seller');
+          sellerData.success(function(data){
+              $scope.sellerData = data;
+          });
+          sellerData.error(function(data){
+              $scope.sellerNoData = data.error;
+          });
+
+          // Buyer profile data
+          var buyerData = Resource.getData($window.localStorage.access_token, 'profile/buyer');
+          buyerData.success(function(data){
+              $scope.buyerData = data;
+          });
+          buyerData.error(function(data){
+              $scope.buyerNoData = data.error;
+          });
+
+
+
           $scope.signout = function(){
               delete $window.localStorage.access_token;
               $location.path('/');
           }
 
       }else{
+        console.log('No access token');
         $location.path('/');
       }
 }]);
