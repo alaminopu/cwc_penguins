@@ -16,4 +16,71 @@
 
 <div class="wrapper col-md-12">
 	<h3>Add your product</h3>
+
+	<form ng-submit="addProduct()" name="addproduct" novalidate>
+		<div class="profile-info row">
+			<label class="col-md-2 col-md-offset-2" for="add-product-title">Product Title</label>
+			<input class="col-md-4" maxlength="15" name="add-product-title" type="text">
+			<div class="col-md-4">
+				<span class="error"> </span>
+			</div>
+		</div>
+
+		<div class="profile-info row">
+			<label class="col-md-2 col-md-offset-2" for="add-product-brand">Brand</label>
+			<input class="col-md-4" maxlength="15" name="add-product-brand" type="text">
+			<div class="col-md-4">
+				<span class="error"> </span>
+			</div>
+		</div>
+
+		<div class="profile-info row">
+			<label class="col-md-2 col-md-offset-2" for="add-product-model">Model</label>
+			<input class="col-md-4" maxlength="15" name="add-product-model" type="text">
+			<div class="col-md-4">
+				<span class="error"> </span>
+			</div>
+		</div>
+
+		<div class="profile-info row">
+			<label class="col-md-2 col-md-offset-2" for="add-product-quantity">Quantity</label>
+			<input class="col-md-4" maxlength="15" name="add-product-quantity" type="text">
+			<div class="col-md-4">
+				<span class="error"> </span>
+			</div>
+		</div>
+		<div class="profile-info row">
+			<label class="col-md-2 col-md-offset-2" for="add-product-price">Price</label>
+			<input class="col-md-4" maxlength="15" name="add-product-price" type="text">
+			<div class="col-md-4">
+				<span class="error"> </span>
+			</div>
+		</div>
+
+		<div class="profile-info row">
+			<label class="col-md-2 col-md-offset-2" for="add-product-image">Upload images</label>
+			<input class="col-md-4" required type="file" name="add-product-image[]" accept="image/*">
+			<input class="product-image-input col-md-4 col-md-offset-4" required type="file" name="add-product-image[]" accept="image/*">
+			<input class="product-image-input col-md-4 col-md-offset-4" required type="file" name="add-product-image[]" accept="image/*">
+			<div class="col-md-4">
+				<span class="error"> </span>
+			</div>
+		</div>
+		
+		<div class="profile-info row">
+			<label class="col-md-2 col-md-offset-2" for="add-product-description">Description</label>
+			<textarea class="col-md-4" name="add-product-description"> </textarea>
+			<div class="col-md-4">
+				<span class="error"> </span>
+			</div>
+		</div>
+
+		<div class="row profile-info">
+			<div class="col-md-2 col-md-offset-5">
+				<button class="btn btn-primary" ng-disabled="addproduct.$invalid">
+					<input type="submit" value="Add My Product">
+				</button>
+			</div>
+		</div>
+	</form>
 </div>
