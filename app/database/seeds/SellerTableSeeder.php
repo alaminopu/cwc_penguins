@@ -11,11 +11,10 @@ class SellerTableSeeder extends Seeder {
 		$users = User::where('username','=','opu')->get()->first();
 			Seller::truncate();
 			Seller::create([
-				'username' => $users->username,
- 				'achievement' => 'Elite',
+				'seller_username' => $users->username,
+ 				'achievement' => '',
 			 	'review_text' => array($faker->text()),
-			 	'rating' => 4.5,
-			 	'followers' => ''
+			 	'rating' => 4.5
 			]);
 
 	}
