@@ -22,24 +22,17 @@
 
 			<select class="form-control" id="category"
 				ng-options="cat.category for cat in categories"
-				ng-change="categoryProductSelect(item)"
-				ng-model="categorySelect"
-				>
-				<!-- <option value="electronics">electronics</option>
-				<option value="furniture">furniture</option>
-				<option value="dress">dress</option>
-				<option value="vehicle">vehicle</option> -->
+				ng-change="categoryProductSelect(categorySelect)"
+				ng-model="categorySelect">
+				<option value="">Select Category</option>
 			</select>
 
 			<select class="form-control" id="sub-category"
 			ng-model="subCategorySelect"
-			ng-change="subCategoryProductSelect()"
-			ng-options="subcategory for subcat in categories.subcategory"
+			ng-change="subCategoryProductSelect(subCategorySelect)"
+			ng-options="subcat for subcat in subcategories"
 			>
-				<!-- <option value="sub">sub-category 1</option>
-				<option value="sub">sub-category 2</option>
-				<option value="sub">sub-category 3</option>
-				<option value="sub">sub-category 4</option> -->
+			<option value="">Select Sub-category</option>
 			</select>
 		</div>
 
@@ -111,7 +104,7 @@
 
 				<div class="col-md-12">
 					<div class="col-md-5 product-price">
-						<h3 class="text-center">&#2547;2290</h3>
+						<h3 class="text-center">&#2547;{{ item.price }}</h3>
 					</div>
 					<div class="col-md-7">
 						<div class="brand-name">

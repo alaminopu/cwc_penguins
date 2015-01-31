@@ -12,12 +12,24 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
     });
 
     // get iteam by category
-    var categoryProductSelect = function(item){
-      console.log(item);
-      var items = PublicContent.getProductData('products/category/'+$scope.categorySelect);
+    $scope.categoryProductSelect = function(item){
+      //console.log(item.category);
+      $scope.subcategories = $scope.categorySelect.subcategory;
+      var items = PublicContent.getProductData('products/category/'+item.category);
       items.success(function(data){
         $scope.items= data;
         //console.log($scope.items);
+      });
+      items.error(function(data){
+        $scope.noitems = "Nothing match in this criteria";
+      });
+    }
+
+    // Get item by subcategory
+    $scope.subCategoryProductSelect= function(item){
+      var items = PublicContent.getProductData('products/subcategory/'+item);
+      items.success(function(data){
+        $scope.items= data;
       });
       items.error(function(data){
         $scope.noitems = "Nothing match in this criteria";
