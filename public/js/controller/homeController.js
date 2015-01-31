@@ -8,6 +8,7 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
       //console.log($scope.items);
     });
     items.error(function(data){
+      console.log(data);
       $scope.noitems = "Nothing match in this criteria";
     });
 
@@ -36,12 +37,78 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
       });
     }
 
+    // product by price range
+    $scope.getProductByPrice = function(price){
+      var divider = price.split(',');
+      var temp;
+      if(divider[0]>divider[1]){
+        temp = divider[0];
+        divider[0]=divider[1];
+        divider[1]=temp;
+      }
+      console.log(divider);
+      var items = PublicContent.getProductData('products/range/'+divider[0]+'/'+divider[1]);
+      items.success(function(data){
+        $scope.items= data;
+        console.log(data.error);
+      });
+      items.error(function(data){
+        $scope.noitems = "Nothing match in this criteria";
+      });
+    }
+
+    // product by Brand
+    $scope.brands = {Sony:false, Apple: false, Microsoft:false,Asus:false,BMW:false,Aarong:false};
+    $scope.getProductByBrand = function(productByBrand){
+      for(var key in $scope.brands ){
+        if(key == productByBrand){
+          $scope.brands[key] = true;
+        }else{
+          $scope.brands[key] = false;
+        }
+      }
+      var items = PublicContent.getProductData('products/brand/'+productByBrand);
+      items.success(function(data){
+        $scope.items= data;
+      });
+      items.error(function(data){
+        $scope.noitems = "Nothing match in this criteria";
+      });
+    }
+
+
+    // get data by location
+    $scope.locationData=['Dhaka','Chittagong','Comilla','Sylhet','Barisal'];
+    $scope.getDataBylocation = function(locationFilter){
+        console.log(locationFilter);
+        var items = PublicContent.getProductData('products/location/'+locationFilter);
+        items.success(function(data){
+          $scope.items= data;
+          console.log(data.error);
+        });
+        items.error(function(data){
+          $scope.noitems = "Nothing match in this criteria";
+        });
+    }
+
+    // get most sold items
+    $scope.getMostSoldProduct = function(){
+      // var items = PublicContent.getProductData('products/most_sold');
+      // items.success(function(data){
+      //   $scope.items= data;
+      //   console.log(data.error);
+      // });
+      // items.error(function(data){
+      //   $scope.noitems = "Nothing match in this criteria";
+      // });
+    }
+
     // get all categories
     var category = PublicContent.getProductData('products/categories');
     category.success(function(data){
       $scope.categories= data;
       //console.log(data);
-    })
+    });
 
 
 

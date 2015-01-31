@@ -38,7 +38,7 @@ class ProductsController extends \BaseController {
 
 	/**
 	*	Get all categories
-	*/	
+	*/
 	public function getCategories(){
 		$categories = Category::all();
 		return Response::json($categories);
@@ -52,7 +52,7 @@ class ProductsController extends \BaseController {
 
 	public function getSingleProduct($id){
 		$product = $this->product->where('_id','=',$id)->get()->first();
-		$seller = Seller::where('username','=',$product->seller_username)->get()->first(); 
+		$seller = Seller::where('username','=',$product->seller_username)->get()->first();
 		$single_product = array_merge($product->toArray(), $seller->toArray());
 		if(count($single_product)<1){
 			return Response::json(array(
@@ -64,8 +64,8 @@ class ProductsController extends \BaseController {
 	}
 
 	/**
-	* 
-	*	Get the latest 5 products for Home Page	
+	*
+	*	Get the latest 5 products for Home Page
 	*
 	**/
 
@@ -145,7 +145,7 @@ class ProductsController extends \BaseController {
 
 
 	/**
-	*	get products by price: High to Low 
+	*	get products by price: High to Low
 	**/
 
 	// public function getProductsByMaxPrice($max){
@@ -160,8 +160,8 @@ class ProductsController extends \BaseController {
 	// 	}
 	// }
 
-	/**    
-	*	get products by price: Low to High 
+	/**
+	*	get products by price: Low to High
 	**/
 
 	public function getProductsByPrice($sort){
@@ -179,16 +179,16 @@ class ProductsController extends \BaseController {
 	/**
 	*	Get Products by Most sold items
 	**/
-	public function getProductsByMostSold(){
-		$products => $this->product->orderBy('sold_count','desc')->get();
-		if(count($products)<1){
-			return Response::json(array(
-				'error' => 'No products found',
-				));
-		}else{
-			return Response::json($products);
-		}
-	}
+	// public function getProductsByMostSold(){
+	// 	$products => $this->product->orderBy('sold_count','desc')->get();
+	// 	if(count($products)<1){
+	// 		return Response::json(array(
+	// 			'error' => 'No products found',
+	// 			));
+	// 	}else{
+	// 		return Response::json($products);
+	// 	}
+	// }
 
 
 	/**
@@ -199,7 +199,7 @@ class ProductsController extends \BaseController {
 		if(count($users)>0){
 			$products = array();
 			foreach ($users as $user) {
-				$products = $this->product->where('seller_username','=',$user->username)->get();	
+				$products = $this->product->where('seller_username','=',$user->username)->get();
 			}
 			if($products === null){
 				return Response::json(array(
@@ -213,7 +213,7 @@ class ProductsController extends \BaseController {
 				'error' => 'No products found!'
 				));
 		}
-		
+
 	}
 
 	/**
@@ -268,12 +268,12 @@ class ProductsController extends \BaseController {
 					'error' => $validator->messages()
 					));
 			}
-			
+
 		}else{
 			return Response::json(array(
 					'error' => 'Unauthorized'
 				),401);
-		}		
+		}
 	}
 
 
@@ -315,7 +315,7 @@ class ProductsController extends \BaseController {
 			return Response::json(array(
 				'error' => 'Unauthorized'
 			),401);
-		}	
+		}
 	}
 
 
@@ -330,7 +330,7 @@ class ProductsController extends \BaseController {
 	* Delete a specific product
 	*/
 	public function deleteProduct($id)
-	{	
+	{
 		if( $token = AuthVerifierController::verfiyAccesstoken()){
 			$product = $this->product->where('_id','=',$id)->get()->first();
 			if($product != null){
@@ -347,7 +347,7 @@ class ProductsController extends \BaseController {
 			return Response::json(array(
 				'error' => 'Unauthorized'
 			),401);
-		}	
+		}
 	}
 
 }
