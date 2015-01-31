@@ -3,6 +3,6 @@ use Jenssegers\Mongodb\Model as Eloquent;
 
 
 class Seller extends Eloquent {
-	protected $fillable = ['username','product_id','achievement','seller_review','review_text','rating'];
+	protected $fillable = ['seller_username','achievement','review_text','rating'];
 	protected $table = 'seller';
 }

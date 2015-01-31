@@ -9,15 +9,13 @@ class BuyerTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 		$users = User::where('username','=','opu')->get()->first();
-		$product = Product::where('product_title','=','asus laptop')->get()->first();
+		$product = Product::where('seller_username','=','anis')->get()->first();
 
 			Buyer::truncate();
 			Buyer::create([
-				'username' => $users->username,
-				'buying_items' => array($product->_id),
-				'wishlist' => array(),
- 				'following' => ''
-
+				'buyer_username' => $users->username,
+				'purchased_items' => array($product->_id),
+				'wishlist' => array()
 			]);
 	}
 

@@ -18,9 +18,8 @@ app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpPro
 		when('/thanks', {
 			templateUrl: 'public/partials/thanks.html',
 		}).
-		when('/products', {
-			templateUrl: 'public/partials/products.html',
-			controller: 'ProductController'
+		when('/product', {
+			templateUrl: 'public/partials/product.html',
 		}).
 		when('/cart', {
 			templateUrl: 'public/partials/cart.html',
