@@ -31,8 +31,13 @@ body{
 	width: 90%;
 }
 
+#wrapperH{
+	background-color: #fff;
+}
+
 .wrapper{
 	background-color: #fff;
+	padding-top: 30px;
 }
 
 /*Header style*/
@@ -171,13 +176,12 @@ body{
 
 /*Home page*/
 .home-list-view{
-	background: #F2F2F2;
-	padding-left: 0;
+  padding-left: 0;
 }
 
 .home-list-view .filters{
-	background: #fff;
 	padding-top: 40px;
+	background: #fff;
 }
 
 .filters h2{
@@ -188,6 +192,11 @@ body{
 
 .filters h4{
 	color: #008478;
+}
+
+.product-view{
+	background: #eee;
+	padding-top: 20px;
 }
 
 .price-range{

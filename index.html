@@ -2,17 +2,21 @@
 <html ng-app="penguinsApp" ng-controller="MainController">
 <head>
   <title> {{ Page.title() }} </title>
+  <!-- Tikslus Carousel slider CSS -->
+  <link rel="stylesheet" href="public/css/jquery-slider.css">
+  <!-- Libraries -->
   <link rel="stylesheet" href="public/css/bootstrap.min.css">
   <link rel="stylesheet" href="public/css/ripples.min.css">
   <link rel="stylesheet" href="public/css/material-wfont.min.css">
   <link rel="stylesheet" href="public/css/font-awesome.min.css">
   <link rel="stylesheet" href="public/css/bootstrap-social.css">
   <link rel="stylesheet" href="public/css/jquery.range.css">
+  <!-- Custom CSS for this application -->
   <link rel="stylesheet" href="public/css/app.css">
 
 </head>
 <body class="col-centered">
-  <div class="wrapper row" id="wrapperH">
+  <div class="row" id="wrapperH">
 
     <div ng-view></div>
 
@@ -58,6 +62,9 @@
   <script src="public/js/lib/ripples.min.js"></script>
   <script src="public/js/lib/material.min.js"></script>
   <script src="public/js/lib/jquery.range-min.js"></script>
+  <script src="public/js/lib/jquery-slider/jquery.jcarousel.min.js"></script>
+  <script src="public/js/lib/jquery-slider/jquery.pikachoose.min.js"></script>
+  <script src="public/js/lib/jquery-slider/jquery.touchwipe.min.js"></script>
   <script src="public/js/app.js"></script>
   <script src="public/js/custom.js"></script>
 </body>

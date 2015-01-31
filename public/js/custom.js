@@ -18,6 +18,12 @@ $(document).arrive(".price-range", function() {
   });
 });
 
+
+$(document).arrive(".dang", function() {
+	var $slider = $(this);
+  	$("#pikame").PikaChoose();
+});
+
 $(document).ready(function() {
   // Bootstrap material initialization
   $.material.init();
@@ -27,5 +33,3 @@ $(document).ready(function() {
       e.preventDefault();
       $(".alert").alert('close');
   });
-
-});
