@@ -111,15 +111,6 @@ class ProductsController extends \BaseController {
 	}
 
 
-
-	/**
-	*	get products by Most Sold Products
-	**/
-	public function getProductsByMostSold(){
-		
-	}
-
-
 	/**
 	*	get products by price range
 	**/
@@ -157,9 +148,24 @@ class ProductsController extends \BaseController {
 	*	get products by price: High to Low 
 	**/
 
-	public function getProductsByMaxPrice($max){
-		$max = intval($max);
-		$products = $this->product->where('price','<=',$max)->get();
+	// public function getProductsByMaxPrice($max){
+	// 	$max = intval($max);
+	// 	$products = $this->product->where('price','<=',$max)->get();
+	// 	if(count($products)<1){
+	// 		return Response::json(array(
+	// 			'error' => 'No products found'
+	// 			));
+	// 	}else{
+	// 		return Response::json($products);
+	// 	}
+	// }
+
+	/**    
+	*	get products by price: Low to High 
+	**/
+
+	public function getProductsByPrice($sort){
+		$products = $this->product->orderBy('price',$sort)->get();
 		if(count($products)<1){
 			return Response::json(array(
 				'error' => 'No products found'
@@ -169,16 +175,15 @@ class ProductsController extends \BaseController {
 		}
 	}
 
-	/**
-	*	get products by price: Low to High 
-	**/
 
-	public function getProductsByMinPrice($min){
-		$min = intval($min);
-		$products = $this->product->where('price','>=',$min)->get();
+	/**
+	*	Get Products by Most sold items
+	**/
+	public function getProductsByMostSold(){
+		$products => $this->product->orderBy('sold_count','desc')->get();
 		if(count($products)<1){
 			return Response::json(array(
-				'error' => 'No products found'
+				'error' => 'No products found',
 				));
 		}else{
 			return Response::json($products);
