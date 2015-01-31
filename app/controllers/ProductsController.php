@@ -52,7 +52,12 @@ class ProductsController extends \BaseController {
 
 	public function getSingleProduct($id){
 		$product = $this->product->where('_id','=',$id)->get()->first();
-		$seller = Seller::where('username','=',$product->seller_username)->get()->first(); 
+		$seller = Seller::where('seller_username','=',$product->seller_username)->get()->first(); 
+		if(count($seller)<1){
+			return Response::json(array(
+				'error' => 'User not found'
+				));
+		}
 		$single_product = array_merge($product->toArray(), $seller->toArray());
 		if(count($single_product)<1){
 			return Response::json(array(
@@ -180,7 +185,7 @@ class ProductsController extends \BaseController {
 	*	Get Products by Most sold items
 	**/
 	public function getProductsByMostSold(){
-		$products => $this->product->orderBy('sold_count','desc')->get();
+		$products = $this->product->orderBy('sold_count','desc')->where('sold_count','!=',0)->get();
 		if(count($products)<1){
 			return Response::json(array(
 				'error' => 'No products found',
@@ -189,6 +194,17 @@ class ProductsController extends \BaseController {
 			return Response::json($products);
 		}
 	}
+
+
+	/**
+	*	Update sold_count field
+	**/
+	// public function updateSoldCount($product_id){
+	// 	$product = $this->product->where('_id','=','54cc815f4387672806000034')->get()->first();
+	// 	var_dump($product);
+	// 	die();
+	// 	return $product->increments('sold_count');
+	// }
 
 
 	/**
@@ -246,12 +262,11 @@ class ProductsController extends \BaseController {
 			'product_brand' => strtolower(Input::get('product_brand')),
 			'product_model' => Input::get('product_model'),
 			'seller_username' => $token['user_id'],
-			'sold_count' => 0,
 			'category' => Input::get('category'),
 			'subcategory'=> Input::get('subcategory'),
 			'price' => intval(Input::get('price')),
 			'quantity' => intval(Input::get('quantity')),
-			'product_image_link' => Input::get('product_image_link'),
+			'product_image_link' => array(Input::get('product_image_link')),
 			'discount' => Input::get('discount'),
 			'product_description' => Input::get('product_description'),
 			);
@@ -291,7 +306,7 @@ class ProductsController extends \BaseController {
 			'subcategory'=> Input::get('subcategory'),
 			'price' => intval(Input::get('price')),
 			'quantity' => intval(Input::get('quantity')),
-			'product_image_link' => Input::get('product_image_link'),
+			'product_image_link' => array(Input::get('product_image_link')),
 			'product_description' => Input::get('product_description'),
 			'discount' => Input::get('discount')
 			);

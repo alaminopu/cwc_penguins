@@ -26,19 +26,17 @@ Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
 
   Route::get('profile', 'ProfileController@getUserProfile');
   Route::get('profile/seller','ProfileController@getSellerProfile');
-   Route::get('profile/buyer','ProfileController@getBuyerProfile');
+  Route::get('profile/buyer','ProfileController@getBuyerProfile');
   Route::post('profile/update/personal-info','ProfileController@updateUserData');
   Route::post('profile/update/address','ProfileController@updateAddress');
   Route::post('profile/delete','ProfileController@removeUser');
   Route::post('profile/update/password','ProfileController@updateUserPassword');
 
-
-
   Route::post('products/add','ProductsController@addProducts');
   Route::post('products/update/{id}','ProductsController@updateProducts');
   Route::post('products/delete/{id}','ProductsController@deleteProduct');
 
-
+  Route::post('products/order/{id}','OrdersController@addOrder');
 
 });
 
