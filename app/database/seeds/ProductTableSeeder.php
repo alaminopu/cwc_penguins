@@ -136,7 +136,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]); 
+				]);
 
 			Product::create([
 					'product_title' => 'mitsubishi pajero platinum',
@@ -152,7 +152,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]); 
+				]);
 
 			Product::create([
 					'product_title' => 'honda_scooter',
@@ -168,7 +168,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]); 		       
+				]);
 
 			Product::create([
 					'product_title' => 'suzuki motorbike',
@@ -184,7 +184,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]); 	    
+				]);
 
 			Product::create([
 					'product_title' => 'yamaha',
@@ -216,7 +216,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 4.5
-				]);	
+				]);
 
 			Product::create([
 					'product_title' => 'sports field adidas',
@@ -232,7 +232,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);		
+				]);
 
 			Product::create([
 					'product_title' => 'incentive farmasi',
@@ -248,7 +248,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);		
+				]);
 
 			Product::create([
 					'product_title' => 'intimately',
@@ -264,7 +264,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
+				]);
 
 			Product::create([
 					'product_title' => 'hugo boss',
@@ -280,8 +280,8 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 4.8
-				]);	
-	 
+				]);
+
 	        Product::create([
 					'product_title' => 'bonnie jean dress',
 					'seller_username' => 'anis',
@@ -312,7 +312,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
+				]);
 
 			Product::create([
 					'product_title' => 'formal kids dress',
@@ -328,7 +328,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 4.9
-				]);		
+				]);
 
             Product::create([
 					'product_title' => 'formal kids dress pink',
@@ -344,7 +344,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
+				]);
 
             Product::create([
 					'product_title' => 'causal pants',
@@ -360,7 +360,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
+				]);
 
             Product::create([
 					'product_title' => 'formal pants',
@@ -376,7 +376,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	            
+				]);
 
             Product::create([
 					'product_title' => 'gabadin pants',
@@ -392,7 +392,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	  
+				]);
 
             Product::create([
 					'product_title' => 'blue jeans',
@@ -408,7 +408,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
+				]);
 
             Product::create([
 					'product_title' => 'narrow fit',
@@ -424,7 +424,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
+				]);
 
             Product::create([
 					'product_title' => 'formal shirt',
@@ -440,8 +440,8 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 4.5
-				]);	
- 
+				]);
+
             Product::create([
 					'product_title' => 'khaki pants',
 					'seller_username' => 'shovon',
@@ -456,7 +456,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	           
+				]);
 
 			Product::create([
 					'product_title' => 'light cyan silk saree',
@@ -472,8 +472,8 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
-  
+				]);
+
             Product::create([
 					'product_title' => 'purple silk saree',
 					'seller_username' => 'anis',
@@ -505,7 +505,7 @@ class ProductTableSeeder extends Seeder {
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
 				]);
-            
+
             Product::create([
 					'product_title' => 'red silk saree',
 					'seller_username' => 'anis',
@@ -568,7 +568,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
+				]);
 
             Product::create([
 					'product_title' => 'creative headphone',
@@ -584,7 +584,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
+				]);
 
 			Product::create([
 					'product_title' => 'google nexus',
@@ -600,7 +600,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);		
+				]);
 
 			Product::create([
 					'product_title' => 'htc one',
@@ -616,7 +616,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);		
+				]);
 
 			Product::create([
 					'product_title' => 'lg optimus',
@@ -632,7 +632,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);		
+				]);
 
 			Product::create([
 					'product_title' => 'lumia-535',
@@ -648,8 +648,8 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 4
-				]);		
-            
+				]);
+
             Product::create([
 					'product_title' => 'puma cricket bat',
 					'seller_username' => 'shovon',
@@ -680,7 +680,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);		
+				]);
 
 			Product::create([
 					'product_title' => 'cricket halmet',
@@ -696,7 +696,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
+				]);
 
 			Product::create([
 					'product_title' => 'football boots',
@@ -712,7 +712,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
+				]);
 
             Product::create([
 					'product_title' => 'soccer',
@@ -728,7 +728,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);					
+				]);
 
             Product::create([
 					'product_title' => 'bd WC jersey',
@@ -744,7 +744,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
+				]);
 
 			Product::create([
 					'product_title' => 'messi jersey',
@@ -760,7 +760,7 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);		
+				]);
 
             Product::create([
 					'product_title' => 'neymar jersey',
@@ -776,4 +776,6 @@ class ProductTableSeeder extends Seeder {
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
 				 	'rating' => 5
-				]);	
+				]);
+		}
+	}
