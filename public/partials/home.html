@@ -20,18 +20,26 @@
 			<h2 class="text-center">Filters</h2>
 			<h4><i class="mdi-action-assessment"></i> Categories</h4>
 
-			<select class="form-control" name="categorySelect" id="category">
-				<option value="electronics">electronics</option>
+			<select class="form-control" id="category"
+				ng-options="cat.category for cat in categories"
+				ng-change="categoryProductSelect(item)"
+				ng-model="categorySelect"
+				>
+				<!-- <option value="electronics">electronics</option>
 				<option value="furniture">furniture</option>
 				<option value="dress">dress</option>
-				<option value="vehicle">vehicle</option>
+				<option value="vehicle">vehicle</option> -->
 			</select>
 
-			<select class="form-control" name="subCategorySelect" id="sub-category">
-				<option value="sub">sub-category 1</option>
+			<select class="form-control" id="sub-category"
+			ng-model="subCategorySelect"
+			ng-change="subCategoryProductSelect()"
+			ng-options="subcategory for subcat in categories.subcategory"
+			>
+				<!-- <option value="sub">sub-category 1</option>
 				<option value="sub">sub-category 2</option>
 				<option value="sub">sub-category 3</option>
-				<option value="sub">sub-category 4</option>
+				<option value="sub">sub-category 4</option> -->
 			</select>
 		</div>
 

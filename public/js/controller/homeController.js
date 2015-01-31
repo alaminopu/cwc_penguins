@@ -5,11 +5,31 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
     var items = PublicContent.getProductData('products/latest');
     items.success(function(data){
       $scope.items= data;
-      console.log($scope.items);
+      //console.log($scope.items);
     });
     items.error(function(data){
       $scope.noitems = "Nothing match in this criteria";
     });
+
+    // get iteam by category
+    var categoryProductSelect = function(item){
+      console.log(item);
+      var items = PublicContent.getProductData('products/category/'+$scope.categorySelect);
+      items.success(function(data){
+        $scope.items= data;
+        //console.log($scope.items);
+      });
+      items.error(function(data){
+        $scope.noitems = "Nothing match in this criteria";
+      });
+    }
+
+    // get all categories
+    var category = PublicContent.getProductData('products/categories');
+    category.success(function(data){
+      $scope.categories= data;
+      //console.log(data);
+    })
 
 
 
