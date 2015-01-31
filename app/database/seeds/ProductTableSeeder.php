@@ -54,7 +54,7 @@ class ProductTableSeeder extends Seeder {
 	 				'subcategory' => 'women',
 				 	'quantity' => 100,
 				 	'price' => 1500,
-				 	'product_image_link' => 'public/imgs/products/dresswomendress/anarkoli/Aarong_anarkoli_black.jpg',
+				 	'product_image_link' => 'public/imgs/products/dress/womendress/anarkoli/Aarong_anarkoli_black.jpg',
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'review_text' => array($faker->text()),
@@ -147,7 +147,7 @@ class ProductTableSeeder extends Seeder {
 				 	'rating' => 5,
 				 	'sold_count' => 0
 				]);
-					
+
 
 			Product::create([
 					'seller_username' => 'opu',

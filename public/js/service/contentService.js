@@ -8,29 +8,25 @@ content.factory('Page', function(){
   };
 
 });
-
+content.filter('range', function() {
+  return function(input, total) {
+    total = parseInt(total);
+    for (var i=0; i<total; i++)
+      input.push(i);
+    return input;
+  };
+});
 
 content.factory('PublicContent', ['$http', '$rootScope', function($http, $rootScope){
   return {
-    getAllLatestProducts: function(uri){
+    getProductData: function(uri){
       var data = $http({
         method:'GET',
-        url:'public/products/latest',
+        url:'public/'+uri,
       });
 
       return data;
-    },
-    getCategories: function(){
-      var data = $http({
-        method:'GET',
-        url:'public/categories',
-      });
-
-      return data;
-    },
-
-    
-
+    }
 
   }
 

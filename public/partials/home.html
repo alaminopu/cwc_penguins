@@ -19,22 +19,23 @@
 		<div class="filter">
 			<h2 class="text-center">Filters</h2>
 			<h4><i class="mdi-action-assessment"></i> Categories</h4>
-			
-			<select class="form-control" name="categorySelect" id="category">
-				<option value="electronics">electronics</option>
-				<option value="furniture">furniture</option>
-				<option value="dress">dress</option>
-				<option value="vehicle">vehicle</option>
+
+			<select class="form-control" id="category"
+				ng-options="cat.category for cat in categories"
+				ng-change="categoryProductSelect(categorySelect)"
+				ng-model="categorySelect">
+				<option value="">Select Category</option>
 			</select>
 
-			<select class="form-control" name="subCategorySelect" id="sub-category">
-				<option value="sub">sub-category 1</option>
-				<option value="sub">sub-category 2</option>
-				<option value="sub">sub-category 3</option>
-				<option value="sub">sub-category 4</option>
+			<select class="form-control" id="sub-category"
+			ng-model="subCategorySelect"
+			ng-change="subCategoryProductSelect(subCategorySelect)"
+			ng-options="subcat for subcat in subcategories"
+			>
+			<option value="">Select Sub-category</option>
 			</select>
 		</div>
-		
+
 		<div class="filter">
 			<h4><i class="mdi-action-assessment"></i> By Brands</h4>
 			<div class="checkbox">
@@ -96,33 +97,45 @@
 
 	</div>
 	<div class="row col-md-10 product-view">
-		<div class="col-md-4 single-product" ng-repeat="latestProduct in latestProducts">
+		<div class="col-md-4 single-product" ng-repeat="item in items">
 			<div class="col-md-12 sample">
-				<h4 class="text-center">{{ latestProduct.product_title }}</h4>
-				<img class="img-responsive product-img" ng-src="{{ latestProduct.product_image_link }}" />
-				
+				<h4 class="text-center">{{ item.product_title }}</h4>
+				<img class="img-responsive product-img" ng-src="{{ item.product_image_link }}" />
+
 				<div class="col-md-12">
 					<div class="col-md-5 product-price">
-						<h3 class="text-center">&#2547;2290</h3>
+						<h3 class="text-center">&#2547;{{ item.price }}</h3>
 					</div>
 					<div class="col-md-7">
 						<div class="brand-name">
 							<span class="property col-md-4">Brand: </span>
-							<span class="value col-md-8">SONY</span>
+							<span class="value col-md-8">{{ item.product_brand }}</span>
 						</div>
 						<div class="seller-name">
 							<span class="property col-md-4">Seller: </span>
-							<span class="value col-md-8">Abul Mia</span>
+							<span class="value col-md-8">
+								<a href="#/profile/{{ item.seller_username }}">
+									{{ item.seller_username }}
+								</a>
+							</span>
 						</div>
 						<div class="product-reviews">
 							<span class="property col-md-4">Rating: </span>
-							<span class="value col-md-8">*****</span>
+							<span class="value col-md-8">
+								<div class="rating">
+										<span  ng-repeat="n in [] | range:5">☆</span>
+										<!-- <span>☆</span>
+										<span>☆</span>
+										<span>☆</span>
+										<span>☆</span> -->
+								</div>
+							</span>
 						</div>
 					</div>
 				</div>
-				<ngcart-addtocart class="col-md-10" id="{{ latestProduct._id }}"
-				name="{{ latestProduct.product_title }}" price="{{ latestProduct.price }}"
-				quantity="1" quantity-max="{{ latestProduct.quantity }}" data="latestProduct">
+				<ngcart-addtocart class="col-md-10" id="{{ item._id }}"
+				name="{{ item.product_title }}" price="{{ item.price }}"
+				quantity="1" quantity-max="{{ item.quantity }}" data="item">
 				Add to cart</ngcart-addtocart>
 				<a class="add-to-wishlist-button" href=""><i class="mdi-action-favorite-outline"></i></a>
 			</div>

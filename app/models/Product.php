@@ -6,4 +6,5 @@ class Product extends Eloquent {
 							'price','product_image_link','category'
 							,'product_description','subcategory','seller_username','sold_count','discount'];
 	protected $table = 'products';
+
 }
