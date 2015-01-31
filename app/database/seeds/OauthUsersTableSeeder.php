@@ -61,7 +61,7 @@ class OauthUsersTableSeeder extends Seeder {
 			 		'street_name' => 'panir tank road',
 			 		'road_no' => '21',
 			 		'post_code' => '1216',
-			 		'city' => 'Dhaka',
+			 		'city' => 'Chittagong',
 			 		'country' => 'Bangladesh'
 			 		),
 			 	'payment' => array('bkash','visa','debit')

@@ -52,7 +52,7 @@ class ProductsController extends \BaseController {
 
 	public function getSingleProduct($id){
 		$product = $this->product->where('_id','=',$id)->get()->first();
-		$seller = User::where('username','=',$product->seller_username)->get()->first();
+		$seller = Seller::where('username','=',$product->seller_username)->get()->first(); 
 		$single_product = array_merge($product->toArray(), $seller->toArray());
 		if(count($single_product)<1){
 			return Response::json(array(
@@ -141,6 +141,7 @@ class ProductsController extends \BaseController {
 	**/
 
 	public function getProductsByBrand($brand){
+		$brand = strtolower($brand);
 		$products = $this->product->where('product_brand','=',$brand)->get();
 		if(count($products)<1){
 			return Response::json(array(
@@ -189,9 +190,41 @@ class ProductsController extends \BaseController {
 	*	get products by location
 	**/
 	public function getProductsByLocation($location){
-		
+		$users = User::select('username')->where('address.city','=',$location)->get();
+		if(count($users)>0){
+			$products = array();
+			foreach ($users as $user) {
+				$products = $this->product->where('seller_username','=',$user->username)->get();	
+			}
+			if($products === null){
+				return Response::json(array(
+					'error' => 'No products found'
+					));
+			}else{
+				return Response::json($products);
+			}
+		}else{
+			return Response::json(array(
+				'error' => 'No products found!'
+				));
+		}
 		
 	}
+
+	/**
+	* Get products by seller_username
+	**/
+	public function getProductsByUsername($name){
+		$products = $this->product->where('seller_username','=',$name)->get();
+		if(count($products)>0){
+			return $products;
+		}else{
+			return Response::json(array(
+				'error' => 'Products not found'
+				));
+		}
+	}
+
 
 	/*
 	* Add products
@@ -205,7 +238,7 @@ class ProductsController extends \BaseController {
 
 			$product_data = array(
 			'product_title' => Input::get('product_title'),
-			'product_brand' => Input::get('product_brand'),
+			'product_brand' => strtolower(Input::get('product_brand')),
 			'product_model' => Input::get('product_model'),
 			'seller_username' => $token['user_id'],
 			'sold_count' => 0,
@@ -247,7 +280,7 @@ class ProductsController extends \BaseController {
 
 		$product_data = array(
 			'product_title' => Input::get('product_title'),
-			'product_brand' => Input::get('product_brand'),
+			'product_brand' => strtolower(Input::get('product_brand')),
 			'product_model' => Input::get('product_model'),
 			'category' => Input::get('category'),
 			'subcategory'=> Input::get('subcategory'),
