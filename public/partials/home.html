@@ -77,7 +77,7 @@
 	<div class="col-md-10 product-view">
 		<div class="col-md-4 single-product" ng-repeat="item in items" ng-hide="items.error">
 			<div class="col-md-12 sample">
-				<h4 class="text-center">{{ item.product_title }}</h4>
+				<a href="#/product/{{ item._id }}"><h4 class="text-center">{{ item.product_title }}</h4></a>
 				<img class="img-responsive product-img" ng-src="{{ item.product_image_link[0] }}" />
 
 				<div class="col-md-12">
