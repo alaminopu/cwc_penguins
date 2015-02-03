@@ -2,14 +2,8 @@
 
 class OrdersController extends \BaseController {
 
-
-
-
-	private $rules = array(
-		'delivery_date' => 'required'
-		);
-
 	private $order;
+
 	public function __construct(Orders $order){
 		$this->order = $order;
 	}
@@ -20,32 +14,23 @@ class OrdersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function addOrder($id){
-		if( $token = AuthVerifierController::verfiyAccesstoken()){ 
-			$validator = Validator::make(Input::all(),$this->rules);
-			if($validator->fails()){
-				return Response::json(array(
-					'error' => $validator->messages()
-					));
-			}else{
-				$product = Product::select('seller_username')->where('_id','=',$id)->get()->first();
-				if(count($product)>0){
-				$this->order->create(array(
-					'seller_username' => $product->seller_username,
-					'buyer_username' => $token['user_id'],
-					'product_id' => $id,
-					'order_date' => date('Y-m-d'),
-					'delivery_date' => Input::get('delivery_date')
-					));
+	public function addOrder(){
+		if( $token = AuthVerifierController::verfiyAccesstoken()){
+			$this->order->create(array(
+				'seller_username' => Input::get('seller_username'),
+				'buyer_username' => $token['user_id'],
+				'product_id' => Input::get('product_id'),
+				'product_title' => Input::get('product_title'),
+				'product_quantity' => Input::get('quantity'),
+				'total_price' => Input::get('total_price'),
+				'order_date' => date('Y-m-d'),
+				'delivery_date' => '',
+				'delivery_status' => false
+				));
+
 				return Response::json(array(
 					'success' => 'Your order has successfully placed'
-					));
-				}else{
-					return Response::json(array(
-						'error' => 'order can not be placed'
-						));
-				}
-			}
+				));
 		}else{
 			return Response::json(array(
 					'error' => 'Unauthorized'
@@ -56,7 +41,7 @@ class OrdersController extends \BaseController {
 	/**
 	*	Update order service
 	**/
-	
 
-	
+
+
 }

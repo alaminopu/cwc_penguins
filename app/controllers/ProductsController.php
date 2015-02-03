@@ -52,15 +52,14 @@ class ProductsController extends \BaseController {
 
 	public function getSingleProduct($id){
 		$product = $this->product->where('_id','=',$id)->get()->first();
-		$seller = Seller::where('seller_username','=',$product->seller_username)->get()->first();
-		$single_product = array_merge($product->toArray(), $seller->toArray());
-		if(count($single_product)<1){
+		if(count($product)<1){
 			return Response::json(array(
 				'error' => 'No products found'
 				));
-		}else{
-			return Response::json($single_product);
 		}
+		$seller = Seller::where('seller_username','=',$product->seller_username)->get()->first();
+		$single_product = array_merge($product->toArray(), $seller->toArray());
+		return Response::json($single_product);
 	}
 
 	/**

@@ -1,20 +1,13 @@
 var profile = angular.module('productCtrl', []);
 
-profile.controller('ProductController', ['$scope','$window','$location','$routeParams','Resource','Page',
-  function($scope,$window,$location,$routeParams,Resource,Page){
-      if($window.localStorage.access_token != null){
-          Page.setTitle('Product page');
+profile.controller('ProductController', ['$scope','$window','$location','$routeParams','PublicContent','Page',
+  function($scope,$window,$location,$routeParams,PublicContent,Page){
 
-          console.log($routeParams.id);
-          var product = Resource.getData($window.localStorage.access_token, 'products/single/'+$routeParams.id);
-          product.success(function(data){
-            console.log(data);
-          })
-
-      }else{
-        $location.path('/');
-      }
-
+      Page.setTitle('Product page');
+      var product = PublicContent.getProductData('products/single/'+$routeParams.id);
+      product.success(function(data){
+        console.log(data);
+      });
 
       $scope.getPartials = function(){
         if($window.localStorage.access_token != null){

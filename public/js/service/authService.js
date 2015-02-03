@@ -61,7 +61,24 @@ access.factory('Resource', ['$http', '$rootScope', function($http, $rootScope){
           data: UserData
         });
         return confirmation;
-    }
+    },
+
+    UpdateData: function(access_token,UserData,uri){
+          var confirmation = $http({
+            method:'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded','Authorization': 'Bearer '+access_token},
+            url:'public/api/'+uri,
+            transformRequest: function(obj) {
+              var str = [];
+              for(var p in obj)
+              str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+              return str.join("&");
+            },
+            data: UserData
+          });
+          return confirmation;
+      }
+
   }
 
 }]);

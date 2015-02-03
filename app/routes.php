@@ -36,7 +36,7 @@ Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
   Route::post('products/update/{id}','ProductsController@updateProducts');
   Route::post('products/delete/{id}','ProductsController@deleteProduct');
 
-  Route::post('products/order/{id}','OrdersController@addOrder');
+  Route::post('products/order','OrdersController@addOrder');
 
 });
 
@@ -56,6 +56,3 @@ Route::get('products/category/{category}','ProductsController@getProductsByCateg
 Route::get('products/subcategory/{subcategory}','ProductsController@getProductsBySubCategory');
 Route::get('products/location/{location}','ProductsController@getProductsByLocation');
 Route::get('products/categories','ProductsController@getCategories');
-
-
-

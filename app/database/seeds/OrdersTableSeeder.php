@@ -12,9 +12,12 @@ class OrdersTableSeeder extends Seeder {
 			Orders::create([
 				'seller_username' => 'opu',
 				'buyer_username' =>'anis',
-				'product_id' => '54cc249c438767d41000002e',
-				'order_date' => '23/11/14',
- 				'delivery_date' => '31/01/15',
+				'product_id' => '54d110dc6854ca9f308b459a',
+				'product_title' => 'neymar jersey',
+				'product_quantity' => 5,
+				'total_price' => 1020,
+				'order_date' => '03/02/15',
+ 				'delivery_date' => '',
 				'delivery_status' => false
 
 			]);
