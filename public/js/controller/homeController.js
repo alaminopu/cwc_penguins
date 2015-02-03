@@ -39,7 +39,7 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
 
     // product by price range
     $scope.getProductByPrice = function(price){
-      var divider = price.split(',');
+      var divider = price.split(';');
       var temp;
       if(divider[0]>divider[1]){
         temp = divider[0];
@@ -101,6 +101,46 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
       // items.error(function(data){
       //   $scope.noitems = "Nothing match in this criteria";
       // });
+    }
+
+    // get sorted product by price
+    var sort = 0;
+    $scope.getProductSortedByPrice = function(){
+     var items;
+      if(sort==0){
+          items = PublicContent.getProductData('products/price/DESC');
+          sort=1;
+      }else{
+          items = PublicContent.getProductData('products/price/ASC');
+          sort=0;
+      }
+      items.success(function(data){
+        $scope.items= data;
+        console.log(data.error);
+      });
+      items.error(function(data){
+        $scope.noitems = "Nothing match in this criteria";
+      });
+    }
+
+    // get product by date
+    var date = 'latest';
+    $scope.getProductByDate = function(){
+        var items;
+        if(date=='latest'){
+            items = PublicContent.getProductData('products/latest');
+            date="oldest";
+        }else{
+            items = PublicContent.getProductData('products');
+            date="latest";
+        }
+        items.success(function(data){
+          $scope.items= data;
+          console.log(data.error);
+        });
+        items.error(function(data){
+          $scope.noitems = "Nothing match in this criteria";
+        });
     }
 
     // get all categories

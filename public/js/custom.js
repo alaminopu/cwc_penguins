@@ -7,15 +7,14 @@ $(document).arrive("#wrapperH", function() {
 $(document).arrive(".price-range", function() {
 	var $newRange = $(this);
 
-  $('.slider-input').jRange({
-      from: 100,
-      to: 50000,
-      step: 100,
-      scale: [100,1000,10000,50000],
-      format: '',
-      width: '90%',
-      isRange : true
-  });
+    $("#range_29").ionRangeSlider({
+        type: "double",
+        min: 100,
+        max: 10000,
+        step: 500,
+        grid: true,
+        grid_snap: true
+    });
 });
 
 

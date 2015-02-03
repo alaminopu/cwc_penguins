@@ -52,7 +52,7 @@ class ProductsController extends \BaseController {
 
 	public function getSingleProduct($id){
 		$product = $this->product->where('_id','=',$id)->get()->first();
-		$seller = Seller::where('seller_username','=',$product->seller_username)->get()->first(); 
+		$seller = Seller::where('seller_username','=',$product->seller_username)->get()->first();
 		$single_product = array_merge($product->toArray(), $seller->toArray());
 		if(count($single_product)<1){
 			return Response::json(array(
@@ -70,7 +70,7 @@ class ProductsController extends \BaseController {
 	**/
 
 	public function latestProducts(){
-		$products = $this->product->orderBy('_id','desc')->take(5)->get();
+		$products = $this->product->orderBy('_id','desc')->take(9)->get();
 		if($products != null){
 			return Response::json($products);
 		}else{
