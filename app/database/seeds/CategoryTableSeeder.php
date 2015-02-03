@@ -12,7 +12,7 @@ class CategoryTableSeeder extends Seeder {
 
 			Category::create([
 				'category' => 'electronics',
-				'subcategory' => array('computers','smartphone','headphone','tab')
+				'subcategory' => array('computer','smartphone','headphone')
 			]);
 
 			Category::create([
@@ -32,7 +32,7 @@ class CategoryTableSeeder extends Seeder {
 
 			Category::create([
 				'category' => 'cosmetics',
-				'subcategory' => array('body_spray','perfume')
+				'subcategory' => array('body spray','perfume')
 			]);
 	}
 
