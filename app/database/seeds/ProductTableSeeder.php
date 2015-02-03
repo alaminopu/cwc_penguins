@@ -22,8 +22,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/vehicles/bike/aero_road_bike.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -38,8 +38,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/vehicles/bike/amigo.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -54,8 +54,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/vehicles/bike/GT_force.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -70,8 +70,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/vehicles/bike/handlebar-bar-grips.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 4
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 4
 				]);
 
             Product::create([
@@ -86,8 +86,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/vehicles/bike/mountain_bike.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -102,8 +102,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/vehicles/car/bmw_1_series.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -118,8 +118,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/vehicles/car/BMW_7_Series.png'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -134,8 +134,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/vehicles/car/BMW_X6.png'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -150,8 +150,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/vehicles/car/Mitsubishi_Pajero_Platinum.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -166,8 +166,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/vehicles/motorbike/honda_scooter.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -182,8 +182,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/vehicles/motorbike/suzuki.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -198,8 +198,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/vehicles/motorbike/yamaha.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -214,8 +214,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/cosmetics/body_spray/chocolate-dark-temptation_axe.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 4.5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 4.5
 				]);
 
 			Product::create([
@@ -230,8 +230,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/cosmetics/body_spray/sport_field_adidas.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -246,8 +246,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/cosmetics/perfume/incentive_farmasi.png'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -262,8 +262,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/cosmetics/perfume/intimately_beckham.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -278,8 +278,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/cosmetics/perfume/perfume_hugo_boss.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 4.8
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 4.8
 				]);
 
 	        Product::create([
@@ -294,8 +294,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/kids/bonnie_jean_dress.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -310,8 +310,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/kids/cute_red_frog.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -326,8 +326,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/kids/green_formal_kids_dress.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 4.9
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 4.9
 				]);
 
             Product::create([
@@ -342,8 +342,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/kids/pink.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -358,8 +358,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/mens/causal_pants.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -374,8 +374,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/mens/formal_light.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -390,8 +390,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/mens/gabadin_pants.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -406,8 +406,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/mens/jeans_blue.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -422,8 +422,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/mens/narrow_fit.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -438,8 +438,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/womens/formal_shirt.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 4.5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 4.5
 				]);
 
             Product::create([
@@ -454,8 +454,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/womens/Khaki_Pants.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -470,8 +470,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/womens/light_cyan_silk.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -486,8 +486,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/womens/purple_silk.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -502,8 +502,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/womens/red_shirt.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -518,8 +518,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/dress/womens/red_silk.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -534,8 +534,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/electronics/computer/apple-macbookair-q410-13-keyboard-lg.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -550,8 +550,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/electronics/computer/asus_laptop.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -566,8 +566,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/electronics/computer/dell.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -582,8 +582,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/electronics/headphone/creative-headphone.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -598,8 +598,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/electronics/smartphone/asus-google-nexus.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -614,8 +614,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/electronics/smartphone/htc-one-m8-2.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -630,8 +630,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/electronics/smartphone/lg_optimus3d.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -646,8 +646,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/electronics/smartphone/lumia-535_front_back.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 4
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 4
 				]);
 
             Product::create([
@@ -662,8 +662,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/sports/cricket/bat_puma.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -678,8 +678,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/sports/cricket/batting_pads_gecko.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -694,8 +694,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/sports/cricket/halmet_albion.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -710,8 +710,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/sports/football/football_boots_adidas.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -726,8 +726,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/sports/football/football_nike.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -742,8 +742,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/sports/jersey/bd_cricket_wc_jersey.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
 			Product::create([
@@ -758,8 +758,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/sports/jersey/messi_jersey.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 
             Product::create([
@@ -774,8 +774,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_image_link' => array('public/imgs/products/sports/jersey/neymar_jersey.jpg'),
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
-				 	'review_text' => array($faker->text()),
-				 	'rating' => 5
+				 	'product_review_text' => array($faker->text()),
+				 	'product_rating' => 5
 				]);
 		}
 	}

@@ -26,19 +26,17 @@ Route::group(array('prefix' => 'api', 'before'=>'oauth'), function(){
 
   Route::get('profile', 'ProfileController@getUserProfile');
   Route::get('profile/seller','ProfileController@getSellerProfile');
-   Route::get('profile/buyer','ProfileController@getBuyerProfile');
+  Route::get('profile/buyer','ProfileController@getBuyerProfile');
   Route::post('profile/update/personal-info','ProfileController@updateUserData');
   Route::post('profile/update/address','ProfileController@updateAddress');
   Route::post('profile/delete','ProfileController@removeUser');
   Route::post('profile/update/password','ProfileController@updateUserPassword');
-  Route::get('products/single/{id}','ProductsController@getSingleProduct');
-
 
   Route::post('products/add','ProductsController@addProducts');
   Route::post('products/update/{id}','ProductsController@updateProducts');
   Route::post('products/delete/{id}','ProductsController@deleteProduct');
 
-
+  Route::post('products/order/{id}','OrdersController@addOrder');
 
 });
 
@@ -50,7 +48,7 @@ Route::get('user/{name}','ProfileController@getUserPublicProfile');
 /* products */
 Route::get('products','ProductsController@all');
 Route::get('products/latest','ProductsController@latestProducts');
-
+Route::get('products/single/{id}','ProductsController@getSingleProduct');
 Route::get('products/range/{lower}/{higher}','ProductsController@getProductsByPriceRange');
 Route::get('products/brand/{brand}','ProductsController@getProductsByBrand');
 Route::get('products/price/{sort}','ProductsController@getProductsByPrice');
