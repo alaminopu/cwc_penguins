@@ -53,14 +53,6 @@ class ProductsController extends \BaseController {
 	public function getSingleProduct($id){
 		$product = $this->product->where('_id','=',$id)->get()->first();
 		$seller = Seller::where('seller_username','=',$product->seller_username)->get()->first(); 
-		if(count($seller)<1){
-			return Response::json(array(
-				'error' => 'User not found'
-				));
-		}
-
-		$seller = Seller::where('username','=',$product->seller_username)->get()->first();
-
 		$single_product = array_merge($product->toArray(), $seller->toArray());
 		if(count($single_product)<1){
 			return Response::json(array(
@@ -184,32 +176,32 @@ class ProductsController extends \BaseController {
 	}
 
 
-	/**
-	*	Get Products by Most sold items
-	**/
-<<<<<<< HEAD
-	public function getProductsByMostSold(){
-		$products = $this->product->orderBy('sold_count','desc')->where('sold_count','!=',0)->get();
-		if(count($products)<1){
-			return Response::json(array(
-				'error' => 'No products found',
-				));
-		}else{
-			return Response::json($products);
-		}
-	}
-=======
-	// public function getProductsByMostSold(){
-	// 	$products => $this->product->orderBy('sold_count','desc')->get();
-	// 	if(count($products)<1){
-	// 		return Response::json(array(
-	// 			'error' => 'No products found',
-	// 			));
-	// 	}else{
-	// 		return Response::json($products);
-	// 	}
-	// }
->>>>>>> f171a8ec697f822fd872f6d2c5b5de17abae44a2
+// 	/**
+// 	*	Get Products by Most sold items
+// 	**/
+// <<<<<<< HEAD
+// 	public function getProductsByMostSold(){
+// 		$products = $this->product->orderBy('sold_count','desc')->where('sold_count','!=',0)->get();
+// 		if(count($products)<1){
+// 			return Response::json(array(
+// 				'error' => 'No products found',
+// 				));
+// 		}else{
+// 			return Response::json($products);
+// 		}
+// 	}
+// =======
+// 	// public function getProductsByMostSold(){
+// 	// 	$products => $this->product->orderBy('sold_count','desc')->get();
+// 	// 	if(count($products)<1){
+// 	// 		return Response::json(array(
+// 	// 			'error' => 'No products found',
+// 	// 			));
+// 	// 	}else{
+// 	// 		return Response::json($products);
+// 	// 	}
+// 	// }
+// >>>>>>> f171a8ec697f822fd872f6d2c5b5de17abae44a2
 
 
 	/**

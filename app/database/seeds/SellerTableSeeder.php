@@ -12,20 +12,20 @@ class SellerTableSeeder extends Seeder {
 			Seller::create([
 				'seller_username' => 'opu',
  				'achievement' => '',
-			 	'review_text' => array($faker->text()),
-			 	'rating' => 4.5
+			 	'seller_review_text' => array($faker->text()),
+			 	'seller_rating' => 4.5
 			]);
 			Seller::create([
 				'seller_username' => 'anis',
  				'achievement' => '',
-			 	'review_text' => array($faker->text()),
-			 	'rating' => 4.5
+			 	'seller_review_text' => array($faker->text()),
+			 	'seller_rating' => 4.5
 			]);
 			Seller::create([
 				'seller_username' => 'shovon',
  				'achievement' => '',
-			 	'review_text' => array($faker->text()),
-			 	'rating' => 4.5
+			 	'seller_review_text' => array($faker->text()),
+			 	'seller_rating' => 4.5
 			]);
 
 	}
