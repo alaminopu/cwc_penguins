@@ -143,22 +143,7 @@ class ProductsController extends \BaseController {
 	}
 
 
-	/**
-	*	get products by price: High to Low
-	**/
-
-	// public function getProductsByMaxPrice($max){
-	// 	$max = intval($max);
-	// 	$products = $this->product->where('price','<=',$max)->get();
-	// 	if(count($products)<1){
-	// 		return Response::json(array(
-	// 			'error' => 'No products found'
-	// 			));
-	// 	}else{
-	// 		return Response::json($products);
-	// 	}
-	// }
-
+	
 	/**
 	*	get products by price: Low to High
 	**/
@@ -175,43 +160,33 @@ class ProductsController extends \BaseController {
 	}
 
 
-// 	/**
-// 	*	Get Products by Most sold items
-// 	**/
-// <<<<<<< HEAD
-// 	public function getProductsByMostSold(){
-// 		$products = $this->product->orderBy('sold_count','desc')->where('sold_count','!=',0)->get();
-// 		if(count($products)<1){
-// 			return Response::json(array(
-// 				'error' => 'No products found',
-// 				));
-// 		}else{
-// 			return Response::json($products);
-// 		}
-// 	}
-// =======
-// 	// public function getProductsByMostSold(){
-// 	// 	$products => $this->product->orderBy('sold_count','desc')->get();
-// 	// 	if(count($products)<1){
-// 	// 		return Response::json(array(
-// 	// 			'error' => 'No products found',
-// 	// 			));
-// 	// 	}else{
-// 	// 		return Response::json($products);
-// 	// 	}
-// 	// }
-// >>>>>>> f171a8ec697f822fd872f6d2c5b5de17abae44a2
+	/**
+	*	Get Products by Most sold items
+	**/
+
+	public function getProductsByMostSold(){
+		$products = $this->product->orderBy('sold_count','desc')->where('sold_count','!=',0)->get();
+		if(count($products)<1){
+			return Response::json(array(
+				'error' => 'No products found',
+				));
+		}else{
+			return Response::json($products);
+		}
+	}
+
 
 
 	/**
 	*	Update sold_count field
 	**/
-	// public function updateSoldCount($product_id){
-	// 	$product = $this->product->where('_id','=','54cc815f4387672806000034')->get()->first();
-	// 	var_dump($product);
-	// 	die();
-	// 	return $product->increments('sold_count');
-	// }
+
+	 public function updateSoldCount($id){
+	 	$product = $this->product->where('_id','=',$id)->get()->first();
+	 	return $product->increment('sold_count');
+	 }
+
+
 
 
 	/**

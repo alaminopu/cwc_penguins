@@ -10,7 +10,7 @@ class ProductTableSeeder extends Seeder {
 		$faker = Faker::create();
 		Product::truncate();
 
-			            Product::create([
+			Product::create([
 					'product_title' => 'aero road bike',
 					'seller_username' => 'anis',
 	 				'product_brand' => 'aero',
@@ -23,7 +23,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
 			Product::create([
@@ -39,7 +40,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
 			Product::create([
@@ -55,7 +57,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -71,7 +74,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 4
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -87,7 +91,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -103,7 +108,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -119,7 +125,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -135,7 +142,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 5
 				]);
 
 			Product::create([
@@ -151,7 +159,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 6
 				]);
 
 			Product::create([
@@ -167,7 +176,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 9
 				]);
 
 			Product::create([
@@ -183,7 +193,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 12
 				]);
 
 			Product::create([
@@ -199,7 +210,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' =>8
 				]);
 
 			Product::create([
@@ -215,7 +227,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 4.5
+				 	'product_rating' => 5,
+				 	'sold_count' => 11
 				]);
 
 			Product::create([
@@ -231,7 +244,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
 			Product::create([
@@ -247,7 +261,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 23
 				]);
 
 			Product::create([
@@ -263,7 +278,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' =>21
 				]);
 
 			Product::create([
@@ -279,7 +295,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 4.8
+				 	'product_rating' => 5,
+				 	'sold_count' => 12
 				]);
 
 	        Product::create([
@@ -295,7 +312,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 100
 				]);
 
 			Product::create([
@@ -311,7 +329,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 32
 				]);
 
 			Product::create([
@@ -327,7 +346,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 4.9
+				 	'product_rating' => 5,
+				 	'sold_count' => 43
 				]);
 
             Product::create([
@@ -343,7 +363,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 55
 				]);
 
             Product::create([
@@ -359,7 +380,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 41
 				]);
 
             Product::create([
@@ -375,7 +397,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 25
 				]);
 
             Product::create([
@@ -391,7 +414,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 100
 				]);
 
             Product::create([
@@ -407,7 +431,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 56
 				]);
 
             Product::create([
@@ -423,7 +448,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 65
 				]);
 
             Product::create([
@@ -439,7 +465,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 4.5
+				 	'product_rating' => 5,
+				 	'sold_count' => 74
 				]);
 
             Product::create([
@@ -455,7 +482,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 73
 				]);
 
 			Product::create([
@@ -471,7 +499,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 83
 				]);
 
             Product::create([
@@ -487,7 +516,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 7
 				]);
 
             Product::create([
@@ -503,7 +533,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -519,7 +550,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -535,7 +567,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -551,7 +584,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
 			Product::create([
@@ -567,7 +601,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -583,7 +618,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
 			Product::create([
@@ -599,7 +635,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
 			Product::create([
@@ -615,7 +652,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
 			Product::create([
@@ -631,7 +669,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
 			Product::create([
@@ -647,7 +686,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 4
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -663,7 +703,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
 			Product::create([
@@ -679,7 +720,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
 			Product::create([
@@ -695,7 +737,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
 			Product::create([
@@ -711,7 +754,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -727,7 +771,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -743,7 +788,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
 			Product::create([
@@ -759,7 +805,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 
             Product::create([
@@ -775,7 +822,8 @@ class ProductTableSeeder extends Seeder {
 				 	'product_description' => $faker->text,
 				 	'discount' => 0,
 				 	'product_review_text' => array($faker->text()),
-				 	'product_rating' => 5
+				 	'product_rating' => 5,
+				 	'sold_count' => 2
 				]);
 		}
 	}

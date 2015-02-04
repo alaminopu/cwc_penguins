@@ -56,3 +56,8 @@ Route::get('products/category/{category}','ProductsController@getProductsByCateg
 Route::get('products/subcategory/{subcategory}','ProductsController@getProductsBySubCategory');
 Route::get('products/location/{location}','ProductsController@getProductsByLocation');
 Route::get('products/categories','ProductsController@getCategories');
+
+Route::get('products/bymostsold','ProductsController@getProductsByMostSold');
+Route::get('products/updatesoldcount/{id}','ProductsController@updateSoldCount');
+
+
