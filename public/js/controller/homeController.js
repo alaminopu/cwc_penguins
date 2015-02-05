@@ -14,6 +14,7 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
 
     // get iteam by category
     $scope.categoryProductSelect = function(item){
+      makeDisableBrandSelection();
       //console.log(item.category);
       $scope.subcategories = $scope.categorySelect.subcategory;
       var items = PublicContent.getProductData('products/category/'+item.category);
@@ -28,6 +29,8 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
 
     // Get item by subcategory
     $scope.subCategoryProductSelect= function(item){
+      makeDisableBrandSelection();
+
       var items = PublicContent.getProductData('products/subcategory/'+item);
       items.success(function(data){
         $scope.items= data;
@@ -39,6 +42,8 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
 
     // product by price range
     $scope.getProductByPrice = function(price){
+      makeDisableBrandSelection();
+
       var divider = price.split(';');
       var temp;
       if(divider[0]>divider[1]){
@@ -80,6 +85,8 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
     // get data by location
     $scope.locationData=['Dhaka','Chittagong','Comilla','Sylhet','Barisal'];
     $scope.getDataBylocation = function(locationFilter){
+        makeDisableBrandSelection();
+
         console.log(locationFilter);
         var items = PublicContent.getProductData('products/location/'+locationFilter);
         items.success(function(data){
@@ -93,19 +100,23 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
 
     // get most sold items
     $scope.getMostSoldProduct = function(){
-      // var items = PublicContent.getProductData('products/most_sold');
-      // items.success(function(data){
-      //   $scope.items= data;
-      //   console.log(data.error);
-      // });
-      // items.error(function(data){
-      //   $scope.noitems = "Nothing match in this criteria";
-      // });
+      makeDisableBrandSelection();
+
+      var items = PublicContent.getProductData('products/bymostsold');
+      items.success(function(data){
+        $scope.items= data;
+        console.log(data.error);
+      });
+      items.error(function(data){
+        $scope.noitems = "Nothing match in this criteria";
+      });
     }
 
     // get sorted product by price
     var sort = 0;
     $scope.getProductSortedByPrice = function(){
+    makeDisableBrandSelection();
+
      var items;
       if(sort==0){
           items = PublicContent.getProductData('products/price/DESC');
@@ -126,6 +137,8 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
     // get product by date
     var date = 'latest';
     $scope.getProductByDate = function(){
+        makeDisableBrandSelection();
+        
         var items;
         if(date=='latest'){
             items = PublicContent.getProductData('products/latest');
@@ -152,6 +165,11 @@ home.controller('HomeController',['$scope','$window','$location','PublicContent'
 
 
 
+    var makeDisableBrandSelection = function(){
+        for(var key in $scope.brands ){
+            $scope.brands[key] = false;
+        }
+    }
 
     // for logged in user view checking
     $scope.getPartials = function(){
