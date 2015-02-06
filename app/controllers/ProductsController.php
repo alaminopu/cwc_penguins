@@ -348,3 +348,47 @@ class ProductsController extends \BaseController {
 	}
 
 }
+
+
+/**
+*	Image resizing and storing function
+**/
+
+public function addImage(){
+
+			//get the input file
+		    $files = Input::all();
+		    
+		    // Validation on the array elements
+		    $rules = ['avatar' => 'array|max:6|min:3|required'];   //name of the input form 'avatar' 
+		    $validator = Validator::make($files,$rules);
+		    if($validator->passes()){
+			    $images = $files['avatar'];
+			    foreach($images as $image){
+
+			    	//Validation on each images
+			    	$rules = array('file' => 'required|mimes:png,jpeg'); 
+			    	$validator = Validator::make(array('file'=>$image),$rules);
+			    	if($validator->fails()){
+			    		return Response::json(array(
+			    			'error' => $validator->messages()
+			    			));
+			    	}else{
+			    		//have client extension loaded file and set a random name with time to the uploaded file, produce a random string of length 32 made up of alphanumeric characters [a-zA-z0-9]
+					    $filename = time().''. str_random(32) . '.' . $image->getClientOriginalExtension();
+
+					    //set a register path to the uploaded file
+					    $path = public_path('imgs/products/'.$filename);
+
+					    //set $file in order to resize the format and save as an url in database
+						 Image::make($image->getRealPath())->resize('200','200')->save($path);
+			    	}
+			    	
+			    }	
+		    }else{
+		    	return Response::json(array(
+		    		'error' => $validator->messages()
+		    		));
+		    }
+
+}
