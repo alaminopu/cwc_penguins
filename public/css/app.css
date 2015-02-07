@@ -195,7 +195,7 @@ body{
 }
 
 .product-view{
-	background: #eee;
+	background: #F5F5F5;
 	padding-top: 20px;
 }
 
@@ -221,8 +221,8 @@ body{
 	padding-right: 0;
 }
 
-.single-product:nth-child(4){
-	clear: left;
+.single-product:nth-child(3n+1){
+  clear: left;
 }
 
 .single-product h4{
