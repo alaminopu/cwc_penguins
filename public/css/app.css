@@ -195,7 +195,7 @@ body{
 }
 
 .product-view{
-	background: #eee;
+	background: #F5F5F5;
 	padding-top: 20px;
 }
 
@@ -221,8 +221,8 @@ body{
 	padding-right: 0;
 }
 
-.single-product:nth-child(4){
-	clear: left;
+.single-product:nth-child(3n+1){
+  clear: left;
 }
 
 .single-product h4{
@@ -286,6 +286,26 @@ body{
 .add-to-wishlist-button i:active:before{
 	text-shadow: 0 0 15px #1D7C73;
 	color: #006E63;
+}
+
+/*Single product page*/
+.single-product-wrapper{
+	background-color: #e0e0e0;
+}
+
+.single-product-section{
+	background-color: #fff;
+	border: 1px solid #ddd;
+	box-shadow: 0 0 10px #CBCBCB;
+}
+
+.single-product-section.review-section,
+.single-product-section.seller-info{
+	margin: 20px 0;
+}
+
+.product-release-date{
+	color: #ABABAB;
 }
 
 /**** Profile page *****/
