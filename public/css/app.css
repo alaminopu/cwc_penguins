@@ -288,6 +288,26 @@ body{
 	color: #006E63;
 }
 
+/*Single product page*/
+.single-product-wrapper{
+	background-color: #e0e0e0;
+}
+
+.single-product-section{
+	background-color: #fff;
+	border: 1px solid #ddd;
+	box-shadow: 0 0 10px #CBCBCB;
+}
+
+.single-product-section.review-section,
+.single-product-section.seller-info{
+	margin: 20px 0;
+}
+
+.product-release-date{
+	color: #ABABAB;
+}
+
 /**** Profile page *****/
 .user-location{
 	color: #808080;
